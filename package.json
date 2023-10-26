@@ -4,7 +4,7 @@
   "description": "Website for EscapeRoom assignment",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    
   },
   "author": "",
   "license": "ISC",
