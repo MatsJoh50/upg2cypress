@@ -5,11 +5,12 @@
     --lightBlue: #8ACFE5;
     --red: #E3170A;
 }
-
-html {
-    background-color: white;
+* {    
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
+}
+html {
+    background-color: white;
 }
 
 body {
@@ -26,44 +27,36 @@ body {
 }
 
 header {
-    align-content: center;
+    display: flex;
     background-color: var(--darkBlue);
     color: white;
-    display: flex;
-    flex-wrap: nowrap;
     height: 144px;
-    justify-content: center;
     max-width: 1000px;
-    text-align: center;
+}
+
+header .wrapper{
+    display: flex;
+    margin: 1em;
 }
 
 .header__logo {
-    border: 6px solid #FFFFFF;
-    border-radius: 17px;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    flex-direction: row;
-    font-family: 'Monofett', monospace;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: 400;
+    background-image: url("images/esc_logo.png");
+    background-repeat: cover;
     height: 82px;
-    line-height: 45px;
-    min-width: 128px;
-    text-align: center;
+    width: 128px;
+    margin: auto 0;
 }
 
 .header__title {
+    margin: auto 1em;
     height: 84;
-    margin: 0px;
-    padding: 0;
     width: 78;
-    word-wrap: break-word;
+    word-wrap:normal;
+    line-height: 0.2em;
+    font-weight: 700;
 }
 
-.haeder__title p {
-    margin: 0px auto;
-}
+
 
 .header__spacer {
     background: url("images/header__spacer.png");
@@ -121,37 +114,46 @@ a {
 .main__slider {
     display: flex;
     flex-direction: column;
-    margin: auto;
-    max-width: 1000px;
-    min-height: 360px;
-    min-width: 80%;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 660px;
+    min-height: 460px;
+
 }
 
+#slider-2{
+    transform: translateY(-100%);
+}
+#slider-3{
+    transform: translateY(-100%);
+}
 .main__slider--title {
     font-size: 1.3em;
     text-align: center;
 }
 
-.main__slider .main__sliderBox {
+.main__sliderBox {
     border-radius: 8px;
     box-shadow: 0px 0px 8px;
+
 }
 
-.main__slider .main__sliderBox .main__sliderBox--slider {
+.main__sliderBox--slider {
     background: url("images/header__spacer.png");
     background-size: cover;
     border-bottom: 1px solid #011827;
-    max-height: 50%;
-    max-width: 100%;
+    border-radius: 8px 8px 0 0;
+    height: 220px;
+    min-width: 100%;
 }
 
-.main__slider .main__sliderBox .main__sliderBox--slider img {
+.main__sliderBox--slider img {
     border-radius: 18px 18px 0px 0px;
     max-height: 50%;
     max-width: 100%;
 }
 
-.main__slider .main__sliderBox .main__sliderBox--review {
+.main__sliderBox--review {
     font-size: 0.8em;
     height: 50%;
     margin: 15px 15px;
@@ -159,11 +161,11 @@ a {
     word-wrap: break-word;
 }
 
-.main__slider .main__sliderBox .main__sliderBox--review .title {
+.main__sliderBox--review .title {
     font-size: 1.3em;
 }
 
-.main__slider .main__sliderBox .main__sliderBox--button {
+.main__sliderBox--button {
     border-radius: 4px;
     font-size: 0.8em;
     font-weight: bold;
@@ -174,9 +176,11 @@ a {
     width: 52%;
 }
 
-.main__slider .main__sliderBox .main__sliderBox--button p {
+.main__sliderBox--button p {
     line-height: 230%;
 }
+
+
 
 .main__storyBox {
     align-items: center;
@@ -221,12 +225,11 @@ a {
 }
 
 .main__marketing .main__marketing--title {
+    font-size: 1.8em;
     font-weight: 700;
     margin-top: 0;
-    font-size: 1.8em;
 }
 
-// .main__marketing .main__marketing--info {}
 
 .main__marketing .main__marketing--button {
     border-radius: 3px;
@@ -251,7 +254,6 @@ footer {
     padding: 2em 10px;
 }
 
-// .footer_compay{}
 
 .footer_site-map p {
     line-height: .3em;
