@@ -2,10 +2,11 @@
   "name": "a2-escaperoom",
   "version": "1.0.0",
   "description": "Website for EscapeRoom assignment",
-  "main": "main.js",
   "scripts": {
-    
+    "sass:watch": "sass --no-source-map --watch src/main.scss main.css",
+    "sass:compile": "sass --no-source-map src/main.scss main.css"
   },
+
   "author": "",
   "license": "ISC",
   "dependencies": {
