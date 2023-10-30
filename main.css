@@ -29,9 +29,9 @@ body {
 }
 
 header {
-  display: flex;
   background-color: var(--darkBlue);
   color: white;
+  display: flex;
   height: 144px;
   max-width: 1000px;
 }
@@ -45,17 +45,17 @@ header .wrapper {
   background-image: url("images/esc_logo.png");
   background-repeat: cover;
   height: 82px;
-  width: 128px;
   margin: auto 0;
+  width: 128px;
 }
 
 .header__title {
-  margin: auto 1em;
+  font-weight: 700;
   height: 84;
+  line-height: 0.2em;
+  margin: auto 1em;
   width: 78;
   word-wrap: normal;
-  line-height: 0.2em;
-  font-weight: 700;
 }
 
 .header__spacer {
@@ -109,50 +109,47 @@ a {
   justify-content: center;
   margin: 50px auto;
   min-width: 90%;
+  overflow-x: scroll;
 }
 
 .main__slider {
   display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  width: 80%;
-  max-width: 660px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: start;
+  margin: 0px auto;
   min-height: 460px;
+  width: 100%;
+  overflow: auto;
+  overscroll-behavior-x: contain;
 }
-
-#slider-2 {
-  transform: translateY(-100%);
+.main__slider #slider-1 {
+  transform: translateX(25%);
 }
-
-#slider-3 {
-  transform: translateY(-100%);
+.main__slider #slider-2 {
+  transform: translateX(40%);
 }
-
-.main__slider--title {
-  font-size: 1.3em;
-  text-align: center;
+.main__slider #slider-3 {
+  transform: translateX(55%);
 }
-
 .main__sliderBox {
   border-radius: 8px;
   box-shadow: 0px 0px 8px;
+  margin: 10px;
+  min-width: 300px;
+  height: 50%;
+  width: 100%;
+  overflow: hidden;
 }
-
 .main__sliderBox--slider {
   background: url("images/header__spacer.png");
   background-size: cover;
   border-bottom: 1px solid #011827;
   border-radius: 8px 8px 0 0;
-  height: 220px;
+  min-height: 220px;
+  height: 50%;
   min-width: 100%;
 }
-
-.main__sliderBox--slider img {
-  border-radius: 18px 18px 0px 0px;
-  max-height: 50%;
-  max-width: 100%;
-}
-
 .main__sliderBox--review {
   font-size: 0.8em;
   height: 50%;
@@ -160,11 +157,14 @@ a {
   width: 100%;
   word-wrap: break-word;
 }
-
 .main__sliderBox--review .title {
   font-size: 1.3em;
 }
-
+.main__sliderBox img {
+  border-radius: 18px 18px 0px 0px;
+  max-height: 50%;
+  max-width: 100%;
+}
 .main__sliderBox--button {
   border-radius: 4px;
   font-size: 0.8em;
@@ -175,9 +175,13 @@ a {
   text-align: center;
   width: 52%;
 }
-
 .main__sliderBox--button p {
   line-height: 230%;
+}
+
+.main__slider--title {
+  font-size: 1.3em;
+  text-align: center;
 }
 
 .main__storyBox {
