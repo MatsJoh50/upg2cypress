@@ -43,7 +43,7 @@ header .wrapper .header__logo {
   background-image: url("images/esc_logo.png");
   background-repeat: cover;
   height: 82px;
-  margin: auto 0;
+  margin: auto 2vw;
   width: 128px;
 }
 header .wrapper .header__title {
@@ -111,6 +111,16 @@ nav {
   background-size: cover;
   max-height: 470px;
   min-height: 280px;
+}
+@media screen and (min-width: 1120px) {
+  .heroImage {
+    max-height: 650px;
+  }
+}
+@media screen and (min-width: 1520px) {
+  .heroImage {
+    max-height: 750px;
+  }
 }
 
 a {
@@ -245,9 +255,10 @@ a {
 @media screen and (min-width: 900px) {
   .main .review {
     max-width: 1100px;
-    height: 140px;
+    min-height: 140px;
     justify-content: space-evenly;
     text-align: center;
+    overflow: hidden;
   }
   .main .review img {
     height: 100%;
@@ -257,6 +268,11 @@ a {
   }
   .main .review #rev-2 {
     display: flex;
+  }
+}
+@media screen and (min-width: 900px) and (min-width: 1520px) {
+  .main .review {
+    min-height: 240px;
   }
 }
 .main__slider--title {
@@ -350,6 +366,7 @@ a {
 .main__marketing {
   display: flex;
   flex-direction: column;
+  margin-bottom: 2em;
 }
 .main__marketing .motivation__img {
   display: flex;
@@ -362,18 +379,18 @@ a {
 .main__marketingBox {
   display: flex;
   flex-direction: column;
-  margin: 0 1em;
-  margin-bottom: 2em;
+  margin: 0 2em;
   width: 90%;
 }
-.main__marketingBox--title {
-  font-size: 1.8em;
-  font-weight: 700;
-  margin-top: 0;
+.main__marketingBox--text {
+  padding: 0 2vw;
+}
+.main__marketingBox--text h3 {
+  font-size: 32px;
 }
 .main__marketingBox .button {
-  position: relative;
-  bottom: 10px;
+  margin-left: 2vw;
+  margin-right: auto;
 }
 .main__marketingBox .button p {
   font-weight: 700;
@@ -381,25 +398,28 @@ a {
 @media screen and (min-width: 1120px) {
   .main__marketing {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    justify-self: stretch;
-    margin: 0 0;
+    margin-bottom: 11vh;
+  }
+  .main__marketingBox--text {
+    padding: 0 2vw;
   }
   .main__marketing #group_box {
-    grid-column: 1/1;
     grid-row: 2/2;
+    margin: auto;
+    width: 80%;
+    height: 80%;
   }
   .main__marketing #group_img {
-    grid-column: 1/1;
     grid-row: 1/1;
   }
   .main__marketing #solo_box {
-    grid-column: 2/2;
     grid-row: 1/2;
+    margin: auto;
+    width: 80%;
+    height: 80%;
   }
   .main__marketing #solo_img {
-    grid-column: 2/2;
     grid-row: 2/2;
   }
 }
@@ -410,10 +430,10 @@ footer {
   display: flex;
   flex-direction: column;
   font-size: 0.5em;
-  line-height: normal;
   margin: 0 auto;
   padding: 2em 10px;
   width: 100%;
+  height: 570px;
 }
 footer .footer__site-map p {
   line-height: 0.3em;
@@ -427,18 +447,31 @@ footer .footer__follow p {
 @media screen and (min-width: 900px) {
   footer {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 4fr 1fr 1fr;
+    grid-template-rows: 3fr 4fr 3fr;
     justify-content: center;
-    text-align: left;
+    height: 470px;
+  }
+  footer p {
     font-size: 18px;
   }
   footer .footer__compay {
-    grid-column: 1/1;
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0px 20vw 0 8vw;
   }
-  footer .footer__play-links, footer .footer_site-map {
-    grid-column: 2/2;
+  footer .footer__site-map {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  footer .footer__play-links {
+    grid-column: 2;
+    grid-row: 3;
+    margin: -1vw 0;
   }
   footer .footer__follow {
-    grid-column: 3/3;
+    grid-column: 3;
+    grid-row: 2;
+    margin-right: 13vw;
   }
 }
