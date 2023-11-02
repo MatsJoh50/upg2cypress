@@ -351,33 +351,62 @@ a {
   display: flex;
   flex-direction: column;
 }
-@media screen and (min-width: 900px) {
-  .main__marketing {
-    flex-direction: row;
-  }
-}
 .main__marketing .motivation__img {
   display: flex;
   margin: 0 auto;
   width: 100%;
+  min-width: 350px;
+  min-height: 350px;
 }
-.main__marketing--box {
+.main__marketing .motivation__img #solo_img {
+  background: url("images/motivation_solo.png");
+  background-size: cover;
+}
+.main__marketingBox {
   display: flex;
   flex-direction: column;
   margin: 0 1em;
   margin-bottom: 2em;
   width: 90%;
 }
-.main__marketing--box--title {
+.main__marketingBox--title {
   font-size: 1.8em;
   font-weight: 700;
   margin-top: 0;
 }
-.main__marketing--box--button p {
+.main__marketingBox .button {
+  position: relative;
+  bottom: 10px;
+}
+.main__marketingBox .button p {
   font-weight: 700;
 }
-
-footer {
+@media screen and (min-width: 1120px) {
+  .main__marketing {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-self: stretch;
+    margin: 0 0;
+  }
+  .main__marketing #group_box {
+    grid-column: 1/1;
+    grid-row: 2/2;
+  }
+  .main__marketing #group_img {
+    grid-column: 1/1;
+    grid-row: 1/1;
+  }
+  .main__marketing #solo_box {
+    grid-column: 2/2;
+    grid-row: 1/2;
+  }
+  .main__marketing #solo_img {
+    grid-column: 2/2;
+    grid-row: 2/2;
+  }
+}
+.main footer {
   background-color: var(--darkBlue);
   color: white;
   display: flex;
@@ -388,12 +417,12 @@ footer {
   padding: 2em 10px;
   width: 100%;
 }
-footer .footer_site-map p {
+.main footer .footer_site-map p {
   line-height: 0.3em;
 }
-footer .footer_play-links p {
+.main footer .footer_play-links p {
   line-height: 0.3em;
 }
-footer .footer_follow p {
+.main footer .footer_follow p {
   line-height: 0.3em;
 }

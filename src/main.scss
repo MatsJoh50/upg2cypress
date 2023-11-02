@@ -399,17 +399,24 @@ a {
     &__marketing {
         display: flex;
         flex-direction: column;
-        @include breakpoint($medium-screen-breakpoint){
-            flex-direction: row;
-        }
+
+
+
 
         .motivation__img {
             display: flex;
             margin: 0 auto;
             width: 100%;
+            min-width: 350px;
+            min-height: 350px;
+            
+            #solo_img{
+                background: url("images/motivation_solo.png");
+                background-size: cover;
+            }
         }
 
-        &--box {
+        &Box {
             display: flex;
             flex-direction: column;
             margin: 0 1em;
@@ -423,33 +430,66 @@ a {
             }
 
 
-            &--button p {
-                font-weight: 700;
+            .button {
+                position: relative;
+                bottom: 10px;
+
+                p {
+                    font-weight: 700;
+                }
             }
         }
+        @include breakpoint($large-screen-breakpoint) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            justify-self: stretch;
+            margin: 0 0;
+
+            #group_box {
+                grid-column: 1 / 1;
+                grid-row: 2/2;
+            }
+
+            #group_img {
+                grid-column: 1 / 1;
+                grid-row: 1/1;
+            }
+
+            #solo_box {
+                grid-column: 2 / 2;
+                grid-row: 1/2;
+            }
+
+            #solo_img {
+                grid-column: 2 / 2;
+                grid-row: 2/2;
+            }
+
+        }
     }
-}
 
-footer {
-    background-color: var(--darkBlue);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    font-size: .5em;
-    line-height: normal;
-    margin: 0 auto;
-    padding: 2em 10px;
-    width: 100%;
+    footer {
+        background-color: var(--darkBlue);
+        color: white;
+        display: flex;
+        flex-direction: column;
+        font-size: .5em;
+        line-height: normal;
+        margin: 0 auto;
+        padding: 2em 10px;
+        width: 100%;
 
-    .footer_site-map p {
-        line-height: .3em;
-    }
+        .footer_site-map p {
+            line-height: .3em;
+        }
 
-    .footer_play-links p {
-        line-height: .3em;
-    }
+        .footer_play-links p {
+            line-height: .3em;
+        }
 
-    .footer_follow p {
-        line-height: .3em;
+        .footer_follow p {
+            line-height: .3em;
+        }
     }
 }
