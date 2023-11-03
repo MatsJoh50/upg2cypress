@@ -17,10 +17,10 @@
 html {
     background-color: white;
     overscroll-behavior-x: hidden;
-    overflow-x: hidden;
 }
 
 body {
+    overflow-x: hidden;
     align-content: center;
     align-self: center;
     display: flex;
@@ -129,10 +129,12 @@ nav {
     background-size: cover;
     max-height: 470px;
     min-height: 280px;
-    @include breakpoint($large-screen-breakpoint){
+
+    @include breakpoint($large-screen-breakpoint) {
         max-height: 650px;
     }
-    @include breakpoint($xlarge-screen-breakpoint){
+
+    @include breakpoint($xlarge-screen-breakpoint) {
         max-height: 750px;
     }
 }
@@ -259,6 +261,8 @@ a {
         }
     }
 
+
+
     .review {
         display: flex;
         align-content: center;
@@ -266,11 +270,53 @@ a {
         align-self: center;
         display: flex;
         justify-content: space-evenly;
-        margin: 6em auto 3em auto;
-        min-width: 240px;
-        max-width: 600px;
-        overflow-x: scroll;
+        margin: 2em auto 3em auto;
+        overflow: hidden;
         width: 90%;
+
+        .rev_grid {
+            display: flex;
+            flex-direction: row;
+            max-height: 150px;
+            max-width: 80%;
+            max-height: fit-content;
+            justify-content: center;
+            text-align: left;
+
+            .img {
+                margin-top: 0;
+                margin-bottom: auto;
+                margin-right: 1em;
+                
+                img {
+                    min-width: 70px;
+                    aspect-ratio: 1/1;
+                }
+            }
+
+            .box {
+                flex-direction: column;
+                justify-content: start;
+                p{
+                    margin: 0;
+                }
+                .text {
+                    margin-left: 0;
+                    margin-right: auto;
+                }
+
+                .name {
+                    margin-left: 0;
+                    margin-right: auto;
+                    margin-top: .5em;
+                    p{
+
+                        font-size: 18px;
+                    }
+
+                }
+            }
+        }
 
         #rev-2 {
             display: none;
@@ -287,8 +333,13 @@ a {
             text-align: center;
             overflow: hidden;
 
-            img {
-                height: 100%;
+            .img{
+                margin-right: .5em;
+                img {
+                    height: 100%;
+                    min-width: 95px;
+    
+                }
             }
 
             #rev-1 {
@@ -298,7 +349,8 @@ a {
             #rev-2 {
                 display: flex;
             }
-            @include breakpoint($xlarge-screen-breakpoint){
+
+            @include breakpoint($xlarge-screen-breakpoint) {
                 min-height: 240px;
             }
         }
@@ -330,6 +382,8 @@ a {
             overflow: hidden;
             max-width: 450px;
 
+
+
             &--img {
                 background: url("images/header__spacer.png");
                 background-size: cover;
@@ -338,6 +392,19 @@ a {
                 height: 50%;
                 min-height: 220px;
                 min-width: 100%;
+            }
+
+            &--stars {
+                display: flex;
+                margin-top: -25px;
+
+                p {
+                    font-size: 14px;
+                    text-align: right;
+                    margin-left: auto;
+                    margin-right: 2em;
+                    margin-top: 7px;
+                }
             }
 
             &--info {
@@ -350,6 +417,7 @@ a {
                 .title {
                     font-size: 1.3em;
                 }
+
             }
 
             img {
@@ -424,10 +492,11 @@ a {
             flex-direction: column;
             margin: 0 2em;
             width: 90%;
-            
+
             &--text {
                 padding: 0 2vw;
-                h3{
+
+                h3 {
                     font-size: 32px;
                 }
             }
@@ -447,7 +516,7 @@ a {
             grid-template-rows: 1fr 1fr;
             margin-bottom: 11vh;
 
-            &Box--text{
+            &Box--text {
                 padding: 0 2vw;
 
             }
@@ -484,53 +553,60 @@ footer {
     color: white;
     display: flex;
     flex-direction: column;
-    font-size: .5em;
     margin: 0 auto;
     padding: 2em 10px;
     width: 100%;
-    height: 570px;
+    min-height: 570px;
+    line-height: 1.2em;
 
-    .footer__site-map p {
-        line-height: .3em;
+    h4 {
+        margin-bottom: -0.5em;
     }
 
-    .footer__play-links p {
-        line-height: .3em;
+    p {
+        font-size: 18px;
     }
 
-    .footer__follow p {
-        line-height: .3em;
+    &__site-map,
+    &__follow {
+        p {
+            line-height: 0.3em;
+        }
     }
-    @include breakpoint($medium-screen-breakpoint){
+
+
+
+
+    @include breakpoint($medium-screen-breakpoint) {
         display: grid;
         grid-template-columns: 4fr 1fr 1fr;
         grid-template-rows: 3fr 4fr 3fr;
         justify-content: center;
-        height: 470px;
-        p{
-            font-size: 18px;
+        min-height: 470px;
 
+
+        &__site-map--play {
+            margin-top: 10px;
         }
-        .footer__compay{
+
+        .footer__compay {
             grid-column: 1;
-            grid-row:2;
+            grid-row: 2;
             margin: 0px 20vw 0 8vw;
         }
-        
-        .footer__site-map{
+
+        .footer__site-map {
             grid-column: 2;
-            grid-row:2;
+            grid-row: 2;
             // margin: 11vw 0 0 7vw;
         }
-        .footer__play-links{
-            grid-column: 2;
-            grid-row: 3;
-            margin: -1vw 0;
-        }
+
+
         .footer__follow {
             grid-column: 3;
             grid-row: 2;
             margin-right: 13vw;
+            width: 7em;
         }
-    }  
+    }
 }
