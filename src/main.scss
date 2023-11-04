@@ -325,7 +325,7 @@ a {
 
                     p {
 
-                        font-size: 18px;
+                        font-size: 14px;
                     }
 
                 }
@@ -391,7 +391,7 @@ a {
 
         &Box {
             border-radius: 8px;
-            box-shadow: 0px 0px 8px;
+            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.69);
             height: 50%;
             margin: 10px 20px;
             min-width: 300px;
@@ -541,6 +541,13 @@ a {
         @include max-breakpoint($small-screen-breakpoint){
             .main__marketingBox{
                 margin: 0 1em;
+            }
+        }
+        @include breakpoint($medium-screen-breakpoint){
+            .main__marketingBox{
+                width: 70%;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
         @include breakpoint($llarge-screen-breakpoint) {
