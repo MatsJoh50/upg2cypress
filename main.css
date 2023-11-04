@@ -77,6 +77,10 @@ header .wrapper .header__title {
   }
 }
 
+.heroImage img {
+  aspect-ratio: 16/9;
+}
+
 nav {
   display: none;
 }
@@ -356,9 +360,14 @@ a {
 .main__sliderBox--stars p {
   font-size: 14px;
   text-align: right;
-  margin-left: auto;
+  margin-left: 1em;
   margin-right: 2em;
   margin-top: 7px;
+}
+@media screen and (min-width: 900px) {
+  .main__sliderBox--stars p {
+    margin-left: auto;
+  }
 }
 .main__sliderBox--info {
   font-size: 0.8em;
@@ -404,6 +413,7 @@ a {
   color: white;
   font-size: 1.2em;
   margin: 4em 1em 1em 1em;
+  max-width: 50%;
 }
 .main__storyBox--button {
   font-size: 1.2em;
@@ -426,6 +436,9 @@ a {
   height: 100%;
   min-width: 350px;
   min-height: 450px;
+}
+.main__marketing .motivation__img img {
+  aspect-ratio: 16/9;
 }
 .main__marketingBox {
   display: flex;
