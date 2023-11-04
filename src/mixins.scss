@@ -4,3 +4,9 @@
         
     }
 }
+@mixin max-breakpoint($max-size){
+    @media screen and (max-width: $max-size) {
+        @content;
+        
+    }
+}

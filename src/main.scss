@@ -419,10 +419,12 @@ a {
                     text-align: right;
                     margin-left: 1em;
                     margin-right: 2em;
-                    margin-top: 7px;
+                    margin-top: 4px;
 
                     @include breakpoint($medium-screen-breakpoint) {
                         margin-left: auto;
+                        margin-top: 7px;
+
                     }
                 }
             }
@@ -536,15 +538,18 @@ a {
             }
         }
 
-        @include breakpoint($large-screen-breakpoint) {
+        @include max-breakpoint($small-screen-breakpoint){
+            .main__marketingBox{
+                margin: 0 1em;
+            }
+        }
+        @include breakpoint($llarge-screen-breakpoint) {
             display: grid;
             grid-template-rows: 1fr 1fr;
             margin-bottom: 11vh;
 
             &Box--text {
                 padding: 0 2vw;
-
-
             }
 
             #group_box {

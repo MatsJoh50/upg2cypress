@@ -371,11 +371,12 @@ a {
   text-align: right;
   margin-left: 1em;
   margin-right: 2em;
-  margin-top: 7px;
+  margin-top: 4px;
 }
 @media screen and (min-width: 900px) {
   .main__sliderBox--stars p {
     margin-left: auto;
+    margin-top: 7px;
   }
 }
 .main__sliderBox--info {
@@ -467,7 +468,12 @@ a {
 .main__marketingBox .button p {
   font-weight: 700;
 }
-@media screen and (min-width: 1120px) {
+@media screen and (max-width: 400px) {
+  .main__marketing .main__marketingBox {
+    margin: 0 1em;
+  }
+}
+@media screen and (min-width: 1200px) {
   .main__marketing {
     display: grid;
     grid-template-rows: 1fr 1fr;
