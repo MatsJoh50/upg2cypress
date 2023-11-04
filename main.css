@@ -246,7 +246,7 @@ a {
     text-align: center;
   }
 }
-.main .review {
+.main__review {
   display: flex;
   align-content: center;
   align-items: center;
@@ -257,7 +257,7 @@ a {
   overflow: hidden;
   width: 90%;
 }
-.main .review .rev_grid {
+.main__review--grid {
   display: flex;
   flex-direction: row;
   max-height: 150px;
@@ -266,42 +266,42 @@ a {
   justify-content: center;
   text-align: left;
 }
-.main .review .rev_grid .img {
+.main__review--grid .img {
   margin-top: 0;
   margin-bottom: auto;
   margin-right: 1em;
 }
-.main .review .rev_grid .img img {
+.main__review--grid .img img {
   min-width: 70px;
   aspect-ratio: 1/1;
 }
-.main .review .rev_grid .box {
+.main__review--box {
   flex-direction: column;
   justify-content: start;
 }
-.main .review .rev_grid .box p {
+.main__review--box p {
   margin: 0;
 }
-.main .review .rev_grid .box .text {
+.main__review--box .text {
   margin-left: 0;
   margin-right: auto;
 }
-.main .review .rev_grid .box .name {
+.main__review--box .name {
   margin-left: 0;
   margin-right: auto;
   margin-top: 0.5em;
 }
-.main .review .rev_grid .box .name p {
+.main__review--box .name p {
   font-size: 14px;
 }
-.main .review #rev-2 {
+.main__review #rev-2 {
   display: none;
 }
-.main .review img {
+.main__review img {
   width: 100%;
 }
 @media screen and (min-width: 900px) {
-  .main .review {
+  .main__review {
     max-width: 1100px;
     min-height: 140px;
     justify-content: space-evenly;
@@ -309,22 +309,22 @@ a {
     overflow: hidden;
     margin-top: 5em;
   }
-  .main .review .img {
+  .main__review .main__review--grid .img {
     margin-right: 0.5em;
   }
-  .main .review .img img {
+  .main__review .main__review--grid .img img {
     height: 100%;
     min-width: 95px;
   }
-  .main .review #rev-1 {
+  .main__review #rev-1 {
     display: flex;
   }
-  .main .review #rev-2 {
+  .main__review #rev-2 {
     display: flex;
   }
 }
-@media screen and (min-width: 900px) and (min-width: 1520px) {
-  .main .review {
+@media screen and (min-width: 1520px) {
+  .main__review {
     min-height: 240px;
   }
 }

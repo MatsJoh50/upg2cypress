@@ -12,6 +12,7 @@
 * {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
+
     @include breakpoint($medium-screen-breakpoint) {
         font-size: 24px;
     }
@@ -85,7 +86,7 @@ header {
                 width: fit-content;
                 word-wrap: none;
                 bottom: 0px;
-                    margin-top:0 ;
+                margin-top: 0;
 
                 h1 {
                     font-size: 2em;
@@ -274,7 +275,7 @@ a {
 
 
 
-    .review {
+    &__review {
         display: flex;
         align-content: center;
         align-items: center;
@@ -285,7 +286,7 @@ a {
         overflow: hidden;
         width: 90%;
 
-        .rev_grid {
+        &--grid {
             display: flex;
             flex-direction: row;
             max-height: 150px;
@@ -304,33 +305,34 @@ a {
                     aspect-ratio: 1/1;
                 }
             }
+        }
 
-            .box {
-                flex-direction: column;
-                justify-content: start;
+        &--box {
+            flex-direction: column;
+            justify-content: start;
+
+            p {
+                margin: 0;
+            }
+
+            .text {
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            .name {
+                margin-left: 0;
+                margin-right: auto;
+                margin-top: .5em;
 
                 p {
-                    margin: 0;
+
+                    font-size: 14px;
                 }
 
-                .text {
-                    margin-left: 0;
-                    margin-right: auto;
-                }
-
-                .name {
-                    margin-left: 0;
-                    margin-right: auto;
-                    margin-top: .5em;
-
-                    p {
-
-                        font-size: 14px;
-                    }
-
-                }
             }
         }
+
 
         #rev-2 {
             display: none;
@@ -348,13 +350,16 @@ a {
             overflow: hidden;
             margin-top: 5em;
 
-            .img {
-                margin-right: .5em;
+            .main__review--grid {
 
-                img {
-                    height: 100%;
-                    min-width: 95px;
+                .img {
+                    margin-right: .5em;
 
+                    img {
+                        height: 100%;
+                        min-width: 95px;
+
+                    }
                 }
             }
 
@@ -365,12 +370,14 @@ a {
             #rev-2 {
                 display: flex;
             }
+        }
 
-            @include breakpoint($xlarge-screen-breakpoint) {
-                min-height: 240px;
-            }
+        @include breakpoint($xlarge-screen-breakpoint) {
+            min-height: 240px;
         }
     }
+
+
 
     &__slider--title {
         font-size: 1.3em;
@@ -391,7 +398,7 @@ a {
 
         &Box {
             border-radius: 8px;
-            box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.69);
+            box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.69);
             height: 50%;
             margin: 10px 20px;
             min-width: 300px;
@@ -496,6 +503,7 @@ a {
         }
     }
 
+
     &__marketing {
         display: flex;
         flex-direction: column;
@@ -538,18 +546,20 @@ a {
             }
         }
 
-        @include max-breakpoint($small-screen-breakpoint){
-            .main__marketingBox{
+        @include max-breakpoint($small-screen-breakpoint) {
+            .main__marketingBox {
                 margin: 0 1em;
             }
         }
-        @include breakpoint($medium-screen-breakpoint){
-            .main__marketingBox{
+
+        @include breakpoint($medium-screen-breakpoint) {
+            .main__marketingBox {
                 width: 70%;
                 margin-left: auto;
                 margin-right: auto;
             }
         }
+
         @include breakpoint($llarge-screen-breakpoint) {
             display: grid;
             grid-template-rows: 1fr 1fr;
@@ -583,6 +593,7 @@ a {
             }
 
         }
+
     }
 }
 
