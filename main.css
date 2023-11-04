@@ -59,7 +59,7 @@ header .wrapper .header__title {
   bottom: 10px;
   font-weight: 700;
   height: 84px;
-  margin: 0 1em;
+  margin: 18px 1em;
   width: 90px;
   word-wrap: break-word;
 }
@@ -79,6 +79,7 @@ header .wrapper .header__title {
     width: fit-content;
     word-wrap: none;
     bottom: 0px;
+    margin-top: 0;
   }
   header .wrapper .header__title h1 {
     font-size: 2em;
