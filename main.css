@@ -596,6 +596,9 @@ footer h4 {
 footer p {
   font-size: 18px;
 }
+footer .footer__compay {
+  width: 90%;
+}
 footer__site-map p, footer__follow p {
   line-height: 0.3em;
 }

@@ -694,7 +694,9 @@ footer {
     p {
         font-size: 18px;
     }
-
+    .footer__compay{
+        width: 90%;
+    }
     &__site-map,
     &__follow {
         p {
@@ -721,6 +723,7 @@ footer {
             grid-column: 1;
             grid-row: 2;
             margin: 0px 20vw 0 8vw;
+
         }
 
         .footer__site-map {
