@@ -86,11 +86,78 @@ header .wrapper .header__title {
   }
 }
 
-nav {
+@media screen and (min-width: 900px) {
+  .nav__mobile {
+    display: none;
+  }
+}
+.nav__mobile--openMenu {
+  display: block;
+  position: absolute;
+  top: 1.4em;
+  right: 1em;
+  color: white;
+  background-size: cover;
+  height: 1.5em;
+  width: 2em;
+  background-color: var(--darkBlue);
+}
+.nav__mobile--bg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: white;
+  opacity: 50%;
+  width: 100vw;
+  height: 100vh;
+  animation: fadeIn 0.3s;
+}
+.nav__mobile--menu {
+  z-index: 2;
+  display: none;
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  width: 94vw;
+  height: 94vh;
+  background-color: var(--darkBlue);
+  margin: auto;
+  justify-content: center;
+  text-align: center;
+  animation-delay: 100ms;
+  animation: openUp 0.2s;
+}
+.nav__mobile--closeMenu {
+  color: white;
+  position: relative;
+  top: 2%;
+  right: 4%;
+  z-index: 3;
+  width: 2em;
+  height: 2em;
+}
+.nav__mobile ul {
+  margin: auto;
+  list-style-type: none;
+}
+.nav__mobile ul li {
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  margin-top: 50px;
+}
+.nav__mobile ul a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav__large {
   display: none;
 }
 @media screen and (min-width: 900px) {
-  nav {
+  .nav__large {
     background-color: var(--darkBlue);
     color: white;
     display: flex;
@@ -99,7 +166,7 @@ nav {
     justify-content: center;
     width: 100%;
   }
-  nav ul {
+  .nav__large ul {
     align-items: stretch;
     display: flex;
     flex-direction: row;
@@ -110,7 +177,7 @@ nav {
     text-align: center;
     gap: 3em;
   }
-  nav li:hover {
+  .nav__large li:hover {
     color: var(--lightBlue);
   }
 }
@@ -179,7 +246,6 @@ a {
   text-align: center;
   justify-content: center;
   width: 100%;
-  z-index: 2;
 }
 .main__topBtnWrapper--mobile {
   display: flex;
@@ -554,5 +620,24 @@ footer__site-map p, footer__follow p {
     grid-row: 2;
     margin-right: 13vw;
     width: 7em;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 50%;
+  }
+}
+@keyframes openUp {
+  0% {
+    opacity: 0;
+    scale: 98%;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
   }
 }

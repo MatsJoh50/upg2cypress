@@ -22,6 +22,7 @@ html {
     background-color: white;
     overscroll-behavior-x: hidden;
     overflow-x: hidden;
+    // overflow-y: hidden; <-- lock scrolling
 }
 
 body {
@@ -96,9 +97,84 @@ header {
     }
 }
 
-nav {
+.nav__mobile {
+    @include breakpoint($medium-screen-breakpoint) {
+        display: none;
+    }
+
+    &--openMenu {
+        display: block;
+        position: absolute;
+        top: 1.4em;
+        right: 1em;
+        color: white;
+        background-size: cover;
+        height: 1.5em;
+        width: 2em;
+        background-color: var(--darkBlue);
+    }
+
+    &--bg {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background-color: white;
+        opacity: 50%;
+        width: 100vw;
+        height: 100vh;
+        animation: fadeIn 0.3s;
+    }
+
+    &--menu {
+        z-index: 2;
+        display: none;
+        position: absolute;
+        top: 3%;
+        left: 3%;
+        width: 94vw;
+        height: 94vh;
+        background-color: var(--darkBlue);
+        margin: auto;
+        justify-content: center;
+        text-align: center;
+        animation-delay: 100ms;
+        animation: openUp 0.2s;
+    }
+
+    &--closeMenu {
+        color: white;
+        position: relative;
+        top: 2%;
+        right: 4%;
+        z-index: 3;
+        width: 2em;
+        height: 2em;
+    }
+
+
+    ul {
+        margin: auto;
+        list-style-type: none;
+
+        li {
+            font-size: 32px;
+            font-weight: 700;
+            color: white;
+            margin-top: 50px;
+
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+}
+
+.nav__large {
     display: none;
-    // margin: -2 auto;
 
     @include breakpoint($medium-screen-breakpoint) {
         background-color: var(--darkBlue);
@@ -122,9 +198,7 @@ nav {
 
         }
 
-        li {
-            // padding: 0 2em;
-        }
+        li {}
 
         li:hover {
             color: var(--lightBlue);
@@ -197,7 +271,6 @@ a {
         text-align: center;
         justify-content: center;
         width: 100%;
-        z-index: 2;
 
         &--mobile {
             display: flex;
@@ -657,5 +730,28 @@ footer {
             margin-right: 13vw;
             width: 7em;
         }
+    }
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 50%;
+    }
+}
+
+@keyframes openUp{
+    0%{
+        opacity: 0;
+        scale: 98%;
+
+    }
+    100%{
+        opacity: 1;
+        scale: 1;
     }
 }

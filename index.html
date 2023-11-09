@@ -11,23 +11,57 @@
 </head>
 
 <body>
-    <header>
+    <header id="header">
         <div class="wrapper">
             <div class="header__logo" alt="Escape's logo formed by letters E S C"></div>
             <div class="header__title">
                 <h1>Hacker Escape Rooms</h1>
             </div>
         </div>
+
     </header>
-    <nav>
+
+    <nav class="nav__large">
         <ul>
-            <li>Play online</li>
-            <li>Play on-site</li>
-            <li>The story</li>
-            <li>Contact us</li>
+            <a href="#">
+                <li>Play online</li>
+            </a>
+            <a href="#on-site">
+                <li>Play on-site</li>
+            </a>
+            <a href="#theStory">
+                <li>The story</li>
+            </a>
+            <a href="#footer">
+                <li>Contact us</li>
+            </a>
         </ul>
     </nav>
-    <img class="heroImage" src="images/header__spacer.png" alt="omnius Hero picture of a man standing by several screens">
+
+    <div class="nav__mobile">
+        <img class="nav__mobile--openMenu" src="images/openMenu.png">
+        <div class="nav__mobile--bg"></div>
+        <div class="nav__mobile--menu">
+            <ul>
+                <a href="#on-site" class="hamburgerLink">
+                    <li>Play online</li>
+                </a>
+                <a href="#on-site" class="hamburgerLink">
+                    <li>Play on-site</li>
+                </a>
+                <a href="#theStory" class="hamburgerLink">
+                    <li>The story</li>
+                </a>
+                <a href="#footer" class="hamburgerLink">
+                    <li>Contact us</li>
+                </a>
+            </ul>
+            <img class="nav__mobile--closeMenu" src="images/close.png" alt="menu close button">
+        </div>
+    </div>
+
+    <img class="heroImage" src="images/header__spacer.png"
+        alt="omnius Hero picture of a man standing by several screens">
 
     <main class="main">
         <div class="main__topBtnWrapper--mobile">
@@ -51,10 +85,11 @@
 
             <div class="main__review--grid" id="rev-2">
                 <div class="img"><img src="images/rev_head.png"> </div>
-                
+
                 <div class="main__review--box">
                     <div class="text">
-                        <p>This is a quote about how amazing this place is and how much fun me and my friends had when we tried it</p>
+                        <p>This is a quote about how amazing this place is and how much fun me and my friends had when
+                            we tried it</p>
                     </div>
                     <div class="name">
                         <p>John Doe, visited us in September 2021</p>
@@ -62,13 +97,14 @@
 
                 </div>
             </div>
-            
+
             <div class="main__review--grid" id="rev-1">
                 <div class="img"><img src="images/rev_head.png"> </div>
-                
+
                 <div class="main__review--box">
                     <div class="text">
-                        <p>This is a quote about how amazing this place is and how much fun me and my friends had when we tried it</p>
+                        <p>This is a quote about how amazing this place is and how much fun me and my friends had when
+                            we tried it</p>
                     </div>
                     <div class="name">
                         <p>John Doe, visited us in September 2021</p>
@@ -83,7 +119,7 @@
             <p>Popular challenges right now</p>
         </div>
 
-        <div class="main__slider">
+        <div class="main__slider" id="on-site">
 
             <div class="main__sliderBox" id="slider-1">
                 <div class="main__sliderBox--img"></div>
@@ -175,7 +211,7 @@
             </div>
         </div>
 
-        <div class="main__storyBox">
+        <div class="main__storyBox" id="theStory">
             <div class="main__storyBox--story">
                 <p>Quodsi haberent magnalia inter potentiam et divitias, et non illam quidem haec eo spectant haec
                     quoque
@@ -188,7 +224,8 @@
         </div>
 
         <div class="main__marketing">
-            <img class="motivation__img" id="group_img" src="images/motivation_group.png" alt="two people by a screen helping eachother">
+            <img class="motivation__img" id="group_img" src="images/motivation_group.png"
+                alt="two people by a screen helping eachother">
             <div class="main__marketingBox" id="group_box">
                 <div class="main__marketingBox--text">
                     <h3>Play with your friends or build your team stronger at work</h3>
@@ -202,7 +239,8 @@
                     <p>Book on-site today</p>
                 </div>
             </div>
-            <img class="motivation__img" id="solo_img" src="images/motivation_solo.png" alt="One person by a screen trying to solve a problem">
+            <img class="motivation__img" id="solo_img" src="images/motivation_solo.png"
+                alt="One person by a screen trying to solve a problem">
             <div class="main__marketingBox" id="solo_box">
                 <div class="main__marketingBox--text">
                     <h3>Play online or visit our venue for one of our 25 escape rooms</h3>
@@ -219,7 +257,7 @@
         </div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" id="footer">
         <div class="footer__compay">
             <h4>[Esc] Hacker Escape Rooms</h4>
             <p>Quodsi haberent magnalia inter potentiam et divitias, et non illam quidem haec eo spectant haec quoque
@@ -229,18 +267,18 @@
         <div class="footer__site-map">
             <h4>Site map</h4>
             <p>The Story <br>
-            Contact Us <br>
-            Legal</p>
+                Contact Us <br>
+                Legal</p>
             <span class="footer__site-map--play">
                 <p>Play online <br>
-                Play on-site</p>
+                    Play on-site</p>
             </span>
         </div>
         <div class="footer__follow">
             <h4>Follow us on</h4>
             <p>Facebook <br>
-            Instagram <br>
-            Twitter</p>
+                Instagram <br>
+                Twitter</p>
 
         </div>
 
