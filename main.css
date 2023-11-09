@@ -177,6 +177,10 @@ header .wrapper .header__title {
     text-align: center;
     gap: 3em;
   }
+  .nav__large ul a {
+    color: white;
+    text-decoration: none;
+  }
   .nav__large li:hover {
     color: var(--lightBlue);
   }
