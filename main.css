@@ -113,7 +113,6 @@ header .wrapper .header__title {
   width: 100vw;
   height: 100vh;
   animation: fadeIn 0.3s;
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.4);
 }
 .nav__mobile--menu {
   z-index: 2;
@@ -129,6 +128,7 @@ header .wrapper .header__title {
   text-align: center;
   animation-delay: 100ms;
   animation: openUp 0.2s;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.4);
 }
 .nav__mobile--closeMenu {
   color: white;
@@ -189,10 +189,8 @@ header .wrapper .header__title {
 }
 
 .heroImage {
-  background: url("images/header__spacer.png");
-  background-size: cover;
-  max-height: 470px;
   min-height: 280px;
+  max-height: 470px;
 }
 .heroImage img {
   aspect-ratio: 16/9;
