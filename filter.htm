@@ -6,8 +6,8 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='filter.css'>
-    <script src='main.js' defer></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='filter.js' defer></script>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
             <div class="filter__options--type">
                 <h4>By Type</h4>
                 <div>
-                    <input type="checkbox" id="On-line" name="on-line">
+                    <input type="checkbox" id="online" name="online">
                     <label for="On-line">Include online Challanges</label>
                 </div>
                 <div>
@@ -35,24 +35,21 @@
                 <h4 class="filter__option--rating--title">By Rating</h4>
 
                 <div class="filter__options--rating--wrapper">
-                    <div class="filter__options--rating--min">
-                        <ul>
-                            <li><input type="checkbox" id="cbMin-1"></li>
-                            <li><input type="checkbox" id="cbMin-2"></li>
-                            <li><input type="checkbox" id="cbMin-3"></li>
-                            <li><input type="checkbox" id="cbMin-4"></li>
-                            <li><input type="checkbox" id="cbMin-5"></li>
-                        </ul>
+                    <div class="filter__options--rating--min" aria-label="minRating" role="meter" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0">
+                        <span aria-hidden="true" class="cbMin" id="cbMin-1"></span>
+                        <span aria-hidden="true" class="cbMin" id="cbMin-2"></span>
+                        <span aria-hidden="true" class="cbMin" id="cbMin-3"></span>
+                        <span aria-hidden="true" class="cbMin" id="cbMin-4"></span>
+                        <span aria-hidden="true" class="cbMin" id="cbMin-5"></span>
+
                     </div>
                     <div>to</div>
-                    <div class="filter__options--rating--max">
-                        <ul>
-                            <li><input type="checkbox" id="cbMax-1"></li>
-                            <li><input type="checkbox" id="cbMax-2"></li>
-                            <li><input type="checkbox" id="cbMax-3"></li>
-                            <li><input type="checkbox" id="cbMax-4"></li>
-                            <li><input type="checkbox" id="cbMax-5"></li>
-                        </ul>
+                    <div class="filter__options--rating--max" aria-label="maxRating" role="meter" aria-valuemin="0" aria-valuemax="5" aria-valuenow="5">
+                        <span aria-hidden="true" class="cbMax" id="cbMax-1"></span>
+                        <span aria-hidden="true" class="cbMax" id="cbMax-2"></span>
+                        <span aria-hidden="true" class="cbMax" id="cbMax-3"></span>
+                        <span aria-hidden="true" class="cbMax" id="cbMax-4"></span>
+                        <span aria-hidden="true" class="cbMax" id="cbMax-5"></span>
                     </div>
                 </div>
             </div>
