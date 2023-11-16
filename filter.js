@@ -11,6 +11,13 @@ const filterTags = document.querySelectorAll(".tags");
 const filterSearchBar = document.querySelector(".filter__Ssearch--input");
 const filterTagBox = document.querySelector(".filter__options--tags--collectionBox")
 
+//Fetch Challange API
+const res = await fetch('https://lernia-sjj-assignments.vercel.app/api/challenges');
+const data = await res.json();
+data.challenges.forEach(challenge => {
+    console.log(challenge.title)
+});
+
 //Variables
 let cbMinValue = filterMin.ariaValueNow;
 let cbMaxValue = filterMax.ariaValueNow;
@@ -63,7 +70,7 @@ console.log(allTagsArray)
 printAllTags();
 
 
-function printAllTags(){
+function printAllTags() {
     const printSection = document.querySelector("#testbox");
     allTagsArray.forEach(tag => {
         const newDiv = document.createElement("div");
@@ -90,13 +97,9 @@ function printAllTags(){
 
 //Adds all uniqe tags to an array.
 function fetchAllTags() {
-    filterTags.forEach(element => {
-        if (!allTagsArray.includes(element.innerHTML)) {
-            allTagsArray.push(element.innerHTML)
-
-        }
-    });
-    console.log("all tags: " + allTagsArray)
+    // data.challenges.forEach(challenge => {
+    //     console.log(challange.title)
+    // });
 }
 
 //Toggle the bool of onsite filter.
