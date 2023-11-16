@@ -1,12 +1,10 @@
-
-
-.filter__title{
+.filter__title {
     margin: 0 auto;
     text-align: center;
-    
+
 }
 
-.filter{
+.filter {
     margin: 20px auto;
     border: 1px solid gray;
     width: 80%;
@@ -15,23 +13,25 @@
     display: flex;
     flex-direction: column;
 }
-.filter h2{
+
+.filter h2 {
     margin-left: 1em;
 }
-.filter__options{
+
+.filter__options {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 0 2em;
-    
+
 }
 
-.filter__options--type{
+.filter__options--type {
     margin-left: 0;
     line-height: 1em;
 }
 
-.filter__options--rating{
+.filter__options--rating {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -39,14 +39,15 @@
 
 
 }
-.filter__options--rating--wrapper{
+
+.filter__options--rating--wrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 1em;
 }
 
-.filter__options--rating{
+.filter__options--rating {
     flex-direction: column;
     display: flex;
     list-style: none;
@@ -54,193 +55,224 @@
     margin: 0 auto;
 
 
-    &--min{
+    &--min {
         flex-direction: row;
         display: flex;
         list-style: none;
         padding: 0;
         margin: auto;
-    
-        span{
+
+        span {
             display: block;
             width: 15px;
             height: 15px;
             background: url('images/emtpy_star.png');
         }
-        &[aria-valuenow="1"]{
-            span:nth-child(1){
+
+        &[aria-valuenow="1"] {
+            span:nth-child(1) {
                 background: url('images/full_star.png');
             }
         }
-        &[aria-valuenow="2"]{
-            span:nth-child(1){
+
+        &[aria-valuenow="2"] {
+            span:nth-child(1) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(2){
-                background: url('images/full_star.png');
-            }
-        }
-        &[aria-valuenow="3"]{
-            span:nth-child(1){
-                background: url('images/full_star.png');
-            }
-            span:nth-child(2){
-                background: url('images/full_star.png');
-            }
-            span:nth-child(3){
+
+            span:nth-child(2) {
                 background: url('images/full_star.png');
             }
         }
-        &[aria-valuenow="4"]{
-            span:nth-child(1){
+
+        &[aria-valuenow="3"] {
+            span:nth-child(1) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(2){
+
+            span:nth-child(2) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(3){
-                background: url('images/full_star.png');
-            }
-            span:nth-child(4){
+
+            span:nth-child(3) {
                 background: url('images/full_star.png');
             }
         }
-        &[aria-valuenow="5"]{
-            span:nth-child(1){
+
+        &[aria-valuenow="4"] {
+            span:nth-child(1) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(2){
+
+            span:nth-child(2) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(3){
+
+            span:nth-child(3) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(4){
+
+            span:nth-child(4) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(5){
+        }
+
+        &[aria-valuenow="5"] {
+            span:nth-child(1) {
+                background: url('images/full_star.png');
+            }
+
+            span:nth-child(2) {
+                background: url('images/full_star.png');
+            }
+
+            span:nth-child(3) {
+                background: url('images/full_star.png');
+            }
+
+            span:nth-child(4) {
+                background: url('images/full_star.png');
+            }
+
+            span:nth-child(5) {
                 background: url('images/full_star.png');
             }
         }
     }
 
-    &--max{
+    &--max {
         flex-direction: row;
         display: flex;
         list-style: none;
         padding: 0;
         margin: auto;
-    
-        span{
+
+        span {
             display: block;
             width: 15px;
             height: 15px;
             background: url('images/emtpy_star.png');
         }
-        &[aria-valuenow="1"]{
-            span:nth-child(1){
+
+        &[aria-valuenow="1"] {
+            span:nth-child(1) {
                 background: url('images/full_star.png');
             }
         }
-        &[aria-valuenow="2"]{
-            span:nth-child(1){
+
+        &[aria-valuenow="2"] {
+            span:nth-child(1) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(2){
-                background: url('images/full_star.png');
-            }
-        }
-        &[aria-valuenow="3"]{
-            span:nth-child(1){
-                background: url('images/full_star.png');
-            }
-            span:nth-child(2){
-                background: url('images/full_star.png');
-            }
-            span:nth-child(3){
+
+            span:nth-child(2) {
                 background: url('images/full_star.png');
             }
         }
-        &[aria-valuenow="4"]{
-            span:nth-child(1){
+
+        &[aria-valuenow="3"] {
+            span:nth-child(1) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(2){
+
+            span:nth-child(2) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(3){
-                background: url('images/full_star.png');
-            }
-            span:nth-child(4){
+
+            span:nth-child(3) {
                 background: url('images/full_star.png');
             }
         }
-        &[aria-valuenow="5"]{
-            span:nth-child(1){
+
+        &[aria-valuenow="4"] {
+            span:nth-child(1) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(2){
+
+            span:nth-child(2) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(3){
+
+            span:nth-child(3) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(4){
+
+            span:nth-child(4) {
                 background: url('images/full_star.png');
             }
-            span:nth-child(5){
+        }
+
+        &[aria-valuenow="5"] {
+            span:nth-child(1) {
+                background: url('images/full_star.png');
+            }
+
+            span:nth-child(2) {
+                background: url('images/full_star.png');
+            }
+
+            span:nth-child(3) {
+                background: url('images/full_star.png');
+            }
+
+            span:nth-child(4) {
+                background: url('images/full_star.png');
+            }
+
+            span:nth-child(5) {
                 background: url('images/full_star.png');
             }
         }
     }
 }
 
-.filter_options--tags-Title{
+.filter_options--tags-Title {
     margin-left: 0;
     max-height: 2em;
 }
 
 
 
-.filter__options--tags--collectionBox{
+.filter__options--tags--collectionBox {
     justify-content: flex-start;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     display: flex;
     flex-direction: row;
     width: 200px;
     height: fit-content;
     overflow-y: hidden;
+    line-height: 0;
 
+    &>* {
+        border: 1px solid gray;
+        border-radius: 15px;
+        padding: 0 3px;
+        margin: 3px;
+    }
 
+    & div:hover {
+        background-color: beige;
+    }
 
+    & div:active {
+        background-color: darkgray;
+    }
 }
 
-.filter__options--tags--collectionBox >*{
-    border: 1px solid gray;
-    border-radius: 15px;
-    padding: 3px 6px;
-    margin: 3px;
-}
-.filter__options--tags--collectionBox div:hover{
-    background-color: beige;
-}
-.filter__options--tags--collectionBox div:active{
-    background-color: darkgray;
-}
 
 
-.filter__search{
+.filter__search {
     justify-content: left;
     text-align: left;
     margin: 0 auto 2em auto;
     display: flex;
     flex-direction: column;
 
-    
+
 
 }
 
-.filter__search--input{
+.filter__search--input {
     width: 20em;
     height: 2em;
 }

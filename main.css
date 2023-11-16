@@ -180,19 +180,17 @@
   width: 200px;
   height: fit-content;
   overflow-y: hidden;
+  line-height: 0;
 }
-
 .filter__options--tags--collectionBox > * {
   border: 1px solid gray;
   border-radius: 15px;
-  padding: 3px 6px;
+  padding: 0 3px;
   margin: 3px;
 }
-
 .filter__options--tags--collectionBox div:hover {
   background-color: beige;
 }
-
 .filter__options--tags--collectionBox div:active {
   background-color: darkgray;
 }
