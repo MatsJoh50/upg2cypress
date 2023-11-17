@@ -1,9 +1,10 @@
 //Load API
 const fullApiJson = []
 getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
-.then(fetchAllTags)
-.then(printAllTags)
-.catch(err => console.log('errors: ' + err.message))
+    .then(fetchAllTags)
+    .then(printAllTags)
+    .then(printAllChallenges)
+    .catch(err => console.log('errors: ' + err.message))
 
 
 
@@ -37,7 +38,7 @@ let cbMaxValue = filterMax.ariaValueNow;
 let online = false;
 let onsite = false;
 let allTagsArray = [];
-
+let filterString = '';
 //Eventlistener
 
 filterIncOnline.addEventListener('change', () => changeStatusFilterOnline());
@@ -83,7 +84,7 @@ filterMaxAll.forEach(cbMinSpan => {
 
 function printAllTags() {
     const printSection = document.querySelector("#testbox");
-allTagsArray.forEach(tag => {
+    allTagsArray.forEach(tag => {
         const newDiv = document.createElement("div");
         const newPara = document.createElement("p");
         newPara.innerHTML = tag;
@@ -93,15 +94,27 @@ allTagsArray.forEach(tag => {
     });
 }
 
+function printAllChallenges() {
+    const printSection = document.querySelector("#testbox");
+    fullApiJson.forEach(challenge => {
+        console.log(challenge.title, challenge.labels)
+        const newDiv = document.createElement("div");
+        let newPara = document.createElement("p")
+        let textNode = document.createTextNode(challenge.labels)
+        newDiv.appendChild(textNode)
 
+        newDiv.classList.add("challenge");
+        printSection.appendChild(newDiv);
+    });
+}
 
 
 //Adds all uniqe tags to an array.
 async function fetchAllTags() {
-    for(let i = 0; i < fullApiJson.length; i++){
+    for (let i = 0; i < fullApiJson.length; i++) {
         const lable = fullApiJson[i].labels
-        lable.forEach(lable =>{
-            if(!allTagsArray.includes(lable)){
+        lable.forEach(lable => {
+            if (!allTagsArray.includes(lable)) {
                 allTagsArray.push(lable)
             }
         })
