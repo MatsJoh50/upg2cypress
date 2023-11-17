@@ -1,3 +1,20 @@
+//Load API
+const fullApiJson = []
+getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
+.then(fetchAllTags)
+.then(printAllTags)
+.catch(err => console.log('errors: ' + err.message))
+
+
+
+//Fetch Challange API
+async function getApi() {
+    const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
+    const res = await fetch(url);
+    const data = await res.json();
+    return data
+}
+
 
 
 //Query selectors
@@ -11,19 +28,15 @@ const filterTags = document.querySelectorAll(".tags");
 const filterSearchBar = document.querySelector(".filter__Ssearch--input");
 const filterTagBox = document.querySelector(".filter__options--tags--collectionBox")
 
-//Fetch Challange API
-const res = await fetch('https://lernia-sjj-assignments.vercel.app/api/challenges');
-const data = await res.json();
-data.challenges.forEach(challenge => {
-    console.log(challenge.title)
-});
+
+
 
 //Variables
 let cbMinValue = filterMin.ariaValueNow;
 let cbMaxValue = filterMax.ariaValueNow;
 let online = false;
 let onsite = false;
-let allTagsArray = ['test1', 'test2', 'test3', 'test4', 'test5'];
+let allTagsArray = [];
 
 //Eventlistener
 
@@ -65,25 +78,17 @@ filterMaxAll.forEach(cbMinSpan => {
     });
 });
 
-// fetchAllTags();
-console.log(allTagsArray)
-printAllTags();
+
 
 
 function printAllTags() {
     const printSection = document.querySelector("#testbox");
-    allTagsArray.forEach(tag => {
+allTagsArray.forEach(tag => {
         const newDiv = document.createElement("div");
         const newPara = document.createElement("p");
         newPara.innerHTML = tag;
-        let tagName = '';
-        tagName = tag;
-        console.log(tag);
-        // newPara.appendChild(tag);
-        // newDiv.appendChild(document.createTextNode(tag));
         newDiv.classList.add("tags");
         newDiv.appendChild(newPara);
-        // document.body.insertBefore(newDiv, filterTagBox)
         filterTagBox.appendChild(newDiv);
     });
 }
@@ -91,15 +96,16 @@ function printAllTags() {
 
 
 
-
-
-
-
 //Adds all uniqe tags to an array.
-function fetchAllTags() {
-    // data.challenges.forEach(challenge => {
-    //     console.log(challange.title)
-    // });
+async function fetchAllTags() {
+    for(let i = 0; i < fullApiJson.length; i++){
+        const lable = fullApiJson[i].labels
+        lable.forEach(lable =>{
+            if(!allTagsArray.includes(lable)){
+                allTagsArray.push(lable)
+            }
+        })
+    }
 }
 
 //Toggle the bool of onsite filter.
@@ -115,3 +121,5 @@ function changeStatusFilterOnline() {
         online = false;
     } else online = true;
 }
+
+
