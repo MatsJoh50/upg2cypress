@@ -1,3 +1,4 @@
+
 //Load API
 const fullApiJson = []
 getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
@@ -25,8 +26,8 @@ const filterMaxAll = document.querySelectorAll(".cbMax");
 const filterMax = document.querySelector(".filter__options--rating--max");
 const filterIncOnline = document.querySelector("#online");
 const filterIncOnsite = document.querySelector("#on-site");
-const filterTags = document.querySelectorAll(".tags");
-const filterSearchBar = document.querySelector(".filter__Ssearch--input");
+let filterTags = document.querySelectorAll(".tags");
+const filterSearchBar = document.querySelector("#filter__input--bar");
 const filterTagBox = document.querySelector(".filter__options--tags--collectionBox")
 
 
@@ -43,6 +44,13 @@ let activeFilterTags = [];
 
 
 //Eventlistener
+filterTags.forEach(tag => {
+    tag.addEventListener('click', () => {
+        console.log('active:', tag)
+        tag.classList.toggle("active")
+    })
+})
+
 
 filterIncOnline.addEventListener('change', () => {
     changeStatusFilterOnline()
@@ -54,6 +62,9 @@ filterIncOnsite.addEventListener('change', () => {
     filterStringBuilder()
 
 })
+
+
+
 
 //Change the min star rating filter and match the max value.
 filterMinAll.forEach(cbMinSpan => {
@@ -67,15 +78,18 @@ filterMinAll.forEach(cbMinSpan => {
 
         //Check and change if min value is higher then max value
         if (cbMaxValue < cbMinValue) {
+            cbMaxValue = cbMinValue
             filterMax.ariaValueNow = cbMinValue;
         }
+        // console.log('min:',cbMinValue, 'max: ', cbMaxValue)
+
         printAllChallenges()
     });
 });
 
 //Change the max star rating filter and match the min value.
-filterMaxAll.forEach(cbMinSpan => {
-    cbMinSpan.addEventListener('click', (event) => {
+filterMaxAll.forEach(cbMaxSpan => {
+    cbMaxSpan.addEventListener('click', (event) => {
         // Bind star ID to variable
         let id = event.target.id
         let idValue = id.split('-');
@@ -86,8 +100,10 @@ filterMaxAll.forEach(cbMinSpan => {
 
         //Check and change if max value is lower then min value.
         if (cbMaxValue < cbMinValue) {
+            cbMinValue = cbMaxValue
             filterMin.ariaValueNow = cbMaxValue;
         }
+        // console.log('min:',cbMinValue, 'max: ', cbMaxValue)
         printAllChallenges()
     });
 });
@@ -105,6 +121,7 @@ function printAllTags() {
         newDiv.appendChild(newPara);
         filterTagBox.appendChild(newDiv);
     });
+    filterTags = document.querySelectorAll(".tags");
 }
 
 
@@ -116,8 +133,8 @@ function printAllChallenges() {
 
     if (filterString.length == 0) {
         fullApiJson.forEach(challenge => {
-            if (challenge.rating >= cbMinValue && challenge.rating <= cbMaxValue) {
-                console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
+            if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
+                // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
                 const newDiv = document.createElement("div");
                 let newPara = document.createElement("p")
                 let textNode = document.createTextNode(`${challenge.title}, Labels: ${challenge.labels}`)
@@ -132,9 +149,9 @@ function printAllChallenges() {
     } else
         fullApiJson.forEach(challenge => {
             if (filterString) {
-                if (challenge.rating >= cbMinValue && challenge.rating <= cbMaxValue) {
+                if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
 
-                    console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
+                    // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
                     const newDiv = document.createElement("div");
                     let newPara = document.createElement("p")
                     let textNode = document.createTextNode(`${challenge.title}, Labels: ${challenge.labels}`)
@@ -148,7 +165,7 @@ function printAllChallenges() {
 }
 
 function printChallengeCommand(challenge){
-    console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
+    // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
     const newDiv = document.createElement("div");
     let newPara = document.createElement("p")
     let textNode = document.createTextNode(`${challenge.title}, Labels: ${challenge.labels}`)
@@ -202,3 +219,4 @@ function filterStringBuilder() {
     console.clear()
     printAllChallenges()
 }
+
