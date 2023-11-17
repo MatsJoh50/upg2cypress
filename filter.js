@@ -5,6 +5,7 @@ getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(chal
     .then(fetchAllTags)
     .then(printAllTags)
     .then(printAllChallenges)
+    .then(grabAllTags)
     .catch(err => console.log('errors: ' + err.message))
 
 
@@ -44,12 +45,7 @@ let activeFilterTags = [];
 
 
 //Eventlistener
-filterTags.forEach(tag => {
-    tag.addEventListener('click', () => {
-        console.log('active:', tag)
-        tag.classList.toggle("active")
-    })
-})
+
 
 
 filterIncOnline.addEventListener('change', () => {
@@ -121,9 +117,28 @@ function printAllTags() {
         newDiv.appendChild(newPara);
         filterTagBox.appendChild(newDiv);
     });
-    filterTags = document.querySelectorAll(".tags");
 }
 
+function grabAllTags() {
+    filterTags = document.querySelectorAll(".tags");
+    // console.log('loaded:',filterTags)
+
+    filterTags.forEach(tag => {
+        tag.addEventListener('click', () => {
+            tag.classList.toggle("active");
+            if (activeFilterTags.includes(tag.innerText)) {
+                activeFilterTags.splice(activeFilterTags.indexOf(tag.innerText), 1);
+                console.log(activeFilterTags)
+
+                filterStringBuilder()
+            }else
+            activeFilterTags.push(tag.innerText)
+            console.log('pushed:', tag.innerText)
+
+            filterStringBuilder()
+        })
+    });
+}
 
 
 
@@ -164,7 +179,7 @@ function printAllChallenges() {
         });
 }
 
-function printChallengeCommand(challenge){
+function printChallengeCommand(challenge) {
     // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
     const newDiv = document.createElement("div");
     let newPara = document.createElement("p")
@@ -173,7 +188,7 @@ function printChallengeCommand(challenge){
     newDiv.appendChild(newPara)
 
     newDiv.classList.add("challenge");
-    printSection.appendChild(newDiv); 
+    printSection.appendChild(newDiv);
 }
 
 //Adds all uniqe tags to an array.
@@ -206,17 +221,17 @@ function changeStatusFilterOnline() {
 function filterStringBuilder() {
     filterString = ''
     if (online) {
-        filterString = filterString + '&& include("online")'
+        filterString = filterString + 'challenge.type.include("online")&& '
     }
     if (onsite) {
-        filterString = filterString + '&& include("onsite")'
+        filterString = filterString + 'challenge.type.include("onsite") &&'
     }
-    if (activeFilterTags.length != 0) {
+    if (activeFilterTags.length > 0) {
         activeFilterTags.forEach(label => {
-            filterString = filterString + `&& include("${label}")`
+            filterString = filterString + `challenge.labels.include("${label}")&& `
         })
     }
-    console.clear()
+    // console.clear()
     printAllChallenges()
 }
 
