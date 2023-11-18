@@ -50,12 +50,10 @@ let activeFilterTags = [];
 
 filterIncOnline.addEventListener('change', () => {
     changeStatusFilterOnline()
-    filterStringBuilder()
 
 });
 filterIncOnsite.addEventListener('change', () => {
     changeStatusFilterOnsite()
-    filterStringBuilder()
 
 })
 
@@ -128,14 +126,14 @@ function grabAllTags() {
             tag.classList.toggle("active");
             if (activeFilterTags.includes(tag.innerText)) {
                 activeFilterTags.splice(activeFilterTags.indexOf(tag.innerText), 1);
-                console.log(activeFilterTags)
+                // console.log(activeFilterTags)
 
-                filterStringBuilder()
+                printAllChallenges()
             }else
             activeFilterTags.push(tag.innerText)
-            console.log('pushed:', tag.innerText)
+            // console.log('pushed:', tag.innerText)
 
-            filterStringBuilder()
+            printAllChallenges()
         })
     });
 }
@@ -145,8 +143,9 @@ function grabAllTags() {
 function printAllChallenges() {
     const printSection = document.querySelector("#testbox");
     printSection.innerHTML = " ";
-
-    if (filterString.length == 0) {
+try{
+    if (!online && !onsite && !(activeFilterTags.length != 0)) {
+        console.log('filter = 0')
         fullApiJson.forEach(challenge => {
             if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
                 // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
@@ -163,13 +162,15 @@ function printAllChallenges() {
 
     } else
         fullApiJson.forEach(challenge => {
-            if (filterString) {
+            
+            if (filterStringBuilder(challenge)) {
+                console.log(challenge.title, challenge.type)
                 if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
 
                     // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
                     const newDiv = document.createElement("div");
                     let newPara = document.createElement("p")
-                    let textNode = document.createTextNode(`${challenge.title}, Labels: ${challenge.labels}`)
+                    let textNode = document.createTextNode(`${challenge.title}, Type: ${challenge.type}`)
                     newDiv.appendChild(textNode)
 
                     newDiv.classList.add("challenge");
@@ -177,6 +178,9 @@ function printAllChallenges() {
                 }
             }
         });
+    } catch {
+        console.log("cant print challenges")
+    }
 }
 
 function printChallengeCommand(challenge) {
@@ -207,31 +211,44 @@ async function fetchAllTags() {
 function changeStatusFilterOnsite() {
     if (onsite == true) {
         onsite = false;
+        printAllChallenges()
+
     } else onsite = true;
+    printAllChallenges()
+
 }
 
 //Toggle the bool for online filter.
 function changeStatusFilterOnline() {
     if (online == true) {
         online = false;
+        printAllChallenges()
+
     } else online = true;
+    printAllChallenges()
 
 }
 
-function filterStringBuilder() {
+function filterStringBuilder(challenge) {
     filterString = ''
+    console.log('string builder:', challenge)
     if (online) {
-        filterString = filterString + 'challenge.type.include("online")&& '
+        filterString += `challenge.type.includes('online')&&`
+        console.log('string builder online')
     }
     if (onsite) {
-        filterString = filterString + 'challenge.type.include("onsite") &&'
+        filterString += `challenge.type.includes("onsite")&&`
+        console.log('string builder onsite:')
     }
     if (activeFilterTags.length > 0) {
         activeFilterTags.forEach(label => {
-            filterString = filterString + `challenge.labels.include("${label}")&& `
+            filterString += `challenge.labels.includes("${label}")&&`
+            console.log('string builder, label:', label)
         })
     }
-    // console.clear()
-    printAllChallenges()
+    console.log('string builder done')
+
+    console.log(filterString.slice(0, filterString.length-2));
+    return filterString.slice(0, filterString.length-2)
 }
 
