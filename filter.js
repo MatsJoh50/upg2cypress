@@ -232,13 +232,15 @@ function changeStatusFilterOnline() {
 function filterStringBuilder(challenge) {
     filterString = ''
     console.log('string builder:', challenge)
-    if (online) {
-        filterString += `challenge.type.includes('online')&&`
+    if (online && onnsite) {
+        filterString += `(challenge.type.includes('online') || challenge.type.includes('onsite'))&&`
         console.log('string builder online')
-    }
-    if (onsite) {
+    } else if (onsite) {
         filterString += `challenge.type.includes("onsite")&&`
         console.log('string builder onsite:')
+    } else if(online){
+        filterString += `challenge.type.includes("online")&&`
+        console.log('string builder online:')
     }
     if (activeFilterTags.length > 0) {
         activeFilterTags.forEach(label => {
