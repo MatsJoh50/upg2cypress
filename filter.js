@@ -163,7 +163,7 @@ try{
     } else
         fullApiJson.forEach(challenge => {
             
-            if (filterStringBuilder(challenge)) {
+            if (filterStringBuilder(challenge) == true) {
                 console.log(challenge.title, challenge.type)
                 if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
 
@@ -232,25 +232,26 @@ function changeStatusFilterOnline() {
 function filterStringBuilder(challenge) {
     filterString = ''
     console.log('string builder:', challenge)
-    if (online && onnsite) {
-        filterString += `(challenge.type.includes('online') || challenge.type.includes('onsite'))&&`
+    if (online && onsite) {
+        filterString += ((challenge.type.includes('online')) || (challenge.type.includes('onsite')))+"&&";
         console.log('string builder online')
     } else if (onsite) {
-        filterString += `challenge.type.includes("onsite")&&`
+        filterString += challenge.type.includes("onsite")+"&&";
         console.log('string builder onsite:')
     } else if(online){
-        filterString += `challenge.type.includes("online")&&`
+        filterString += challenge.type.includes("online")+"&&";
         console.log('string builder online:')
     }
     if (activeFilterTags.length > 0) {
         activeFilterTags.forEach(label => {
-            filterString += `challenge.labels.includes("${label}")&&`
+            filterString += challenge.labels.includes(`"${label}"`)+"&&";
             console.log('string builder, label:', label)
         })
     }
     console.log('string builder done')
 
     console.log(filterString.slice(0, filterString.length-2));
+
     return filterString.slice(0, filterString.length-2)
 }
 
