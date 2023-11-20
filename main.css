@@ -182,6 +182,9 @@
   overflow-y: hidden;
   line-height: 0;
 }
+.filter__options--tags--collectionBox .active {
+  background-color: lightgray;
+}
 .filter__options--tags--collectionBox > * {
   border: 1px solid gray;
   border-radius: 15px;
@@ -189,10 +192,7 @@
   margin: 3px;
 }
 .filter__options--tags--collectionBox div:hover {
-  background-color: beige;
-}
-.filter__options--tags--collectionBox div:active {
-  background-color: darkgray;
+  background-color: lightgray;
 }
 
 .filter__search {

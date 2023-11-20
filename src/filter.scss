@@ -242,7 +242,9 @@
     height: fit-content;
     overflow-y: hidden;
     line-height: 0;
-
+    .active{
+        background-color: lightgray;
+    }
     &>* {
         border: 1px solid gray;
         border-radius: 15px;
@@ -251,11 +253,7 @@
     }
 
     & div:hover {
-        background-color: beige;
-    }
-
-    & div:active {
-        background-color: darkgray;
+        background-color: lightgray;
     }
 }
 
