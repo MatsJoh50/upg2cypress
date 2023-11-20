@@ -627,11 +627,46 @@ a {
 .main__sliderBox {
   border-radius: 8px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.69);
-  height: 50%;
+  height: 500px;
   margin: 10px 20px;
   min-width: 300px;
   overflow: hidden;
   max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /*
+  Old code
+  &--info {
+      font-size: 0.8em;
+      height: 50%;
+      margin: 15px 15px;
+      width: 95%;
+      word-wrap: break-word;
+
+      .title {
+          font-size: 1.3em;
+      }
+  }
+  */
+  /*
+  Old code
+  img {
+      border-radius: 18px 18px 0px 0px;
+      max-height: 50%;
+      max-width: 100%;
+  }
+  */
+}
+.main__sliderBox--type {
+  position: absolute;
+  margin-right: 10px;
+  display: flex;
+  align-self: flex-end;
+  top: 8px;
+}
+.main__sliderBox p {
+  margin: 5px 10px;
 }
 .main__sliderBox--img {
   background: url("images/header__spacer.png");
@@ -642,48 +677,44 @@ a {
   min-height: 220px;
   min-width: 100%;
 }
-.main__sliderBox--stars {
+.main__sliderBox--info {
   display: flex;
-  margin-top: -25px;
+  align-items: center;
 }
-.main__sliderBox--stars p {
+.main__sliderBox--info img:nth-child(1) {
+  margin-left: 10px;
+}
+.main__sliderBox--info small {
   font-size: 14px;
   text-align: right;
   margin-left: 1em;
-  margin-right: 2em;
+  margin-right: 1em;
   margin-top: 4px;
+  align-self: flex-end;
 }
 @media screen and (min-width: 900px) {
-  .main__sliderBox--stars p {
+  .main__sliderBox--info small {
     margin-left: auto;
     margin-top: 7px;
   }
 }
-.main__sliderBox--info {
-  font-size: 0.8em;
-  height: 50%;
-  margin: 15px 15px;
-  width: 95%;
-  word-wrap: break-word;
-}
-.main__sliderBox--info .title {
+.main__sliderBox .title {
   font-size: 1.3em;
-}
-.main__sliderBox img {
-  border-radius: 18px 18px 0px 0px;
-  max-height: 50%;
-  max-width: 100%;
+  margin: 5px 10px 0px;
 }
 .main__sliderBox--button {
   border-radius: 4px;
+  border: none;
   font-size: 0.8em;
   font-weight: bold;
-  height: 40px;
-  left: 39%;
+  height: 45px;
+  bottom: 1em;
   overflow: hidden;
-  position: relative;
   text-align: center;
-  width: 52%;
+  width: 220px;
+  position: absolute;
+  align-self: flex-end;
+  margin-right: 10px;
 }
 .main__sliderBox--button p {
   font-size: 16px;
