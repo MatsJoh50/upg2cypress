@@ -138,13 +138,38 @@ function grabAllTags() {
     });
 }
 
+function filterStringBuilder(challenge) {
+    filterString = ''
+    console.log('string builder:', challenge)
+    if (online && onsite) {
+        filterString += ((challenge.type.includes('online')) || (challenge.type.includes('onsite')))+"&&";
+        console.log('string builder online+onsite')
+    } else if (onsite) {
+        filterString += challenge.type.includes("onsite")+"&&";
+        console.log('string builder "onsite"')
+    } else if(online){
+        filterString += challenge.type.includes("online")+"&&";
+        console.log('string builder "online"')
+    }
+    if (activeFilterTags.length > 0) {
+        activeFilterTags.forEach(label => {
+            filterString += challenge.labels.includes(`"${label}"`)+"&&";
+            console.log('string builder, label:', label)
+        })
+    }
+    console.log('string builder done')
+
+    console.log(`filterString.slice(0, filterString.length-2)`);
+    filterString = (filterString.slice(0, filterString.length-2))
+    return filterString
+}
 
 
 function printAllChallenges() {
     const printSection = document.querySelector("#testbox");
     printSection.innerHTML = " ";
 try{
-    if (!online && !onsite && !(activeFilterTags.length != 0)) {
+    if (!online && !onsite && (activeFilterTags.length == 0)) {
         console.log('filter = 0')
         fullApiJson.forEach(challenge => {
             if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
@@ -183,17 +208,6 @@ try{
     }
 }
 
-function printChallengeCommand(challenge) {
-    // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
-    const newDiv = document.createElement("div");
-    let newPara = document.createElement("p")
-    let textNode = document.createTextNode(`${challenge.title}, Labels: ${challenge.labels}`)
-    newPara.appendChild(`${challenge.title}, Labels: ${challenge.labels}, Rating: ${challenge.rating}`)
-    newDiv.appendChild(newPara)
-
-    newDiv.classList.add("challenge");
-    printSection.appendChild(newDiv);
-}
 
 //Adds all uniqe tags to an array.
 async function fetchAllTags() {
@@ -229,29 +243,4 @@ function changeStatusFilterOnline() {
 
 }
 
-function filterStringBuilder(challenge) {
-    filterString = ''
-    console.log('string builder:', challenge)
-    if (online && onsite) {
-        filterString += ((challenge.type.includes('online')) || (challenge.type.includes('onsite')))+"&&";
-        console.log('string builder online')
-    } else if (onsite) {
-        filterString += challenge.type.includes("onsite")+"&&";
-        console.log('string builder onsite:')
-    } else if(online){
-        filterString += challenge.type.includes("online")+"&&";
-        console.log('string builder online:')
-    }
-    if (activeFilterTags.length > 0) {
-        activeFilterTags.forEach(label => {
-            filterString += challenge.labels.includes(`"${label}"`)+"&&";
-            console.log('string builder, label:', label)
-        })
-    }
-    console.log('string builder done')
-
-    console.log(filterString.slice(0, filterString.length-2));
-
-    return filterString.slice(0, filterString.length-2)
-}
 
