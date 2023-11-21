@@ -37,10 +37,9 @@ const filterTagBox = document.querySelector(".filter__options--tags--collectionB
 //Variables
 let cbMinValue = filterMin.ariaValueNow;
 let cbMaxValue = filterMax.ariaValueNow;
-let online = false;
-let onsite = false;
+let online = true;
+let onsite = true;
 let allTagsArray = [];
-let filterString = '';
 let activeFilterTags = [];
 
 
@@ -139,38 +138,41 @@ function grabAllTags() {
 }
 
 function filterStringBuilder(challenge) {
-    filterString = ''
-    console.log('string builder:', challenge)
+    let filterString = [];
+    // console.log('string builder:', challenge)
     if (online && onsite) {
-        filterString += ((challenge.type.includes('online')) || (challenge.type.includes('onsite')))+"&&";
+        filterString.push(((challenge.type.includes('online')) || (challenge.type.includes('onsite'))));
         console.log('string builder online+onsite')
+        // console.log("filter test:",filterString)
     } else if (onsite) {
-        filterString += challenge.type.includes("onsite")+"&&";
-        console.log('string builder "onsite"')
+        filterString.push((challenge.type.includes("onsite")));
+        console.log("filter test: onsite")
     } else if(online){
-        filterString += challenge.type.includes("online")+"&&";
+        filterString.push(challenge.type.includes("online"));
+        // console.log("filter test:",filterString)
         console.log('string builder "online"')
     }
     if (activeFilterTags.length > 0) {
         activeFilterTags.forEach(label => {
-            filterString += challenge.labels.includes(`"${label}"`)+"&&";
-            console.log('string builder, label:', label)
+            filterString.push(challenge.labels.includes(`${label}`))
+            // console.log("filter test:",filterString)
         })
     }
-    console.log('string builder done')
+    // console.log('string builder done')
+    // filterString = filterString.slice(0, filterString.length-2)
+    // console.log(filterString);
 
-    console.log(`filterString.slice(0, filterString.length-2)`);
-    filterString = (filterString.slice(0, filterString.length-2))
-    return filterString
+   return filterString
 }
 
 
 function printAllChallenges() {
     const printSection = document.querySelector("#testbox");
     printSection.innerHTML = " ";
+    let didNotPrint = true
 try{
-    if (!online && !onsite && (activeFilterTags.length == 0)) {
-        console.log('filter = 0')
+    if ((online && onsite) && (activeFilterTags.length == 0)) {
+        console.log('Only Rating Filter')
         fullApiJson.forEach(challenge => {
             if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
                 // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
@@ -181,30 +183,40 @@ try{
 
                 newDiv.classList.add("challenge");
                 printSection.appendChild(newDiv);
+                didNotPrint = false;
 
             }
         });
 
     } else
-        fullApiJson.forEach(challenge => {
-            
-            if (filterStringBuilder(challenge) == true) {
-                console.log(challenge.title, challenge.type)
+    fullApiJson.forEach(challenge => {
+        if (filterStringBuilder(challenge).every(condition => condition == true) && (filterStringBuilder(challenge).length != 0)) {
+                console.log("test in if statement: ",filterStringBuilder(challenge).every(condition => condition === true))
+            // filterStringBuilder(challenge).every(true){
                 if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
 
                     // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
                     const newDiv = document.createElement("div");
                     let newPara = document.createElement("p")
-                    let textNode = document.createTextNode(`${challenge.title}, Type: ${challenge.type}`)
+                    let textNode = document.createTextNode(`Title: ${challenge.title},    Type: ${challenge.type},   Labels: ${challenge.labels} `)
                     newDiv.appendChild(textNode)
 
                     newDiv.classList.add("challenge");
                     printSection.appendChild(newDiv);
+                    didNotPrint = false
                 }
             }
         });
     } catch {
         console.log("cant print challenges")
+    }
+    if(didNotPrint){
+        console.log("nada")
+        const noHit = document.createElement("p");
+        const textNode = document.createTextNode("No matching challanges");
+        noHit.classList.add("nochallange")
+        noHit.appendChild(textNode);
+        printSection.appendChild(noHit)
     }
 }
 

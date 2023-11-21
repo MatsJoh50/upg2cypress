@@ -208,6 +208,16 @@
   height: 2em;
 }
 
+.testbox {
+  display: flex;
+}
+.testbox .nochallange {
+  text-align: center;
+  justify-content: center;
+  font-size: larger;
+  margin: 0 auto;
+}
+
 :root {
   --blue: #36769D;
   --darkBlue: #011827;

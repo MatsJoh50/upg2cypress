@@ -274,3 +274,13 @@
     width: 20em;
     height: 2em;
 }
+
+.testbox{
+    display: flex;
+    .nochallange{
+        text-align: center;
+        justify-content: center;
+        font-size: larger;
+        margin: 0 auto;
+    }
+}
