@@ -1,4 +1,3 @@
-
 //Load API
 const fullApiJson = []
 getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
@@ -12,10 +11,13 @@ getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(chal
 
 //Fetch Challange API
 async function getApi() {
-    const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
-    const res = await fetch(url);
-    const data = await res.json();
-    return data
+    if(fullApiJson.length == 0){
+        const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
+        const res = await fetch(url);
+        const data = await res.json();
+        return data
+    } else
+    console.log('Api alredy loaded')
 }
 
 
@@ -30,7 +32,7 @@ const filterIncOnsite = document.querySelector("#on-site");
 let filterTags = document.querySelectorAll(".tags");
 const filterSearchBar = document.querySelector("#filter__input--bar");
 const filterTagBox = document.querySelector(".filter__options--tags--collectionBox")
-
+const testbox = document.querySelector('#testbox');
 
 
 
@@ -45,6 +47,9 @@ let activeFilterTags = [];
 
 //Eventlistener
 
+filterSearchBar.addEventListener('keyup', () => {
+    filterFunctionSearchBar()
+});
 
 
 filterIncOnline.addEventListener('change', () => {
@@ -128,8 +133,8 @@ function grabAllTags() {
                 // console.log(activeFilterTags)
 
                 printAllChallenges()
-            }else
-            activeFilterTags.push(tag.innerText)
+            } else
+                activeFilterTags.push(tag.innerText)
             // console.log('pushed:', tag.innerText)
 
             printAllChallenges()
@@ -147,7 +152,7 @@ function filterStringBuilder(challenge) {
     } else if (onsite) {
         filterString.push((challenge.type.includes("onsite")));
         console.log("filter test: onsite")
-    } else if(online){
+    } else if (online) {
         filterString.push(challenge.type.includes("online"));
         // console.log("filter test:",filterString)
         console.log('string builder "online"')
@@ -162,7 +167,7 @@ function filterStringBuilder(challenge) {
     // filterString = filterString.slice(0, filterString.length-2)
     // console.log(filterString);
 
-   return filterString
+    return filterString
 }
 
 
@@ -170,47 +175,37 @@ function printAllChallenges() {
     const printSection = document.querySelector("#testbox");
     printSection.innerHTML = " ";
     let didNotPrint = true
-try{
-    if ((online && onsite) && (activeFilterTags.length == 0)) {
-        console.log('Only Rating Filter')
-        fullApiJson.forEach(challenge => {
-            if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
-                // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
-                const newDiv = document.createElement("div");
-                let newPara = document.createElement("p")
-                let textNode = document.createTextNode(`${challenge.title}, Labels: ${challenge.labels}`)
-                newDiv.appendChild(textNode)
-
-                newDiv.classList.add("challenge");
-                printSection.appendChild(newDiv);
-                didNotPrint = false;
-
-            }
-        });
-
-    } else
-    fullApiJson.forEach(challenge => {
-        if (filterStringBuilder(challenge).every(condition => condition == true) && (filterStringBuilder(challenge).length != 0)) {
-                console.log("test in if statement: ",filterStringBuilder(challenge).every(condition => condition === true))
-            // filterStringBuilder(challenge).every(true){
+    try {
+        if ((online && onsite) && (activeFilterTags.length == 0)) {
+            console.log('Only Rating Filter')
+            fullApiJson.forEach(challenge => {
                 if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
+                    const challengeBox = createChallengeBox(challenge)
+                    document.querySelector('#testbox').appendChild(challengeBox);
 
-                    // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
-                    const newDiv = document.createElement("div");
-                    let newPara = document.createElement("p")
-                    let textNode = document.createTextNode(`Title: ${challenge.title},    Type: ${challenge.type},   Labels: ${challenge.labels} `)
-                    newDiv.appendChild(textNode)
+                    didNotPrint = false;
 
-                    newDiv.classList.add("challenge");
-                    printSection.appendChild(newDiv);
-                    didNotPrint = false
                 }
-            }
-        });
-    } catch {
-        console.log("cant print challenges")
+            });
+
+        } else
+            fullApiJson.forEach(challenge => {
+                if (filterStringBuilder(challenge).every(condition => condition == true) && (filterStringBuilder(challenge).length != 0)) {
+                    console.log("test in if statement: ", filterStringBuilder(challenge).every(condition => condition === true))
+                    // filterStringBuilder(challenge).every(true){
+                    if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
+
+                        const challengeBox = createChallengeBox(challenge)
+                        document.querySelector('#testbox').appendChild(challengeBox);
+
+                        didNotPrint = false
+                    }
+                }
+            });
+    } catch(e) {
+        console.log(e)
     }
-    if(didNotPrint){
+    if (didNotPrint) {
         console.log("nada")
         const noHit = document.createElement("p");
         const textNode = document.createTextNode("No matching challanges");
@@ -220,6 +215,22 @@ try{
     }
 }
 
+function filterFunctionSearchBar() {
+    const findThis = filterSearchBar.value.toLowerCase().split(" ");
+    console.log(findThis)
+    testbox.innerHTML= ""
+    fullApiJson.forEach(challenge => {
+        if(findThis.some(test => (test != "") && (challenge.title.toLowerCase().includes(test) || challenge.description.toLowerCase().includes(test)))){
+            // console.log(challenge.title.toLowerCase().replaceAll(" ", "").includes(findThis.toLowerCase()))
+            const challengeBox = createChallengeBox(challenge)
+            testbox.appendChild(challengeBox);
+
+        } else if (findThis[0] == ''){
+            printAllChallenges()
+        } else 
+        console.log('nope')
+    })
+};
 
 //Adds all uniqe tags to an array.
 async function fetchAllTags() {
