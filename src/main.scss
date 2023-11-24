@@ -477,7 +477,7 @@ a {
         overflow: auto;
         overscroll-behavior-x: contain;
         scroll-snap-type: mandatory;
-        width: 80%;
+        // width: 80%;
 
         &Box {
             border-radius: 8px;
@@ -486,7 +486,7 @@ a {
             margin: 10px 20px;
             min-width: 300px;
             overflow: hidden;
-            max-width: 450px;
+            max-width: 360px; // had to make it smaller
             display: flex;
             flex-direction: column;
             position: relative;
