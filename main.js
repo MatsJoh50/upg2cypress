@@ -1,3 +1,6 @@
+//import from bookingmodule.js to test modal booking
+import bookingTimes from './bookingmodule.js';
+
 //Selectors
 const menuBg = document.querySelector(".nav__mobile--bg");
 const mobileMenu = document.querySelector(".nav__mobile--menu");
@@ -105,3 +108,8 @@ function createChallengeBox(challengeData) {
   return challengeBox;
 }
 
+
+//start of test modal booking
+//bookingTimes()
+document.querySelector(".main__marketing--testBook").addEventListener("click", bookingTimes);
+//end of test modal booking
