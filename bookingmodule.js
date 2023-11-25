@@ -6,3 +6,9 @@ export default async function bookingTimes() {
 
 // bookingTimes();
 
+export function modalSection() {
+    const body = document.querySelector("body");
+    let firstModal = document.createElement("section");
+    firstModal.setAttribute("class", "modal1");
+    body.appendChild(firstModal);
+}

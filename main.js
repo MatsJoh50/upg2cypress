@@ -1,5 +1,7 @@
 //import from bookingmodule.js to test modal booking
-import bookingTimes from './bookingmodule.js';
+//import bookingTimes from './bookingmodule.js';
+//import modalSection from './bookingmodule.js';
+import { default as bookingTimes, modalSection } from './bookingmodule.js';
 
 //Selectors
 const menuBg = document.querySelector(".nav__mobile--bg");
@@ -112,4 +114,5 @@ function createChallengeBox(challengeData) {
 //start of test modal booking
 //bookingTimes()
 document.querySelector(".main__marketing--testBook").addEventListener("click", bookingTimes);
+document.querySelector(".main__marketing--testBook").addEventListener("click", modalSection);
 //end of test modal booking
