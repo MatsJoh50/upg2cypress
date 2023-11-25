@@ -219,6 +219,8 @@
 }
 
 .modal1 {
+  display: block;
+  font-family: "Roboto", sans-serif;
   width: 100%;
   height: 100%;
   position: fixed;
@@ -227,7 +229,46 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: aquamarine;
+  background-color: white;
+}
+.modal1__headline {
+  margin-top: 1em;
+  margin-right: 4%;
+  margin-bottom: 2rem;
+  margin-left: 4%;
+  font-size: 28px;
+  font-weight: normal;
+}
+.modal1__question {
+  margin-left: 4%;
+  margin-bottom: 1rem;
+  font-size: 15px;
+}
+.modal1__inputLabel {
+  display: block;
+  margin-left: 4%;
+  padding-bottom: 0, 5rem;
+  font-size: smaller;
+  font-weight: bold;
+}
+.modal1__inputDate {
+  display: block;
+  margin-left: 4%;
+  height: 40px;
+  width: 240px;
+}
+.modal1__searchBtn--booking {
+  float: inline-end;
+  margin-right: 4%;
+  margin-top: 3rem;
+  background-color: #E3170A;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  height: 50px;
+  width: 180px;
+  font-size: 15px;
 }
 
 :root {
