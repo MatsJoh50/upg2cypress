@@ -7,9 +7,13 @@ async function bookingSlots(param2, param5) {
     const value = Number.isInteger(param2);
     console.log(value, param5.value);
 
-    //const response = await fetch('https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=param5&challenge=param2');
-    //const obj = await response.json();
-    //console.log(obj);
+    //test create url with params
+    const url = `https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=${param5.value}&challenge=${param2}`;
+    console.log(url);
+
+    const response = await fetch(url);
+    const obj = await response.json();
+    console.log(obj);
 }
 
 //test function for search button
