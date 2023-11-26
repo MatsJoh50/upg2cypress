@@ -1,7 +1,7 @@
 //import from bookingmodule.js to test modal booking
 //import bookingTimes from './bookingmodule.js';
 //import modalSection from './bookingmodule.js';
-import { default as modalSection1 } from './bookingmodule.js';
+import { default as modalSection1 } from './bookingAmodule.js';
 
 //Selectors
 const menuBg = document.querySelector(".nav__mobile--bg");
