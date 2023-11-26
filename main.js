@@ -1,7 +1,7 @@
 //import from bookingmodule.js to test modal booking
 //import bookingTimes from './bookingmodule.js';
 //import modalSection from './bookingmodule.js';
-import { default as bookingTimes, modalSection } from './bookingmodule.js';
+import { default as modalSection1 } from './bookingmodule.js';
 
 //Selectors
 const menuBg = document.querySelector(".nav__mobile--bg");
@@ -24,7 +24,6 @@ hamburgerMenuLinks.forEach(link => {
 function runOpenMenu() {
   queryHtmlEle.style.overflow = "hidden"
   runOpenAndClose("flex");
-
 }
 
 function runCloseMenu() {
@@ -35,7 +34,6 @@ function runCloseMenu() {
 function runOpenAndClose(property) {
   menuBg.style.display = property;
   mobileMenu.style.display = property;
-
 }
 
 async function exampel() {
@@ -50,8 +48,6 @@ async function exampel() {
 }
 
 document.querySelector(".main__marketing--challenges").addEventListener("click", exampel);
-//exampel()
-
 
 function createChallengeBox(challengeData) {
   const challengeBox = document.createElement('div');
@@ -106,15 +102,8 @@ function createChallengeBox(challengeData) {
   }
 
   btn.classList.add('red');
-  btn.addEventListener("click", modalSection.bind(this, challengeData.title, challengeData.id));
+  btn.addEventListener("click", modalSection1.bind(this, challengeData.title, challengeData.id, challengeData.minParticipants, challengeData.maxParticipants));
   challengeBox.appendChild(btn)
 
   return challengeBox;
 }
-
-
-//start of test modal booking
-//bookingTimes()
-document.querySelector(".main__marketing--testBook").addEventListener("click", bookingTimes);
-//document.querySelector(".main__marketing--testBook").addEventListener("click", modalSection);
-//end of test modal booking
