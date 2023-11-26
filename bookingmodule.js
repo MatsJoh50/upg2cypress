@@ -7,41 +7,42 @@ export default async function bookingTimes() {
 // bookingTimes();
 
 //add firstModal to body
-export function modalSection(/*firstModal*/) {
-   // const body = document.querySelector("body").appendChild(firstModal);
-//}
+export function modalSection() {
+    const firstModal = createfirstModal('challenge.title');
+    const body = document.querySelector("body").appendChild(firstModal);
+    return body;
+}
 
 //create firstModal
-//function createfirstModal(challenge){
-let firstModal = document.createElement("section");
-firstModal.setAttribute("class", "modal1");
+function createfirstModal(param1) {
+    const firstModal = document.createElement("section");
+    firstModal.setAttribute("class", "modal1");
 
-let headline = document.createElement("h2");
-headline.setAttribute("class","modal1__headline");
-headline.textContent = "Book room (step 1)";  //`Book room "${challenge.title}" (step 1)}`;
+    const headline = document.createElement("h2");
+    headline.setAttribute("class", "modal1__headline");
+    headline.textContent =`Book room "${param1}" (step 1)`;
 
-let question = document.createElement("p");
-question.setAttribute("class", "modal1__question");
-question.textContent = "What date would you like to come?";
+    const question = document.createElement("p");
+    question.setAttribute("class", "modal1__question");
+    question.textContent = "What date would you like to come?";
 
-let inputLabel = document.createElement("label");
-inputLabel.setAttribute("class", "modal1__inputLabel");
-inputLabel.setAttribute("for", "bookingDate");
-inputLabel.textContent = "Date";
+    const inputLabel = document.createElement("label");
+    inputLabel.setAttribute("class", "modal1__inputLabel");
+    inputLabel.setAttribute("for", "bookingDate");
+    inputLabel.textContent = "Date";
 
-let inputDate = document.createElement("input");
-inputDate.setAttribute("class", "modal1__inputDate");
-inputDate.setAttribute("type", "date");
-inputDate.setAttribute("placeholder", "YYYY-MM-DD");
-inputDate.setAttribute("name", "bookingDate");
-inputDate.setAttribute("required", "");
+    const inputDate = document.createElement("input");
+    inputDate.setAttribute("class", "modal1__inputDate");
+    inputDate.setAttribute("type", "date");
+    inputDate.setAttribute("placeholder", "YYYY-MM-DD");
+    inputDate.setAttribute("name", "bookingDate");
+    inputDate.setAttribute("required", "");
 
-let searchBtn = document.createElement("button");
-searchBtn.setAttribute("class", "modal1__searchBtn--booking");
-searchBtn.textContent = "Search available times";
+    const searchBtn = document.createElement("button");
+    searchBtn.setAttribute("class", "modal1__searchBtn--booking");
+    searchBtn.textContent = "Search available times";
 
-firstModal.append(headline, question, inputLabel, inputDate, searchBtn);
-const body = document.querySelector("body").appendChild(firstModal);
+    firstModal.append(headline, question, inputLabel, inputDate, searchBtn);
 
-//return firstModal;
+    return firstModal;
 }
