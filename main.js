@@ -106,7 +106,7 @@ function createChallengeBox(challengeData) {
   }
 
   btn.classList.add('red');
-  btn.addEventListener("click", modalSection);
+  btn.addEventListener("click", function() {modalSection(challengeData.title); });
   challengeBox.appendChild(btn)
 
   return challengeBox;
