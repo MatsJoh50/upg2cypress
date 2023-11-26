@@ -106,6 +106,7 @@ function createChallengeBox(challengeData) {
   }
 
   btn.classList.add('red');
+  btn.addEventListener("click", modalSection);
   challengeBox.appendChild(btn)
 
   return challengeBox;
@@ -115,5 +116,5 @@ function createChallengeBox(challengeData) {
 //start of test modal booking
 //bookingTimes()
 document.querySelector(".main__marketing--testBook").addEventListener("click", bookingTimes);
-document.querySelector(".main__marketing--testBook").addEventListener("click", modalSection);
+//document.querySelector(".main__marketing--testBook").addEventListener("click", modalSection);
 //end of test modal booking
