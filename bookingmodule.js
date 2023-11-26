@@ -7,10 +7,12 @@ export default async function bookingTimes() {
 // bookingTimes();
 
 //add firstModal to body
-export function modalSection(param1) {
+export function modalSection(param1, param2) {
     const firstModal = createfirstModal(param1);
     const body = document.querySelector("body").appendChild(firstModal);
-    //const challengeId = param2;
+    const challengeId = param2;
+    
+    console.log(challengeId);
 
     return body;
 }
