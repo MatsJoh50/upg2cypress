@@ -4,12 +4,12 @@ import { default as callmodalSection2 } from './bookingBmodule.js';
 
 //add firstModal to body
 export default function modalSection1(param1, param2, param3, param4) {
-    const firstModal = createfirstModal(param1, param2, param3, param4);
+    const firstModal = createFirstModal(param1, param2, param3, param4);
     const body = document.querySelector("body").appendChild(firstModal);
 }
 
 //create firstModal
-function createfirstModal(param1, param2, param3, param4) {
+function createFirstModal(param1, param2, param3, param4) {
     const firstModal = document.createElement("section");
     firstModal.setAttribute("class", "modal1");
 
@@ -38,7 +38,7 @@ function createfirstModal(param1, param2, param3, param4) {
     const searchBtn = document.createElement("button");
     searchBtn.setAttribute("class", "modal1__searchBtn--booking");
     searchBtn.textContent = "Search available times";
-    searchBtn.addEventListener("click", callmodalSection2.bind(this, param2, param3, param4, inputDate));
+    searchBtn.addEventListener("click", callmodalSection2.bind(this, param1, param2, param3, param4, inputDate));
 
     firstModal.append(headline, question, inputLabel, inputDate, searchBtn);
 
