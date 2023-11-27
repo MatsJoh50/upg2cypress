@@ -88,6 +88,21 @@ function createSecondModal(param1, param2, param3, param4, param5, obj) {
     selectSlot.setAttribute("type", "time");
     selectSlot.setAttribute("name", "slots");
     selectSlot.setAttribute("required", "");
+    
+    for(let i = 0; i < obj.slots.length; i++){
+        const endTime = obj.slots[i]
+        console.log(endTime);
+
+        const slotDate = obj.date;
+        const slotStart = slotDate + obj.slots[i];
+        console.log(slotStart);
+       // const slot = document.createElement("option");
+       // slot.innerText = `"${obj.slots[i]}"-"{endTime}"`;
+      
+        i++;
+    }
+
+
 
     const submitBtn = document.createElement("button");
     submitBtn.setAttribute("class", "modal2__submitBtn--booking");
