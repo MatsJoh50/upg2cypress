@@ -14,7 +14,7 @@ async function bookingSlots(param1, param2, param3, param4, param5) {
 
     //create url with params
     const url = `https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=${param5.value}&challenge=${param2}`;
-    console.log(url);
+    //console.log(url);
 
     const response = await fetch(url);
     const obj = await response.json();
@@ -52,7 +52,7 @@ function modalSection2(param1, param2, param3, param4, param5, obj) {
 //create secondModal
 function createSecondModal(param1, param2, param3, param4, param5, obj) {
 
-    console.log(obj);
+    //console.log(obj);
 
     //const secondModal = document.createElement("section");
     //secondModal.setAttribute("class", "modal2");
@@ -103,7 +103,7 @@ function createSecondModal(param1, param2, param3, param4, param5, obj) {
         const slot = document.createElement("option")
         slot.setAttribute("class", "modal2__selectSlot--slotTime");
         slot.setAttribute("value", [i]);
-        slot.innerText = `"${obj.slots[i]}"`;
+        slot.innerText = `${obj.slots[i]}`;
         //test slots
         //console.log(slot);
         selectSlot.appendChild(slot);
@@ -125,7 +125,7 @@ function createSecondModal(param1, param2, param3, param4, param5, obj) {
         players.setAttribute("class", "modal2__selectPlayer--players");
         players.setAttribute("min", `"${param3}"`);
         players.setAttribute("max", `"${param4}"`);
-        players.innerText = `"${param3 + i}"`;
+        players.innerText = `${param3 + i} participants`;
         //test number of participants
         //console.log(param3, param4);
         selectPlayers.append(players);
