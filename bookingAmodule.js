@@ -1,4 +1,4 @@
-import { default as callmodalSection2 } from './bookingBmodule.js';
+import { default as callmodalSection2,} from './bookingBmodule.js';
 
 /////Create modalSection1\\\\\\
 
