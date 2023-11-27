@@ -1,10 +1,12 @@
-import { default as callmodalSection2,} from './bookingBmodule.js';
+import { default as callmodalSection2 } from './bookingBmodule.js';
+//import { hiddenFirstModal} from './bookingBmodule.js';
 
 /////Create modalSection1\\\\\\
 
 //add firstModal to body
 export default function modalSection1(param1, param2, param3, param4) {
     const firstModal = createFirstModal(param1, param2, param3, param4);
+    firstModal.style.display = "block";
     const body = document.querySelector("body").appendChild(firstModal);
 }
 
@@ -39,6 +41,7 @@ function createFirstModal(param1, param2, param3, param4) {
     searchBtn.setAttribute("class", "modal1__searchBtn--booking");
     searchBtn.textContent = "Search available times";
     searchBtn.addEventListener("click", callmodalSection2.bind(this, param1, param2, param3, param4, inputDate));
+    //searchBtn.addEventListener("click", hiddenFirstModal.bind(firstModal));
 
     firstModal.append(headline, question, inputLabel, inputDate, searchBtn);
 

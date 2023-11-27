@@ -1,6 +1,8 @@
+import { default as callmodalSection3, } from './bookingCmodule.js';
+
 /////Create modalSection2\\\\\
 
-//test function for get available slots
+//get available slots
 async function bookingSlots(param1, param2, param3, param4, param5) {
 
     //test value and integer for params
@@ -10,19 +12,25 @@ async function bookingSlots(param1, param2, param3, param4, param5) {
     //check param5.value and param2 before add to url?
     //------code here------
 
-    //test create url with params
+    //create url with params
     const url = `https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=${param5.value}&challenge=${param2}`;
     console.log(url);
 
     const response = await fetch(url);
     const obj = await response.json();
-    console.log(obj);
+    //console.log(obj);
 
     //add secondModal to body
     modalSection2(param1, param2, param3, param4, param5, obj);
 }
 
-//test function for search button
+/*/close firstModal
+export function hiddenFirstModal(firstModal){
+    console.log(firstModal);
+    //firstModal.style.display ="none";
+}*/
+
+//function for search button
 export default function callmodalSection2(param1, param2, param3, param4, param5) {
     let dateToday = new Date().toJSON().slice(0, 10);
 
@@ -37,6 +45,7 @@ export default function callmodalSection2(param1, param2, param3, param4, param5
 //add secondModal to body
 function modalSection2(param1, param2, param3, param4, param5, obj) {
     const secondModal = createSecondModal(param1, param2, param3, param4, param5, obj);
+    secondModal.style.display = "block";
     const body = document.querySelector("body").appendChild(secondModal);
 }
 
@@ -45,11 +54,12 @@ function createSecondModal(param1, param2, param3, param4, param5, obj) {
 
     console.log(obj);
 
-    const secondModal = document.createElement("section");
-    secondModal.setAttribute("class", "modal2");
+    //const secondModal = document.createElement("section");
+    //secondModal.setAttribute("class", "modal2");
 
-    const form = document.createElement("form");
-    form.setAttribute("class", "bookingForm");
+    const secondModal = document.createElement("form");
+    secondModal.setAttribute("class", "modal2");
+    secondModal.setAttribute("method", "POST");
 
     const headline = document.createElement("h2");
     headline.setAttribute("class", "modal2__headline");
@@ -75,7 +85,7 @@ function createSecondModal(param1, param2, param3, param4, param5, obj) {
     inputEmail.setAttribute("class", "modal2__inputEmail");
     inputEmail.setAttribute("type", "email");
     inputEmail.setAttribute("name", "email");
-    inputEmail.setAttribute("pattern", ".+@example\.com");
+    //inputEmail.setAttribute("pattern", ".+@example\.com");
     inputEmail.setAttribute("required", "");
 
     const slotLabel = document.createElement("label");
@@ -92,17 +102,42 @@ function createSecondModal(param1, param2, param3, param4, param5, obj) {
     for (let i = 0; i < obj.slots.length; i++) {
         const slot = document.createElement("option")
         slot.setAttribute("class", "modal2__selectSlot--slotTime");
-        slot.textContent = `"${obj.slots[i]}"`;
-        console.log(slot);
+        slot.setAttribute("value", [i]);
+        slot.innerText = `"${obj.slots[i]}"`;
+        //test slots
+        //console.log(slot);
+        selectSlot.appendChild(slot);
+    }
+
+    const playersLabel = document.createElement("label");
+    playersLabel.setAttribute("class", "modal2__playersLabel");
+    playersLabel.setAttribute("for", "participants");
+    playersLabel.textContent = "How many participants?";
+
+    const selectPlayers = document.createElement("select");
+    selectPlayers.setAttribute("class", "modal2__selectPlayer");
+    selectPlayers.setAttribute("type", "number");
+    selectPlayers.setAttribute("name", "participants");
+    selectPlayers.setAttribute("required", "");
+
+    for (let i = 0; i < ((param4 - param3) + 1); i++) {
+        const players = document.createElement("option")
+        players.setAttribute("class", "modal2__selectPlayer--players");
+        players.setAttribute("min", `"${param3}"`);
+        players.setAttribute("max", `"${param4}"`);
+        players.innerText = `"${param3 + i}"`;
+        //test number of participants
+        //console.log(param3, param4);
+        selectPlayers.append(players);
     }
 
     const submitBtn = document.createElement("button");
     submitBtn.setAttribute("class", "modal2__submitBtn--booking");
     submitBtn.textContent = "Submit booking";
-    //submitBtn.addEventListener("click", ...);
+    submitBtn.addEventListener("click", callmodalSection3.bind(this, param1, param2, param3, param4, param5));
 
-    form.append(headline, inputLabel1, inputName, inputLabel2, inputEmail, slotLabel, selectSlot, submitBtn);
-    secondModal.appendChild(form);
+    secondModal.append(headline, inputLabel1, inputName, inputLabel2, inputEmail, slotLabel, selectSlot, playersLabel, selectPlayers, submitBtn);
+    //secondModal.appendChild(form);
 
     return secondModal;
 }
