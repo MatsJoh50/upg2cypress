@@ -1,4 +1,4 @@
-import { default as callmodalSection3, } from './bookingCmodule.js';
+import { default as requestPOST, } from './bookingCmodule.js';
 
 /////Create modalSection2\\\\\
 
@@ -59,7 +59,7 @@ function createSecondModal(param1, param2, param3, param4, param5, obj) {
 
     const secondModal = document.createElement("form");
     secondModal.setAttribute("class", "modal2");
-    secondModal.setAttribute("method", "POST");
+    //secondModal.setAttribute("method", "POST");
 
     const headline = document.createElement("h2");
     headline.setAttribute("class", "modal2__headline");
@@ -134,7 +134,7 @@ function createSecondModal(param1, param2, param3, param4, param5, obj) {
     const submitBtn = document.createElement("button");
     submitBtn.setAttribute("class", "modal2__submitBtn--booking");
     submitBtn.textContent = "Submit booking";
-    submitBtn.addEventListener("click", callmodalSection3.bind(this, param1, param2, param3, param4, param5));
+    submitBtn.addEventListener("click", requestPOST.bind(this, param2, param5, inputName, inputEmail, selectSlot, selectPlayers));
 
     secondModal.append(headline, inputLabel1, inputName, inputLabel2, inputEmail, slotLabel, selectSlot, playersLabel, selectPlayers, submitBtn);
     //secondModal.appendChild(form);
