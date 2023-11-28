@@ -12,6 +12,7 @@
     max-height: fit-content;
     display: flex;
     flex-direction: column;
+    animation: openUp 0.2s;
 }
 
 .filter h2 {
@@ -341,9 +342,31 @@
 }
 
 .exitBtn{
+    // border: 1px solid black;
+    height: 40px;
+    width: 40px;
+    position: relative;
+    /* right: 1em; */
+    margin-top: 1em;
+    margin-right: 1em;
+    margin-left: auto;
+
     .exitBar{
+        position: absolute;
+        display: block;
         height: 3px;
-        width: 20px;
+        width: 40px;
         background-color: black;
+        border: 1px solid black;
+        border-radius: 10px;
+        top: 17px;
+        left: -1px;
+
+    }
+    #exit-horz{
+        rotate: 45deg;
+    }
+    #exit-vert{
+        rotate: -45deg;
     }
 }

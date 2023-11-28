@@ -1,5 +1,5 @@
 
-import { createChallengeBox } from "./modules.js";
+import {createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose} from "./modules.js";
 //Load API
 const fullApiJson = []
 getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
@@ -32,6 +32,7 @@ let filterTags = document.querySelectorAll(".tags");
 const filterSearchBar = document.querySelector("#filter__input--bar");
 const filterTagBox = document.querySelector(".filter__options--tags--collectionBox")
 const filterButton = document.querySelector(".toFilter__bigButton");
+const exitBtn = document.querySelector(".exitBtn");
 
 
 
@@ -59,6 +60,13 @@ filterIncOnsite.addEventListener('change', () => {
 
 filterButton.addEventListener('click', () => {
     document.querySelector(".filter").classList.toggle("hidden");
+    document.querySelector(".toFilter__bigButton").classList.toggle("hidden");
+
+})
+exitBtn.addEventListener('click', () => {
+    document.querySelector(".filter").classList.toggle("hidden");
+    document.querySelector(".toFilter__bigButton").classList.toggle("hidden");
+
 })
 
 
@@ -248,3 +256,9 @@ function changeStatusFilterOnline() {
 }
 
 
+//Open and close mobile menu
+hamburgerButton.addEventListener("click", runOpenMenu);
+closeMobileMenu.addEventListener("click", runCloseMenu);
+hamburgerMenuLinks.forEach(link => {
+  link.addEventListener("click", runCloseMenu);
+});
