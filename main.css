@@ -361,6 +361,35 @@
   font-size: 15px;
 }
 
+.modal3 {
+  display: none;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  text-align: center;
+}
+.modal3__headline {
+  display: block;
+  font-size: 30px;
+  font-weight: normal;
+  text-align: center;
+  margin-top: 40%;
+}
+.modal3__aLink {
+  display: block;
+  color: #8ACFE5;
+  font-size: 20px;
+  font-weight: bold;
+  align-items: center;
+}
+
 :root {
   --blue: #36769D;
   --darkBlue: #011827;

@@ -1,4 +1,4 @@
-/////Create modalSection2\\\\\
+/////Create modalSection3\\\\\
 
 export default async function requestPOST(param2, param5, inputName, inputEmail, selectSlot, selectPlayers) {
 
@@ -38,8 +38,9 @@ export default async function requestPOST(param2, param5, inputName, inputEmail,
 
     //test data
     console.log(data);
+    console.log(Object.values(data)[0]);
 
-    if (data[0] === "ok") {
+    if (Object.values(data)[0] === "ok") {
         modalSection3();
     }
 }
@@ -51,5 +52,20 @@ function modalSection3() {
 }
 
 function createThirdModal() {
+    const thirdModal = document.createElement("section");
+    thirdModal.setAttribute("class", "modal3");
 
+    const headline = document.createElement("h2");
+    headline.setAttribute("class", "modal3__headline");
+    headline.textContent = "Thank you!";
+
+    const aLink = document.createElement("a");
+    aLink.setAttribute("class", "modal3__aLink");
+    aLink.setAttribute("href", "");
+    aLink.textContent = "Back to challenges";
+    //aLink.addEventListener("click", "");
+
+    thirdModal.append(headline, aLink);
+
+    return thirdModal;
 }

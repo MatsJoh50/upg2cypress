@@ -57,7 +57,7 @@ function createSecondModal(param1, param2, param3, param4, param5, obj) {
     //const secondModal = document.createElement("section");
     //secondModal.setAttribute("class", "modal2");
 
-    const secondModal = document.createElement("form");
+    const secondModal = document.createElement("section");
     secondModal.setAttribute("class", "modal2");
     //secondModal.setAttribute("method", "POST");
 
