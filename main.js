@@ -33,20 +33,6 @@ function runOpenAndClose(property) {
 
 }
 
-// async function exampel() {
-//    const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
-//    const response = await fetch(url);
-//    const data = await response.json();
-
-//    for (let i = 0; i < data.challenges.length; i++) {
-//     const challengeBox = createChallengeBox(data.challenges[i])
-//      document.querySelector('.main__slider').appendChild(challengeBox);
-//    };
-//  }
-
-//  document.querySelector(".main__marketing--challenges").addEventListener("click", exampel);
-//exampel()
-
 async function topThree() {
   const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
   const response = await fetch(url);
