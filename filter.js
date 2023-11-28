@@ -1,5 +1,6 @@
 
-import {createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose} from "./modules.js";
+// import {createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose} from "./modules.js";
+import {createChallengeBox} from "./modules.js";
 //Load API
 const fullApiJson = []
 getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
@@ -34,7 +35,13 @@ const filterTagBox = document.querySelector(".filter__options--tags--collectionB
 const filterButton = document.querySelector(".toFilter__bigButton");
 const exitBtn = document.querySelector(".exitBtn");
 
-
+//Selectors
+const menuBg = document.querySelector(".nav__mobile--bg");
+const mobileMenu = document.querySelector(".nav__mobile--menu");
+const hamburgerButton = document.querySelector(".nav__mobile--openMenu");
+const closeMobileMenu = document.querySelector(".nav__mobile--closeMenu");
+const queryHtmlEle = document.querySelector("html");
+const hamburgerMenuLinks = document.querySelectorAll(".hamburgerLink");
 
 //Variables
 let cbMinValue = filterMin.ariaValueNow;
@@ -260,5 +267,23 @@ function changeStatusFilterOnline() {
 hamburgerButton.addEventListener("click", runOpenMenu);
 closeMobileMenu.addEventListener("click", runCloseMenu);
 hamburgerMenuLinks.forEach(link => {
-  link.addEventListener("click", runCloseMenu);
+link.addEventListener("click", runCloseMenu);
 });
+
+///// FUNKTIONS \\\\\
+function runOpenMenu() {
+    queryHtmlEle.style.overflow = "hidden"
+    runOpenAndClose("flex");
+
+}
+
+function runCloseMenu() {
+    runOpenAndClose("none");
+    queryHtmlEle.style.removeProperty("overflow");
+}
+
+function runOpenAndClose(property) {
+    menuBg.style.display = property;
+    mobileMenu.style.display = property;
+
+}

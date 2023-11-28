@@ -55,4 +55,25 @@ function createChallengeBox(challengeData) {
     return challengeBox;
 }
 
-export {createChallengeBox}
+
+
+///// FUNKTIONS \\\\\
+function runOpenMenu() {
+    queryHtmlEle.style.overflow = "hidden"
+    runOpenAndClose("flex");
+
+}
+
+function runCloseMenu() {
+    runOpenAndClose("none");
+    queryHtmlEle.style.removeProperty("overflow");
+}
+
+function runOpenAndClose(property) {
+    menuBg.style.display = property;
+    mobileMenu.style.display = property;
+
+}
+
+
+export { createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose }

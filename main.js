@@ -6,7 +6,6 @@ const closeMobileMenu = document.querySelector(".nav__mobile--closeMenu");
 const queryHtmlEle = document.querySelector("html");
 const hamburgerMenuLinks = document.querySelectorAll(".hamburgerLink");
 
-console.log(hamburgerMenuLinks.length)
 
 //Open and close mobile menu
 hamburgerButton.addEventListener("click", runOpenMenu);
@@ -34,18 +33,18 @@ function runOpenAndClose(property) {
 }
 
 async function exampel() {
-   const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
-   const response = await fetch(url);
-   const data = await response.json();
+  const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
+  const response = await fetch(url);
+  const data = await response.json();
 
-   for (let i = 0; i < data.challenges.length; i++) {
+  for (let i = 0; i < data.challenges.length; i++) {
     const challengeBox = createChallengeBox(data.challenges[i])
-     document.querySelector('.main__slider').appendChild(challengeBox);
-   };
- }
+    document.querySelector('.main__slider').appendChild(challengeBox);
+  };
+}
 
- document.querySelector(".main__marketing--challenges").addEventListener("click", exampel);
- //exampel()
+document.querySelector(".main__marketing--challenges").addEventListener("click", exampel);
+//exampel()
 
 
 function createChallengeBox(challengeData) {
