@@ -1,5 +1,4 @@
 import { default as callmodalSection2 } from './bookingBmodule.js';
-//import { hiddenFirstModal} from './bookingBmodule.js';
 
 /////Create modalSection1\\\\\\
 
@@ -40,8 +39,8 @@ function createFirstModal(param1, param2, param3, param4) {
     const searchBtn = document.createElement("button");
     searchBtn.setAttribute("class", "modal1__searchBtn--booking");
     searchBtn.textContent = "Search available times";
+    //to test selected date & GET request for available slots & later show second modal
     searchBtn.addEventListener("click", callmodalSection2.bind(this, param1, param2, param3, param4, inputDate));
-    //searchBtn.addEventListener("click", hiddenFirstModal.bind(firstModal));
 
     firstModal.append(headline, question, inputLabel, inputDate, searchBtn);
 

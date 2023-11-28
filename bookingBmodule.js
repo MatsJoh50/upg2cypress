@@ -5,30 +5,15 @@ import { default as requestPOST, } from './bookingCmodule.js';
 //get available slots
 async function bookingSlots(param1, param2, param3, param4, param5) {
 
-    //test value and integer for params
-    //const value = Number.isInteger(param2);
-    //console.log(value, param5.value);
-
-    //check param5.value and param2 before add to url?
-    //------code here------
-
     //create url with params
     const url = `https://lernia-sjj-assignments.vercel.app/api/booking/available-times?date=${param5.value}&challenge=${param2}`;
-    //console.log(url);
 
     const response = await fetch(url);
     const obj = await response.json();
-    //console.log(obj);
 
-    //add secondModal to body
+    //to show second modal
     modalSection2(param1, param2, param3, param4, param5, obj);
 }
-
-/*/close firstModal
-export function hiddenFirstModal(firstModal){
-    console.log(firstModal);
-    //firstModal.style.display ="none";
-}*/
 
 //function for search button
 export default function callmodalSection2(param1, param2, param3, param4, param5) {
@@ -37,7 +22,7 @@ export default function callmodalSection2(param1, param2, param3, param4, param5
     if (param5.value <= dateToday) {
         window.alert("select a future date");
     } else {
-        //console.log(param2, param3, param4);
+        //to get available slots
         bookingSlots(param1, param2, param3, param4, param5);
     }
 }
@@ -52,14 +37,8 @@ function modalSection2(param1, param2, param3, param4, param5, obj) {
 //create secondModal
 function createSecondModal(param1, param2, param3, param4, param5, obj) {
 
-    //console.log(obj);
-
-    //const secondModal = document.createElement("section");
-    //secondModal.setAttribute("class", "modal2");
-
     const secondModal = document.createElement("section");
     secondModal.setAttribute("class", "modal2");
-    //secondModal.setAttribute("method", "POST");
 
     const headline = document.createElement("h2");
     headline.setAttribute("class", "modal2__headline");
@@ -85,7 +64,6 @@ function createSecondModal(param1, param2, param3, param4, param5, obj) {
     inputEmail.setAttribute("class", "modal2__inputEmail");
     inputEmail.setAttribute("type", "email");
     inputEmail.setAttribute("name", "email");
-    //inputEmail.setAttribute("pattern", ".+@example\.com");
     inputEmail.setAttribute("required", "");
 
     const slotLabel = document.createElement("label");
@@ -104,8 +82,6 @@ function createSecondModal(param1, param2, param3, param4, param5, obj) {
         slot.setAttribute("class", "modal2__selectSlot--slotTime");
         slot.setAttribute("value", [i]);
         slot.innerText = `${obj.slots[i]}`;
-        //test slots
-        //console.log(slot);
         selectSlot.appendChild(slot);
     }
 
@@ -126,18 +102,16 @@ function createSecondModal(param1, param2, param3, param4, param5, obj) {
         players.setAttribute("min", `"${param3}"`);
         players.setAttribute("max", `"${param4}"`);
         players.innerText = `${param3 + i} participants`;
-        //test number of participants
-        //console.log(param3, param4);
         selectPlayers.append(players);
     }
 
     const submitBtn = document.createElement("button");
     submitBtn.setAttribute("class", "modal2__submitBtn--booking");
     submitBtn.textContent = "Submit booking";
+    //to Post request for submit booking & later show third modal
     submitBtn.addEventListener("click", requestPOST.bind(this, param2, param5, inputName, inputEmail, selectSlot, selectPlayers));
 
     secondModal.append(headline, inputLabel1, inputName, inputLabel2, inputEmail, slotLabel, selectSlot, playersLabel, selectPlayers, submitBtn);
-    //secondModal.appendChild(form);
 
     return secondModal;
 }
