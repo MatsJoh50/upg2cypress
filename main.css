@@ -219,6 +219,7 @@
 }
 
 .modal1 {
+  animation: openUp 0.2s;
   display: none;
   font-family: "Roboto", sans-serif;
   width: 100%;
@@ -247,17 +248,19 @@
 .modal1__inputLabel {
   display: block;
   margin-left: 4%;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.2rem;
   font-size: smaller;
   font-weight: bold;
 }
 .modal1__inputDate {
   display: block;
   margin-left: 4%;
-  height: 40px;
-  width: 240px;
+  min-height: 40px;
+  max-width: 240px;
 }
 .modal1__searchBtn--booking {
+  min-height: 50px;
+  max-width: 180px;
   float: inline-end;
   margin-right: 4%;
   margin-top: 3rem;
@@ -266,12 +269,18 @@
   border: none;
   border-radius: 4px;
   font-weight: bold;
-  height: 50px;
-  width: 180px;
   font-size: 15px;
+}
+@media screen and (min-width: 550px) {
+  .modal1__searchBtn--booking {
+    float: inline-start;
+    margin-left: 4%;
+    margin-top: 3rem;
+  }
 }
 
 .modal2 {
+  animation: openUp 0.2s;
   display: none;
   font-family: "Roboto", sans-serif;
   width: 100%;
@@ -300,25 +309,25 @@
   font-weight: bold;
 }
 .modal2__inputLabel2 {
+  padding-top: 1.2rem;
   display: block;
   margin-left: 4%;
-  padding-top: 1.2rem;
   padding-bottom: 0.2rem;
   font-size: smaller;
   font-weight: bold;
 }
 .modal2__slotLabel {
+  padding-top: 1.2rem;
   display: block;
   margin-left: 4%;
-  padding-top: 1.2rem;
   padding-bottom: 0.2rem;
   font-size: smaller;
   font-weight: bold;
 }
 .modal2__playersLabel {
+  padding-top: 1.2rem;
   display: block;
   margin-left: 4%;
-  padding-top: 1.2rem;
   padding-bottom: 0.2rem;
   font-size: smaller;
   font-weight: bold;
@@ -338,14 +347,26 @@
 .modal2__selectSlot {
   display: block;
   margin-left: 4%;
-  height: 40px;
-  width: 240px;
+  min-height: 40px;
+  max-width: 240px;
+}
+@media screen and (min-width: 250px) {
+  .modal2__selectSlot {
+    height: 40px;
+    width: 240px;
+  }
 }
 .modal2__selectPlayer {
   display: block;
   margin-left: 4%;
-  height: 40px;
-  width: 240px;
+  min-height: 40px;
+  max-width: 240px;
+}
+@media screen and (min-width: 250px) {
+  .modal2__selectPlayer {
+    height: 40px;
+    width: 240px;
+  }
 }
 .modal2__submitBtn--booking {
   float: inline-end;
@@ -356,12 +377,27 @@
   border: none;
   border-radius: 4px;
   font-weight: bold;
-  height: 50px;
-  width: 180px;
   font-size: 15px;
+  min-height: 50px;
+  max-width: 180px;
+}
+@media screen and (min-width: 190px) {
+  .modal2__submitBtn--booking {
+    height: 50px;
+    width: 180px;
+  }
+}
+@media screen and (min-width: 550px) {
+  .modal2__submitBtn--booking {
+    float: inline-start;
+    margin-left: 4%;
+    margin-top: 3rem;
+  }
 }
 
 .modal3 {
+  text-align: center;
+  animation: openUp 0.2s;
   display: none;
   font-family: "Roboto", sans-serif;
   width: 100%;
@@ -373,7 +409,6 @@
   bottom: 0;
   left: 0;
   background-color: white;
-  text-align: center;
 }
 .modal3__headline {
   display: block;
