@@ -15,12 +15,24 @@
 .filter h2 {
   margin-left: 1em;
 }
+@media screen and (max-width: 900px) {
+  .filter h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 .filter__options {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 0 2em;
+}
+@media screen and (max-width: 900px) {
+  .filter__options {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 @media screen and (min-width: 900px) {
   .filter__options {
@@ -35,7 +47,7 @@
 
 .filter__options--rating--wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   gap: 1em;
 }
@@ -199,9 +211,11 @@
   padding: 0 3px;
   margin: 3px;
 }
-.filter__options--tags--collectionBox div p {
-  font-size: 18px;
-  margin: 11px;
+@media screen and (min-width: 900px) {
+  .filter__options--tags--collectionBox div p {
+    font-size: 18px;
+    margin: 11px;
+  }
 }
 .filter__options--tags--collectionBox .active {
   background-color: #36769D;
@@ -252,6 +266,16 @@
   border-radius: 4px;
   font-weight: bold;
   margin: 2em auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.exitBtn .exitBar {
+  height: 3px;
+  width: 20px;
+  background-color: black;
 }
 
 :root {
