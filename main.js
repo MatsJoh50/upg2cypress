@@ -35,21 +35,19 @@ function runOpenAndClose(property) {
   mobileMenu.style.display = property;
 }
 
-async function exampel() {
+async function topThree() {
   const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
   const response = await fetch(url);
   const data = await response.json();
+  const sortedData = JSON.parse(JSON.stringify(data.challenges)).sort((x, y) => y.rating - x.rating);
 
-  for (let i = 0; i < data.challenges.length; i++) {
-    const challengeBox = createChallengeBox(data.challenges[i])
+  for (let i = 0; i < 3; i++) {
+    const challengeBox = createChallengeBox(sortedData[i])
     document.querySelector('.main__slider').appendChild(challengeBox);
   };
 }
 
-document.querySelector(".main__marketing--challenges").addEventListener("click", exampel);
-//exampel()
-
-document.querySelector(".main__marketing--challenges").addEventListener("click", exampel);
+topThree()
 
 function createChallengeBox(challengeData) {
   const challengeBox = document.createElement('div');
