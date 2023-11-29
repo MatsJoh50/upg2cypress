@@ -1,3 +1,5 @@
+import { default as modalSection1 } from './bookingAmodule.js';
+
 function createChallengeBox(challengeData) {
     const challengeBox = document.createElement('div');
     challengeBox.classList.add('main__sliderBox');
@@ -51,6 +53,9 @@ function createChallengeBox(challengeData) {
     }
     btn.classList.add('red');
     challengeBox.appendChild(btn)
+    //to show first modal
+    btn.addEventListener("click", modalSection1.bind(this, challengeData.title, challengeData.id, challengeData.minParticipants, challengeData.maxParticipants));
+    challengeBox.appendChild(btn);
 
     return challengeBox;
 }

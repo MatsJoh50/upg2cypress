@@ -104,7 +104,7 @@ function createChallengeBox(challengeData) {
   btn.classList.add('red');
   //to show first modal
   btn.addEventListener("click", modalSection1.bind(this, challengeData.title, challengeData.id, challengeData.minParticipants, challengeData.maxParticipants));
-  challengeBox.appendChild(btn)
+  challengeBox.appendChild(btn);
 
   return challengeBox;
 }
