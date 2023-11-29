@@ -1,4 +1,6 @@
 
+// import {createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose} from "./modules.js";
+import {createChallengeBox} from "./modules.js";
 //Load API
 const fullApiJson = []
 getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
@@ -30,9 +32,16 @@ const filterIncOnsite = document.querySelector("#on-site");
 let filterTags = document.querySelectorAll(".tags");
 const filterSearchBar = document.querySelector("#filter__input--bar");
 const filterTagBox = document.querySelector(".filter__options--tags--collectionBox")
+const filterButton = document.querySelector(".toFilter__bigButton");
+const exitBtn = document.querySelector(".exitBtn");
 
-
-
+//Selectors
+const menuBg = document.querySelector(".nav__mobile--bg");
+const mobileMenu = document.querySelector(".nav__mobile--menu");
+const hamburgerButton = document.querySelector(".nav__mobile--openMenu");
+const closeMobileMenu = document.querySelector(".nav__mobile--closeMenu");
+const queryHtmlEle = document.querySelector("html");
+const hamburgerMenuLinks = document.querySelectorAll(".hamburgerLink");
 
 //Variables
 let cbMinValue = filterMin.ariaValueNow;
@@ -53,6 +62,17 @@ filterIncOnline.addEventListener('change', () => {
 });
 filterIncOnsite.addEventListener('change', () => {
     changeStatusFilterOnsite()
+
+})
+
+filterButton.addEventListener('click', () => {
+    document.querySelector(".filter").classList.toggle("hidden");
+    document.querySelector(".toFilter__bigButton").classList.toggle("hidden");
+
+})
+exitBtn.addEventListener('click', () => {
+    document.querySelector(".filter").classList.toggle("hidden");
+    document.querySelector(".toFilter__bigButton").classList.toggle("hidden");
 
 })
 
@@ -176,13 +196,7 @@ try{
         fullApiJson.forEach(challenge => {
             if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
                 // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
-                const newDiv = document.createElement("div");
-                let newPara = document.createElement("p")
-                let textNode = document.createTextNode(`${challenge.title}, Labels: ${challenge.labels}`)
-                newDiv.appendChild(textNode)
-
-                newDiv.classList.add("challenge");
-                printSection.appendChild(newDiv);
+                printSection.appendChild(createChallengeBox(challenge))
                 didNotPrint = false;
 
             }
@@ -194,15 +208,8 @@ try{
                 console.log("test in if statement: ",filterStringBuilder(challenge).every(condition => condition === true))
             // filterStringBuilder(challenge).every(true){
                 if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
+                    printSection.appendChild(createChallengeBox(challenge))
 
-                    // console.log(challenge.title, challenge.labels, challenge.type, "rating: ", challenge.rating)
-                    const newDiv = document.createElement("div");
-                    let newPara = document.createElement("p")
-                    let textNode = document.createTextNode(`Title: ${challenge.title},    Type: ${challenge.type},   Labels: ${challenge.labels} `)
-                    newDiv.appendChild(textNode)
-
-                    newDiv.classList.add("challenge");
-                    printSection.appendChild(newDiv);
                     didNotPrint = false
                 }
             }
@@ -256,3 +263,27 @@ function changeStatusFilterOnline() {
 }
 
 
+//Open and close mobile menu
+hamburgerButton.addEventListener("click", runOpenMenu);
+closeMobileMenu.addEventListener("click", runCloseMenu);
+hamburgerMenuLinks.forEach(link => {
+link.addEventListener("click", runCloseMenu);
+});
+
+///// FUNKTIONS \\\\\
+function runOpenMenu() {
+    queryHtmlEle.style.overflow = "hidden"
+    runOpenAndClose("flex");
+
+}
+
+function runCloseMenu() {
+    runOpenAndClose("none");
+    queryHtmlEle.style.removeProperty("overflow");
+}
+
+function runOpenAndClose(property) {
+    menuBg.style.display = property;
+    mobileMenu.style.display = property;
+
+}
