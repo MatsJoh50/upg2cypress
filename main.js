@@ -1,3 +1,8 @@
+//import from bookingmodule.js to test modal booking
+//import bookingTimes from './bookingmodule.js';
+//import modalSection from './bookingmodule.js';
+import { default as modalSection1 } from './bookingAmodule.js';
+
 //Selectors
 const menuBg = document.querySelector(".nav__mobile--bg");
 const mobileMenu = document.querySelector(".nav__mobile--menu");
@@ -18,7 +23,6 @@ hamburgerMenuLinks.forEach(link => {
 function runOpenMenu() {
   queryHtmlEle.style.overflow = "hidden"
   runOpenAndClose("flex");
-
 }
 
 function runCloseMenu() {
@@ -29,7 +33,6 @@ function runCloseMenu() {
 function runOpenAndClose(property) {
   menuBg.style.display = property;
   mobileMenu.style.display = property;
-
 }
 
 async function exampel() {
@@ -46,6 +49,7 @@ async function exampel() {
 document.querySelector(".main__marketing--challenges").addEventListener("click", exampel);
 //exampel()
 
+document.querySelector(".main__marketing--challenges").addEventListener("click", exampel);
 
 function createChallengeBox(challengeData) {
   const challengeBox = document.createElement('div');
@@ -98,9 +102,11 @@ function createChallengeBox(challengeData) {
     btn.classList.add('main__sliderBox--button')
     btn.textContent = 'Book this room';
   }
+
   btn.classList.add('red');
+  //to show first modal
+  btn.addEventListener("click", modalSection1.bind(this, challengeData.title, challengeData.id, challengeData.minParticipants, challengeData.maxParticipants));
   challengeBox.appendChild(btn)
 
   return challengeBox;
 }
-
