@@ -4,17 +4,71 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>[ESC] Escape Rooms</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='filter.js' defer></script>
-    <script src='main.js' defer></script>
-</head>
+    <script type="module" src='filter.js' defer></script>
+
+  </head>
 
 <body>
-    <h2 class="filter__title">Our Challanges</h2>
+    <header id="header">
+        <div class="wrapper">
+            <div class="header__logo" alt="Escape's logo formed by letters E S C"></div>
+            <div class="header__title">
+                <h1>Hacker Escape Rooms</h1>
+            </div>
+        </div>
 
-    <section class="filter">
+    </header>
+    <nav class="nav__large">
+        <ul>
+            <a href="./index.html#on-site">
+                <li>Play online</li>
+            </a>
+            <a href="./index.html#on-site">
+                <li>Play on-site</li>
+            </a>
+            <a href="./index.html#theStory">
+                <li>The story</li>
+            </a>
+            <a href="./index.html#footer">
+                <li>Contact us</li>
+            </a>
+        </ul>
+    </nav>
+
+    <div class="nav__mobile">
+        <img class="nav__mobile--openMenu" src="images/openMenu.png">
+        <div class="nav__mobile--bg"></div>
+        <div class="nav__mobile--menu">
+            <ul>
+                <a href="./index.html#on-site" class="hamburgerLink">
+                    <li>Play online</li>
+                </a>
+                <a href="./index.html#on-site" class="hamburgerLink">
+                    <li>Play on-site</li>
+                </a>
+                <a href="./index.html#theStory" class="hamburgerLink">
+                    <li>The story</li>
+                </a>
+                <a href="./index.html#footer" class="hamburgerLink">
+                    <li>Contact us</li>
+                </a>
+            </ul>
+            <img class="nav__mobile--closeMenu" src="images/close.png" alt="menu close button">
+        </div>
+    </div>
+    
+    <h2 class="filter__title">Our Challanges</h2>
+    
+    <button class="toFilter__bigButton">Filter challenges</button>
+    <section class="filter hidden">
+        <div class="exitBtn">
+            <span class="exitBar" id="exit-vert"></span>
+            <span class="exitBar" id="exit-horz"></span>
+        </div>
+        <!-- <img class="filter--close" src="images/close.png"> -->
         <h2 class="filter__Headline">Filter Challanges</h2>
 
         <div class="filter__options">
@@ -71,6 +125,34 @@
     <section id="testbox">
 
     </section>
+    
+    <footer class="footer" id="footer">
+        <div class="footer__compay">
+            <h4>[Esc] Hacker Escape Rooms</h4>
+            <p>Quodsi haberent magnalia inter potentiam et divitias, et non illam quidem haec eo spectant haec quoque
+                vos omnino desit illud quo solo felicitatis libertatisque perficiuntur.</p>
+        </div>
+
+        <div class="footer__site-map">
+            <h4>Site map</h4>
+            <p>The Story <br>
+                Contact Us <br>
+                Legal</p>
+            <span class="footer__site-map--play">
+                <p>Play online <br>
+                    Play on-site</p>
+            </span>
+        </div>
+        <div class="footer__follow">
+            <h4>Follow us on</h4>
+            <p>Facebook <br>
+                Instagram <br>
+                Twitter</p>
+
+        </div>
+
+
+    </footer>
 </body>
 
 </html>

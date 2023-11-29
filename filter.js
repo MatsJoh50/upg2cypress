@@ -1,3 +1,6 @@
+// import {createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose} from "./modules.js";
+import {createChallengeBox} from "./modules.js";
+
 //Load API
 const fullApiJson = []
 getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
@@ -32,9 +35,19 @@ const filterIncOnsite = document.querySelector("#on-site");
 let filterTags = document.querySelectorAll(".tags");
 const filterSearchBar = document.querySelector("#filter__input--bar");
 const filterTagBox = document.querySelector(".filter__options--tags--collectionBox")
+
 const testbox = document.querySelector('#testbox');
 
+const filterButton = document.querySelector(".toFilter__bigButton");
+const exitBtn = document.querySelector(".exitBtn");
 
+//Selectors
+const menuBg = document.querySelector(".nav__mobile--bg");
+const mobileMenu = document.querySelector(".nav__mobile--menu");
+const hamburgerButton = document.querySelector(".nav__mobile--openMenu");
+const closeMobileMenu = document.querySelector(".nav__mobile--closeMenu");
+const queryHtmlEle = document.querySelector("html");
+const hamburgerMenuLinks = document.querySelectorAll(".hamburgerLink");
 
 //Variables
 let cbMinValue = filterMin.ariaValueNow;
@@ -58,6 +71,17 @@ filterIncOnline.addEventListener('change', () => {
 });
 filterIncOnsite.addEventListener('change', () => {
     changeStatusFilterOnsite()
+
+})
+
+filterButton.addEventListener('click', () => {
+    document.querySelector(".filter").classList.toggle("hidden");
+    document.querySelector(".toFilter__bigButton").classList.toggle("hidden");
+
+})
+exitBtn.addEventListener('click', () => {
+    document.querySelector(".filter").classList.toggle("hidden");
+    document.querySelector(".toFilter__bigButton").classList.toggle("hidden");
 
 })
 
@@ -184,7 +208,6 @@ function printAllChallenges() {
                     document.querySelector('#testbox').appendChild(challengeBox);
 
                     didNotPrint = false;
-
                 }
             });
 
@@ -267,3 +290,27 @@ function changeStatusFilterOnline() {
 }
 
 
+//Open and close mobile menu
+hamburgerButton.addEventListener("click", runOpenMenu);
+closeMobileMenu.addEventListener("click", runCloseMenu);
+hamburgerMenuLinks.forEach(link => {
+link.addEventListener("click", runCloseMenu);
+});
+
+///// FUNKTIONS \\\\\
+function runOpenMenu() {
+    queryHtmlEle.style.overflow = "hidden"
+    runOpenAndClose("flex");
+
+}
+
+function runCloseMenu() {
+    runOpenAndClose("none");
+    queryHtmlEle.style.removeProperty("overflow");
+}
+
+function runOpenAndClose(property) {
+    menuBg.style.display = property;
+    mobileMenu.style.display = property;
+
+}
