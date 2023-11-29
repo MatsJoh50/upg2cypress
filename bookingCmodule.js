@@ -47,10 +47,9 @@ function createThirdModal() {
 
     const aLink = document.createElement("a");
     aLink.setAttribute("class", "modal3__aLink");
-    aLink.setAttribute("href", "");
+    aLink.setAttribute("href", "./filter.htm");
+    //to show challenge side
     aLink.textContent = "Back to challenges";
-    //Later link to challenges site:
-    //aLink.addEventListener("click", "");
 
     thirdModal.append(headline, aLink);
 
