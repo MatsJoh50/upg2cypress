@@ -1,7 +1,7 @@
 /////Create modalSection3\\\\\
 
 //POST request
-export default async function requestPOST(param2, param5, inputName, inputEmail, selectSlot, selectPlayers) {
+export default async function requestPOST(challengeDataId, inputDate, inputName, inputEmail, selectSlot, selectPlayers) {
 
     let i = selectSlot.value;
     let slot = selectSlot[i].innerText;
@@ -11,10 +11,10 @@ export default async function requestPOST(param2, param5, inputName, inputEmail,
 
     const url = 'https://lernia-sjj-assignments.vercel.app/api/booking/reservations';
     const bodyObj = {
-        challenge: param2,
+        challenge: challengeDataId,
         name: `${inputName.value}`,
         email: `${inputEmail.value}`,
-        date: `${param5.value}`,
+        date: `${inputDate.value}`,
         time: `${slot}`,
         participants: +numbPlayers[0],
     }
