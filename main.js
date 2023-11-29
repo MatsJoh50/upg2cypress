@@ -11,7 +11,6 @@ const closeMobileMenu = document.querySelector(".nav__mobile--closeMenu");
 const queryHtmlEle = document.querySelector("html");
 const hamburgerMenuLinks = document.querySelectorAll(".hamburgerLink");
 
-console.log(hamburgerMenuLinks.length)
 
 //Open and close mobile menu
 hamburgerButton.addEventListener("click", runOpenMenu);
@@ -46,6 +45,9 @@ async function exampel() {
     document.querySelector('.main__slider').appendChild(challengeBox);
   };
 }
+
+document.querySelector(".main__marketing--challenges").addEventListener("click", exampel);
+//exampel()
 
 document.querySelector(".main__marketing--challenges").addEventListener("click", exampel);
 

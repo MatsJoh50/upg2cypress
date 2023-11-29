@@ -1,27 +1,44 @@
 .filter__title {
-  margin: 0 auto;
+  margin: 20px auto;
   text-align: center;
 }
 
 .filter {
-  margin: 20px auto;
+  margin: 10px auto;
   border: 1px solid gray;
-  width: 80%;
-  max-width: 1000px;
+  width: 91vw;
   max-height: fit-content;
   display: flex;
   flex-direction: column;
+  animation: openUp 0.2s;
 }
 
 .filter h2 {
   margin-left: 1em;
 }
+@media screen and (max-width: 900px) {
+  .filter h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 
 .filter__options {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   padding: 0 2em;
+}
+@media screen and (max-width: 900px) {
+  .filter__options {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 900px) {
+  .filter__options {
+    flex-direction: row;
+  }
 }
 
 .filter__options--type {
@@ -29,26 +46,32 @@
   line-height: 1em;
 }
 
+.filter__options--rating--wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+}
+@media screen and (min-width: 900px) {
+  .filter__options--rating--wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
 .filter__options--rating {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   text-align: left;
-}
-
-.filter__options--rating--wrapper {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 1em;
-}
-
-.filter__options--rating {
-  flex-direction: column;
-  display: flex;
   list-style: none;
   padding: 0;
   margin: 0 auto;
+}
+@media screen and (max-width: 900px) {
+  .filter__options--rating {
+    margin-left: 0;
+  }
 }
 .filter__options--rating--min {
   flex-direction: row;
@@ -177,22 +200,29 @@
   flex-wrap: wrap;
   display: flex;
   flex-direction: row;
-  width: 200px;
+  max-width: 300px;
+  max-height: 120px;
   height: fit-content;
-  overflow-y: hidden;
+  overflow-y: scroll;
   line-height: 0;
 }
-.filter__options--tags--collectionBox .active {
-  background-color: lightgray;
-}
-.filter__options--tags--collectionBox > * {
+.filter__options--tags--collectionBox div {
   border: 1px solid gray;
   border-radius: 15px;
   padding: 0 3px;
   margin: 3px;
 }
+@media screen and (min-width: 900px) {
+  .filter__options--tags--collectionBox div p {
+    font-size: 18px;
+    margin: 11px;
+  }
+}
+.filter__options--tags--collectionBox .active {
+  background-color: #36769D;
+}
 .filter__options--tags--collectionBox div:hover {
-  background-color: lightgray;
+  background-color: #36769D;
 }
 
 .filter__search {
@@ -204,20 +234,71 @@
 }
 
 .filter__search--input {
-  width: 20em;
+  max-width: 20em;
   height: 2em;
 }
 
-.testbox {
+#testbox {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 95;
 }
-.testbox .nochallange {
+#testbox .main__sliderBox {
+  max-width: 340px;
+}
+#testbox .nochallange {
   text-align: center;
   justify-content: center;
   font-size: larger;
   margin: 0 auto;
 }
 
+.toFilter__bigButton {
+  height: 70px;
+  width: 295px;
+  font-size: 23px;
+  background-color: white;
+  color: #8ACFE5;
+  border-style: solid;
+  border-color: #8ACFE5;
+  border-radius: 4px;
+  font-weight: bold;
+  margin: 2em auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.exitBtn {
+  height: 40px;
+  width: 40px;
+  position: relative;
+  /* right: 1em; */
+  margin-top: 1em;
+  margin-right: 1em;
+  margin-left: auto;
+}
+.exitBtn .exitBar {
+  position: absolute;
+  display: block;
+  height: 3px;
+  width: 40px;
+  background-color: black;
+  border: 1px solid black;
+  border-radius: 10px;
+  top: 17px;
+  left: -1px;
+}
+.exitBtn #exit-horz {
+  rotate: 45deg;
+}
+.exitBtn #exit-vert {
+  rotate: -45deg;
+=======
 .modal1 {
   animation: openUp 0.2s;
   display: none;
