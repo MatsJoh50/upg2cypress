@@ -1,6 +1,8 @@
 // import {createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose} from "./modules.js";
 import {createChallengeBox} from "./modules.js";
-
+let online = true;
+let onsite = true;
+filterFromLink()
 //Load API
 const fullApiJson = []
 getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
@@ -52,8 +54,8 @@ const hamburgerMenuLinks = document.querySelectorAll(".hamburgerLink");
 //Variables
 let cbMinValue = filterMin.ariaValueNow;
 let cbMaxValue = filterMax.ariaValueNow;
-let online = true;
-let onsite = true;
+// let online = true;
+// let onsite = true;
 let allTagsArray = [];
 let activeFilterTags = [];
 
@@ -130,6 +132,24 @@ filterMaxAll.forEach(cbMaxSpan => {
     });
 });
 
+function filterFromLink(){
+    var url_string = window.location.search.substring(1);
+    console.log(url_string)
+    if(url_string == 'online'){
+        online=true
+        onsite=false
+        document.querySelector("#on-site").checked = false;
+        console.log("online:", online, "onsite:",onsite);
+        
+    } else if(url_string == 'onsite'){
+        onsite = true;
+        online = false;
+        document.querySelector("#online").checked = false;
+        console.log("online:", online, "onsite:",onsite);
+    } 
+
+    
+}
 
 
 
