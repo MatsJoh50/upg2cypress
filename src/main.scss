@@ -64,7 +64,7 @@ a {
     color: #36769D;
     font-size: small;
     font-weight: bold;
-    margin: 10px auto;
+    // margin: 10px auto;
     text-align: center;
 }
 
@@ -77,6 +77,11 @@ a {
     line-height: .7em;
     width: 308px;
     text-align: center;
+
+}
+.button:hover{
+    cursor: pointer;
+
 }
 
 .red {
@@ -478,6 +483,7 @@ a {
             .button {
                 margin-left: 2vw;
                 margin-right: auto;
+                margin-bottom: 2vh;
 
                 p {
                     font-weight: 700;

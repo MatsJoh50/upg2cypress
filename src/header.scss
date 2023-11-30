@@ -156,7 +156,7 @@ header {
             flex-direction: row;
             justify-content: space-between;
             list-style-type: none;
-            margin: 0;
+            margin: 20px;
             padding: 0;
             text-align: center;
             gap: 3em;
@@ -168,10 +168,10 @@ header {
 
         }
 
-        li {}
 
         li:hover {
             color: var(--lightBlue);
+            cursor: pointer;
         }
     }
 }
