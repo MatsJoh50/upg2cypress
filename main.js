@@ -1,6 +1,3 @@
-//import from bookingmodule.js to test modal booking
-//import bookingTimes from './bookingmodule.js';
-//import modalSection from './bookingmodule.js';
 import { default as modalSection1 } from './bookingAmodule.js';
 
 //Selectors
@@ -10,7 +7,6 @@ const hamburgerButton = document.querySelector(".nav__mobile--openMenu");
 const closeMobileMenu = document.querySelector(".nav__mobile--closeMenu");
 const queryHtmlEle = document.querySelector("html");
 const hamburgerMenuLinks = document.querySelectorAll(".hamburgerLink");
-
 
 //Open and close mobile menu
 hamburgerButton.addEventListener("click", runOpenMenu);
@@ -42,12 +38,12 @@ async function topThree() {
   const sortedData = JSON.parse(JSON.stringify(data.challenges)).sort((x, y) => y.rating - x.rating);
 
   for (let i = 0; i < 3; i++) {
-    const challengeBox = createChallengeBox(sortedData[i])
+    const challengeBox = createChallengeBox(sortedData[i]);
     document.querySelector('.main__slider').appendChild(challengeBox);
   };
 }
 
-topThree()
+topThree();
 
 function createChallengeBox(challengeData) {
   const challengeBox = document.createElement('div');
@@ -55,56 +51,56 @@ function createChallengeBox(challengeData) {
 
   const cardHero = document.createElement('img');
   cardHero.src = challengeData.image;
-  cardHero.classList.add('main__sliderBox--img')
-  challengeBox.appendChild(cardHero)
+  cardHero.classList.add('main__sliderBox--img');
+  challengeBox.appendChild(cardHero);
 
-  const challengeType = document.createElement('img')
-  challengeType.classList.add('main__sliderBox--type')
+  const challengeType = document.createElement('img');
+  challengeType.classList.add('main__sliderBox--type');
   if (challengeData.type === 'online') {
     challengeType.src = 'images/computer.png';
   } else if (challengeData.type === 'onsite') {
     challengeType.src = 'images/house.png';
   }
-  challengeBox.appendChild(challengeType)
+  challengeBox.appendChild(challengeType);
 
   const title = document.createElement('p');
-  title.classList.add('title')
+  title.classList.add('title');
   title.textContent = challengeData.title;
-  challengeBox.appendChild(title)
+  challengeBox.appendChild(title);
 
   const info = document.createElement('div');
-  info.classList.add('main__sliderBox--info')
-  challengeBox.appendChild(info)
+  info.classList.add('main__sliderBox--info');
+  challengeBox.appendChild(info);
 
   for (let i = 0; i < 5; i++) {
     const stars = document.createElement('img');
     stars.src = i < challengeData.rating ? 'images/full_star.png' : 'images/emtpy_star.png';
-    stars.classList.add('main__sliderBox--stars')
+    stars.classList.add('main__sliderBox--stars');
     info.appendChild(stars);
   }
 
   const participants = document.createElement('small');
-  participants.classList.add('main__sliderBox--participants')
+  participants.classList.add('main__sliderBox--participants');
   participants.textContent = `${challengeData.minParticipants}-${challengeData.maxParticipants} participants ${challengeData.type === 'online' ? "(networked)" : ""}`
   info.appendChild(participants);
 
   const contentDescription = document.createElement('p');
   contentDescription.textContent = challengeData.description;
-  challengeBox.appendChild(contentDescription)
+  challengeBox.appendChild(contentDescription);
 
-  const btn = document.createElement('button')
+  const btn = document.createElement('button');
   if (challengeData.type === 'online') {
-    btn.classList.add('main__sliderBox--button')
+    btn.classList.add('main__sliderBox--button');
     btn.textContent = 'Take challenge online';
   } else if (challengeData.type === 'onsite') {
-    btn.classList.add('main__sliderBox--button')
+    btn.classList.add('main__sliderBox--button');
     btn.textContent = 'Book this room';
   }
-
   btn.classList.add('red');
   //to show first modal
   btn.addEventListener("click", modalSection1.bind(this, challengeData.title, challengeData.id, challengeData.minParticipants, challengeData.maxParticipants));
-  challengeBox.appendChild(btn)
+
+  challengeBox.appendChild(btn);
 
   return challengeBox;
 }
