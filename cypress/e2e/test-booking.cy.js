@@ -20,9 +20,6 @@ describe('Test booking', () => {
 
     cy.get('[data-cy="e-mail"]')
       .type('email@.com')
-    cy.get('[data-cy="e-mail"]').clear()
-      .type('email@space.com')
-      .should('have.attr', 'required')
 
     cy.get('[data-cy="time-slots"]')
       .select(['0'])
@@ -30,10 +27,19 @@ describe('Test booking', () => {
       .should('have.attr', 'required')
 
     cy.get('[data-cy="numb-participants"]')
-      .select(['0'])
-      .and('have.value', '0')
+      .select(1)
+      .should('have.attr', 'required')
+
+    //test no submitting when invalid email
+    cy.contains('Submit').click()
+
+    cy.get('[data-cy="e-mail"]').clear()
+      .type('inter@space.com')
       .should('have.attr', 'required')
 
     cy.contains('Submit').click()
+
+    //step 3
+    cy.contains('Back to challenges').click()
   })
 })

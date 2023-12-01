@@ -106,7 +106,6 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
         players.setAttribute("class", "modal2__selectPlayer--players");
         players.setAttribute("min", `"${challengeDataMinParticipants}"`);
         players.setAttribute("max", `"${challengeDataMaxParticipants}"`);
-        players.setAttribute("value", [i]);
         players.innerText = `${challengeDataMinParticipants + i} participants`;
         selectPlayers.append(players);
     }
