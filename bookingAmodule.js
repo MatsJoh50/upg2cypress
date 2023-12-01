@@ -37,6 +37,7 @@ function createFirstModal(challengeDataTitle, challengeDataId, challengeDataMinP
     inputDate.setAttribute("min", dateToday);
     inputDate.setAttribute("placeholder", "YYYY-MM-DD");
     inputDate.setAttribute("name", "bookingDate");
+    inputDate.setAttribute("data-cy", "booking-date");
     inputDate.setAttribute("required", "");
 
     const searchBtn = document.createElement("button");

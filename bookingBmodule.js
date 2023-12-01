@@ -44,6 +44,7 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
     inputName.setAttribute("class", "modal2__inputName");
     inputName.setAttribute("type", "text");
     inputName.setAttribute("name", "userName");
+    inputName.setAttribute("data-cy", "user-name");
     inputName.setAttribute("required", "");
 
     const inputLabel2 = document.createElement("label");
@@ -55,6 +56,7 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
     inputEmail.setAttribute("class", "modal2__inputEmail");
     inputEmail.setAttribute("type", "email");
     inputEmail.setAttribute("name", "email");
+    inputEmail.setAttribute("data-cy", "e-mail");
     inputEmail.setAttribute("required", "");
 
     const slotLabel = document.createElement("label");
@@ -66,6 +68,7 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
     selectSlot.setAttribute("class", "modal2__selectSlot");
     selectSlot.setAttribute("type", "time");
     selectSlot.setAttribute("name", "slots");
+    selectSlot.setAttribute("data-cy", "time-slots");
     selectSlot.setAttribute("required", "");
 
     const slotStart = document.createElement("option");
@@ -90,6 +93,7 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
     selectPlayers.setAttribute("class", "modal2__selectPlayer");
     selectPlayers.setAttribute("type", "number");
     selectPlayers.setAttribute("name", "participants");
+    selectPlayers.setAttribute("data-cy", "numb-participants");
     selectPlayers.setAttribute("required", "");
 
     const playersStart = document.createElement("option");
@@ -102,6 +106,7 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
         players.setAttribute("class", "modal2__selectPlayer--players");
         players.setAttribute("min", `"${challengeDataMinParticipants}"`);
         players.setAttribute("max", `"${challengeDataMaxParticipants}"`);
+        players.setAttribute("value", [i]);
         players.innerText = `${challengeDataMinParticipants + i} participants`;
         selectPlayers.append(players);
     }
