@@ -1,4 +1,4 @@
-import { default as callmodalSection2 } from './bookingBmodule.js';
+import { default as bookingSlots } from './bookingBmodule.js';
 
 /////Create modalSection1\\\\\\
 
@@ -11,8 +11,11 @@ export default function modalSection1(challengeDataTitle, challengeDataId, chall
 
 //create firstModal
 function createFirstModal(challengeDataTitle, challengeDataId, challengeDataMinParticipants, challengeDataMaxParticipants) {
-    const firstModal = document.createElement("section");
+    const firstModal = document.createElement("form");
     firstModal.setAttribute("class", "modal1");
+    firstModal.addEventListener("submit", (event) => {
+        event.preventDefault();
+    });
 
     const headline = document.createElement("h2");
     headline.setAttribute("class", "modal1__headline");
@@ -34,13 +37,15 @@ function createFirstModal(challengeDataTitle, challengeDataId, challengeDataMinP
     inputDate.setAttribute("min", dateToday);
     inputDate.setAttribute("placeholder", "YYYY-MM-DD");
     inputDate.setAttribute("name", "bookingDate");
+    inputDate.setAttribute("data-cy", "booking-date");
     inputDate.setAttribute("required", "");
 
     const searchBtn = document.createElement("button");
     searchBtn.setAttribute("class", "modal1__searchBtn--booking");
+    searchBtn.setAttribute("type", "submit");
     searchBtn.textContent = "Search available times";
-    //to test selected date & GET request for available slots & later show second modal
-    searchBtn.addEventListener("click", callmodalSection2.bind(this, challengeDataTitle, challengeDataId, challengeDataMinParticipants, challengeDataMaxParticipants, inputDate));
+    //to GET request for available slots & later show second modal
+    searchBtn.addEventListener("click", bookingSlots.bind(this, challengeDataTitle, challengeDataId, challengeDataMinParticipants, challengeDataMaxParticipants, inputDate));
 
     firstModal.append(headline, question, inputLabel, inputDate, searchBtn);
 

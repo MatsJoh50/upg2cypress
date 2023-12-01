@@ -19,13 +19,18 @@ export default async function requestPOST(challengeDataId, inputDate, inputName,
         participants: +numbPlayers[0],
     }
 
-    //POST request
-    const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify(bodyObj) });
-    const data = await res.json();
+    //to prevent "ok" response when incorrect email format
+    if (inputEmail.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+        //actual POST request
+        const res = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', }, body: JSON.stringify(bodyObj) });
+        const data = await res.json();
 
-    //to show third modal if POST request ok
-    if (Object.values(data)[0] === "ok") {
-        modalSection3();
+        //to show third modal if POST request ok
+        if (Object.values(data)[0] === "ok") {
+            modalSection3();
+            return;
+        }
+        return;
     }
 }
 
@@ -48,7 +53,7 @@ function createThirdModal() {
     const aLink = document.createElement("a");
     aLink.setAttribute("class", "modal3__aLink");
     aLink.setAttribute("href", "./filter.htm");
-    //to show challenge side
+    //to show challenges site
     aLink.textContent = "Back to challenges";
 
     thirdModal.append(headline, aLink);
