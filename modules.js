@@ -61,8 +61,8 @@ function createChallengeBox(challengeData) {
 }
 
 
+///// FUNKTIONS \</a>\\
 
-///// FUNKTIONS \\\\\
 function runOpenMenu() {
     queryHtmlEle.style.overflow = "hidden"
     runOpenAndClose("flex");

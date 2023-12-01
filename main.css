@@ -202,9 +202,7 @@
   display: flex;
   flex-direction: row;
   max-width: 300px;
-  max-height: 120px;
   height: fit-content;
-  overflow-y: scroll;
   line-height: 0;
 }
 .filter__options--tags--collectionBox div {
@@ -464,6 +462,15 @@ footer {
   width: 100%;
   min-height: 570px;
   line-height: 1.2em;
+}
+footer a {
+  color: white;
+  text-decoration: none;
+  font-size: initial;
+  font-weight: initial;
+}
+footer a:hover {
+  color: var(--lightBlue);
 }
 footer h4 {
   margin-bottom: -0.5em;
@@ -773,6 +780,13 @@ a {
   font-size: small;
   font-weight: bold;
   text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .button {
@@ -811,6 +825,9 @@ a {
   justify-content: center;
   background-color: white;
 }
+.main .small-link {
+  font-size: 15px;
+}
 .main__topBtnWrapper {
   text-align: center;
   justify-content: center;
@@ -820,7 +837,7 @@ a {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-top: 2em;
+  margin: 2em auto;
 }
 @media screen and (min-width: 900px) {
   .main__topBtnWrapper--mobile {
