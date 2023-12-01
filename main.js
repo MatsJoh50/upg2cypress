@@ -31,6 +31,37 @@ function runOpenAndClose(property) {
   mobileMenu.style.display = property;
 }
 
+function onlineLink(){
+  const onlines = document.querySelectorAll(".Online");
+  console.log(onlines.length)
+  onlines.forEach(button =>{
+    button.addEventListener('click', () => {
+      window.location.replace('/filter.htm?online')
+
+    })
+  });
+  console.log('online links done')
+}
+onlineLink()
+
+function onsiteLink(){
+  const onsites = document.querySelectorAll(".OnSite");
+  console.log(onsites.length)
+  onsites.forEach(button => {
+    button.addEventListener('click', () => {
+      window.location.replace('/filter.htm?onsite')
+
+    })
+    
+  });
+  console.log('onsite links done')
+}
+onsiteLink();
+
+function seeAllChallengeLink(){
+  document.querySelector("#seeAll").addEventListener('click', () => window.location.replace('./filter.htm'))
+}
+seeAllChallengeLink();
 async function topThree() {
   const url = 'https://lernia-sjj-assignments.vercel.app/api/challenges';
   const response = await fetch(url);

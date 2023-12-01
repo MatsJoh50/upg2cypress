@@ -7,6 +7,7 @@
   margin: 10px auto;
   border: 1px solid gray;
   width: 91vw;
+  max-width: 1200px;
   max-height: fit-content;
   display: flex;
   flex-direction: column;
@@ -438,7 +439,7 @@ header .wrapper .header__title {
     flex-direction: row;
     justify-content: space-between;
     list-style-type: none;
-    margin: 0;
+    margin: 20px;
     padding: 0;
     text-align: center;
     gap: 3em;
@@ -449,6 +450,7 @@ header .wrapper .header__title {
   }
   .nav__large li:hover {
     color: var(--lightBlue);
+    cursor: pointer;
   }
 }
 
@@ -770,7 +772,6 @@ a {
   color: #36769D;
   font-size: small;
   font-weight: bold;
-  margin: 10px auto;
   text-align: center;
 }
 
@@ -783,6 +784,10 @@ a {
   line-height: 0.7em;
   width: 308px;
   text-align: center;
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 .red {
@@ -1124,6 +1129,7 @@ a {
 .main__marketingBox .button {
   margin-left: 2vw;
   margin-right: auto;
+  margin-bottom: 2vh;
 }
 .main__marketingBox .button p {
   font-weight: 700;
