@@ -64,19 +64,19 @@ function createChallengeBox(challengeData) {
 
 ///// FUNKTIONS \\\\\
 function runOpenMenu() {
-    queryHtmlEle.style.overflow = "hidden"
+    document.querySelector("html").style.overflow = "hidden"
     runOpenAndClose("flex");
 
 }
 
 function runCloseMenu() {
     runOpenAndClose("none");
-    queryHtmlEle.style.removeProperty("overflow");
+    document.querySelector("html").style.removeProperty("overflow");
 }
 
 function runOpenAndClose(property) {
-    menuBg.style.display = property;
-    mobileMenu.style.display = property;
+    document.querySelector(".nav__mobile--bg").style.display = property;
+    document.querySelector(".nav__mobile--menu").style.display = property;
 
 }
 

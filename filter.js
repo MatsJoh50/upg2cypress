@@ -1,5 +1,6 @@
 // import {createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose} from "./modules.js";
-import { createChallengeBox } from "./modules.js";
+import { default as modalSection1 } from './bookingAmodule.js';
+import { createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose } from './modules.js';
 let online = true;
 let onsite = true;
 filterFromLink()
