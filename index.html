@@ -7,6 +7,7 @@
     <title>[ESC] Escape Rooms</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    
     <script type = "module" src='main.js' defer></script>
     <script type = "module" src='modules.js' defer></script>
 </head>
@@ -24,12 +25,12 @@
 
     <nav class="nav__large">
         <ul>
-            <!-- <a href="./filter.htm?online"> -->
+            <a href="./filter.htm?online">
                 <li class="Online">Play online</li>
-                <!-- </a> -->
-            <!-- <a href="./filter.htm?onsite"> -->
+            </a>
+            <a href="./filter.htm?onsite">
                 <li class="OnSite">Play on-site</li>
-                <!-- </a> -->
+            </a>
             <a href="./index.html#theStory">
                 <li>The story</li>
             </a>
@@ -44,12 +45,12 @@
         <div class="nav__mobile--bg"></div>
         <div class="nav__mobile--menu">
             <ul>
-                <!-- <a href="./filter.htm?online" class="hamburgerLink"> -->
+                <a href="./filter.htm?online" class="hamburgerLink">
                     <li class="Online">Play online</li>
-                <!-- </a> -->
-                <!-- <a href="./filter.htm?onsite" class="hamburgerLink"> -->
+                </a>
+                <a href="./filter.htm?onsite" class="hamburgerLink">
                     <li class="OnSite">Play on-site</li>
-                <!-- </a> -->
+                </a>
                 <a href="#theStory" class="hamburgerLink">
                     <li>The story</li>
                 </a>
@@ -66,20 +67,28 @@
 
     <main class="main">
         <div class="main__topBtnWrapper--mobile">
-            <div class="OnSite button blue">
-                <p>On-site challenges</p>
-            </div>
-            <div class="Online">
-                <p>Online challenges</p>
-            </div>
+            <a href="./filter.htm?onsite">
+                <div class="OnSite button blue">
+                    <p>On-site challenges</p>
+                </div>
+            </a>
+            <a href="./filter.htm?online" >
+                <div class="Online">
+                    <p class="small-link">Online challenges</p>
+                </div>
+            </a>
         </div>
         <div class="main__topBtnWrapper--large">
-            <div class="Online button red">
-                <p>Online challenges</p>
-            </div>
-            <div class="OnSite button blue">
-                <p>On-site challenges</p>
-            </div>
+            <a href="./filter.htm?online">
+                <div class="Online button red">
+                    <p>Online challenges</p>
+                </div>
+            </a>
+            <a href="./filter.htm?onsite">
+                <div class="OnSite button blue">
+                    <p>On-site challenges</p>
+                </div>
+            </a>
         </div>
 
         <div class="main__review">
@@ -124,20 +133,28 @@
         </div>
 
         <div class="main__bottomBtnWrapper--mobile">
-            <div class="OnSite button blue">
-                <p>On-site challenges</p>
-            </div>
-            <div class="Online">
-                <p>Online challenges</p>
-            </div>
+            <a href="./filter.htm?onsite">
+                <div class="OnSite button blue">
+                    <p>On-site challenges</p>
+                </div>
+            </a>
+            <a href="./filter.htm?online">
+                <div class="Online">
+                    <p class="small-link">Online challenges</p>
+                </div>
+            </a>
         </div>
         <div class="main__bottomBtnWrapper--large">
-            <div class="Online button red">
-                <p>Online challenges</p>
-            </div>
-            <div class="OnSite button blue">
-                <p>On-site challenges</p>
-            </div>
+            <a href="./filter.htm?online">
+                <div class="Online button red">
+                    <p>Online challenges</p>
+                </div>
+            </a>
+            <a href="./filter.htm?onsite">
+                <div class="OnSite button blue">
+                    <p>On-site challenges</p>
+                </div>
+            </a>
         </div>
 
         <div class="main__storyBox" id="theStory">
@@ -199,7 +216,7 @@
                 Contact Us <br>
                 Legal</p>
             <span class="footer__site-map--play">
-                <p>Play online <br>
+                <p>Play online<br>
                     Play on-site</p>
             </span>
         </div>

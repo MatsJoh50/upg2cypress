@@ -62,8 +62,8 @@ function createChallengeBox(challengeData) {
 }
 
 
+///// FUNKTIONS \\\
 
-///// FUNKTIONS \\\\\
 function runOpenMenu() {
     document.querySelector("html").style.overflow = "hidden"
     runOpenAndClose("flex");

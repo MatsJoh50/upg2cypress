@@ -8,6 +8,15 @@ footer {
     width: 100%;
     min-height: 570px;
     line-height: 1.2em;
+    a{
+        color:white;
+        text-decoration: none;
+        font-size: initial;
+        font-weight: initial;
+    }
+    a:hover{
+        color: var(--lightBlue);
+    }
 
     h4 {
         margin-bottom: -0.5em;
@@ -53,7 +62,6 @@ footer {
         .footer__site-map {
             grid-column: 2;
             grid-row: 2;
-            // margin: 11vw 0 0 7vw;
         }
 
 
