@@ -1,6 +1,3 @@
-//import from bookingmodule.js to test modal booking
-//import bookingTimes from './bookingmodule.js';
-//import modalSection from './bookingmodule.js';
 import { default as modalSection1 } from './bookingAmodule.js';
 import { createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose } from './modules.js';
 //Selectors
@@ -10,7 +7,6 @@ const hamburgerButton = document.querySelector(".nav__mobile--openMenu");
 const closeMobileMenu = document.querySelector(".nav__mobile--closeMenu");
 const queryHtmlEle = document.querySelector("html");
 const hamburgerMenuLinks = document.querySelectorAll(".hamburgerLink");
-
 
 //Open and close mobile menu
 hamburgerButton.addEventListener("click", runOpenMenu);
@@ -74,10 +70,10 @@ async function topThree() {
   const sortedData = JSON.parse(JSON.stringify(data.challenges)).sort((x, y) => y.rating - x.rating);
 
   for (let i = 0; i < 3; i++) {
-    const challengeBox = createChallengeBox(sortedData[i])
+    const challengeBox = createChallengeBox(sortedData[i]);
     document.querySelector('.main__slider').appendChild(challengeBox);
   };
 }
 
-topThree()
+topThree();
 
