@@ -250,30 +250,36 @@ function printAllChallenges() {
         console.log(e)
     }
     if (didNotPrint) {
-        console.log("nada")
-        const noHit = document.createElement("p");
-        const textNode = document.createTextNode("No matching challanges");
-        noHit.classList.add("nochallange")
-        noHit.appendChild(textNode);
-        printSection.appendChild(noHit)
+        noMatchingSearch("#testbox");
     }
+}
+
+function noMatchingSearch(printToCSS) {
+    const printSection = document.querySelector(printToCSS);
+    const noHit = document.createElement("p");
+    const textNode = document.createTextNode("No matching challanges");
+    noHit.classList.add("nochallange")
+    noHit.appendChild(textNode);
+    printSection.appendChild(noHit)
 }
 
 function filterFunctionSearchBar() {
     const findThis = filterSearchBar.value.toLowerCase().split(" ");
     console.log(findThis)
     testbox.innerHTML = ""
+    const hit = true;
     fullApiJson.forEach(challenge => {
+        if (findThis[0] == '') {
+            printAllChallenges()
+        }
         if (findThis.some(test => (test != "") && (challenge.title.toLowerCase().includes(test) || challenge.description.toLowerCase().includes(test)))) {
-            // console.log(challenge.title.toLowerCase().replaceAll(" ", "").includes(findThis.toLowerCase()))
             const challengeBox = createChallengeBox(challenge)
             testbox.appendChild(challengeBox);
-
-        } else if (findThis[0] == '') {
-            printAllChallenges()
-        } else
-            console.log('nope')
+        };
     })
+    if(document.querySelectorAll(".main__sliderBox").length == 0){
+        noMatchingSearch("#testbox")
+    }
 };
 
 //Adds all uniqe tags to an array.
@@ -317,21 +323,3 @@ closeMobileMenu.addEventListener("click", runCloseMenu);
 hamburgerMenuLinks.forEach(link => {
     link.addEventListener("click", runCloseMenu);
 });
-
-///// FUNKTIONS \\\\\
-function runOpenMenu() {
-    queryHtmlEle.style.overflow = "hidden"
-    runOpenAndClose("flex");
-
-}
-
-function runCloseMenu() {
-    runOpenAndClose("none");
-    queryHtmlEle.style.removeProperty("overflow");
-}
-
-function runOpenAndClose(property) {
-    menuBg.style.display = property;
-    mobileMenu.style.display = property;
-
-}
