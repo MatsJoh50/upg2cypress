@@ -38,9 +38,7 @@ const filterIncOnsite = document.querySelector("#on-site");
 let filterTags = document.querySelectorAll(".tags");
 const filterSearchBar = document.querySelector("#filter__input--bar");
 const filterTagBox = document.querySelector(".filter__options--tags--collectionBox")
-
 const testbox = document.querySelector('#testbox');
-
 const filterButton = document.querySelector(".toFilter__bigButton");
 const exitBtn = document.querySelector(".exitBtn");
 
@@ -55,37 +53,29 @@ const hamburgerMenuLinks = document.querySelectorAll(".hamburgerLink");
 //Variables
 let cbMinValue = filterMin.ariaValueNow;
 let cbMaxValue = filterMax.ariaValueNow;
-// let online = true;
-// let onsite = true;
 let allTagsArray = [];
 let activeFilterTags = [];
 
-
 //Eventlistener
-
 filterSearchBar.addEventListener('keyup', () => {
     filterFunctionSearchBar()
 });
 
-
 filterIncOnline.addEventListener('change', () => {
     changeStatusFilterOnline()
-
 });
+
 filterIncOnsite.addEventListener('change', () => {
     changeStatusFilterOnsite()
-
 })
 
 filterButton.addEventListener('click', () => {
     document.querySelector(".filter").classList.toggle("hidden");
     document.querySelector(".toFilter__bigButton").classList.toggle("hidden");
-
 })
 exitBtn.addEventListener('click', () => {
     document.querySelector(".filter").classList.toggle("hidden");
     document.querySelector(".toFilter__bigButton").classList.toggle("hidden");
-
 })
 
 
@@ -106,7 +96,6 @@ filterMinAll.forEach(cbMinSpan => {
             cbMaxValue = cbMinValue
             filterMax.ariaValueNow = cbMinValue;
         }
-        // console.log('min:',cbMinValue, 'max: ', cbMaxValue)
 
         printAllChallenges()
     });
@@ -128,25 +117,21 @@ filterMaxAll.forEach(cbMaxSpan => {
             cbMinValue = cbMaxValue
             filterMin.ariaValueNow = cbMaxValue;
         }
-        // console.log('min:',cbMinValue, 'max: ', cbMaxValue)
         printAllChallenges()
     });
 });
 
 function filterFromLink() {
     var url_string = window.location.search.substring(1);
-    console.log(url_string)
     if (url_string == 'online') {
         online = true
         onsite = false
         document.querySelector("#on-site").checked = false;
-        console.log("online:", online, "onsite:", onsite);
 
     } else if (url_string == 'onsite') {
         onsite = true;
         online = false;
         document.querySelector("#online").checked = false;
-        console.log("online:", online, "onsite:", onsite);
     }
 
 
@@ -168,20 +153,14 @@ function printAllTags() {
 
 function grabAllTags() {
     filterTags = document.querySelectorAll(".tags");
-    // console.log('loaded:',filterTags)
-
     filterTags.forEach(tag => {
         tag.addEventListener('click', () => {
             tag.classList.toggle("active");
             if (activeFilterTags.includes(tag.innerText)) {
                 activeFilterTags.splice(activeFilterTags.indexOf(tag.innerText), 1);
-                // console.log(activeFilterTags)
-
                 printAllChallenges()
             } else
                 activeFilterTags.push(tag.innerText)
-            // console.log('pushed:', tag.innerText)
-
             printAllChallenges()
         })
     });
@@ -189,32 +168,20 @@ function grabAllTags() {
 
 function filterStringBuilder(challenge) {
     let filterString = [];
-    // console.log('string builder:', challenge)
     if (online && onsite) {
         filterString.push(((challenge.type.includes('online')) || (challenge.type.includes('onsite'))));
-        console.log('string builder online+onsite')
-        // console.log("filter test:",filterString)
     } else if (onsite) {
         filterString.push((challenge.type.includes("onsite")));
-        console.log("filter test: onsite")
     } else if (online) {
         filterString.push(challenge.type.includes("online"));
-        // console.log("filter test:",filterString)
-        console.log('string builder "online"')
     }
     if (activeFilterTags.length > 0) {
         activeFilterTags.forEach(label => {
             filterString.push(challenge.labels.includes(`${label}`))
-            // console.log("filter test:",filterString)
         })
     }
-    // console.log('string builder done')
-    // filterString = filterString.slice(0, filterString.length-2)
-    // console.log(filterString);
-
     return filterString
 }
-
 
 function printAllChallenges() {
     const printSection = document.querySelector("#testbox");
@@ -222,26 +189,19 @@ function printAllChallenges() {
     let didNotPrint = true
     try {
         if ((online && onsite) && (activeFilterTags.length == 0)) {
-            console.log('Only Rating Filter')
             fullApiJson.forEach(challenge => {
                 if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
                     const challengeBox = createChallengeBox(challenge)
                     document.querySelector('#testbox').appendChild(challengeBox);
-
                     didNotPrint = false;
                 }
             });
-
         } else
             fullApiJson.forEach(challenge => {
                 if (filterStringBuilder(challenge).every(condition => condition == true) && (filterStringBuilder(challenge).length != 0)) {
-                    console.log("test in if statement: ", filterStringBuilder(challenge).every(condition => condition === true))
-                    // filterStringBuilder(challenge).every(true){
                     if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
-
                         const challengeBox = createChallengeBox(challenge)
                         document.querySelector('#testbox').appendChild(challengeBox);
-
                         didNotPrint = false
                     }
                 }
@@ -265,7 +225,6 @@ function noMatchingSearch(printToCSS) {
 
 function filterFunctionSearchBar() {
     const findThis = filterSearchBar.value.toLowerCase().split(" ");
-    console.log(findThis)
     testbox.innerHTML = ""
     const hit = true;
     fullApiJson.forEach(challenge => {
@@ -277,7 +236,7 @@ function filterFunctionSearchBar() {
             testbox.appendChild(challengeBox);
         };
     })
-    if(document.querySelectorAll(".main__sliderBox").length == 0){
+    if (document.querySelectorAll(".main__sliderBox").length == 0) {
         noMatchingSearch("#testbox")
     }
 };
