@@ -42,11 +42,26 @@ describe('Test the filter functions', () => {
     })
 })
 
-describe('Test the rating-filter', ()=>{
+describe('Test the rating-filter', () => {
+    it('Testing low ratings', () => {
+        cy.visit('http://127.0.0.1:5501/filter.htm');
+        cy.get('#cbMin-1').click({ force: true })
+        cy.get('#cbMax-2').click({ force: true })
+        cy.get('.main__sliderBox--info').each((item, index, list) => {
+            cy.wrap(item).invoke('attr', 'aria-valuenow')
+            .then((value) => +value)
+            .should('be.lte', 2)
+            })
+        })
     it('Testing high ratings', () => {
         cy.visit('http://127.0.0.1:5501/filter.htm');
-        cy.get('#cbMin-3').click({force:true})
-        cy.get('#cbMax-5').click({force:true})
-        cy.get('').should('be.greaterThan', 2)
+        cy.get('#cbMin-3').click({ force: true })
+        cy.get('#cbMax-5').click({ force: true })
+        cy.get('.main__sliderBox--info').each((item, index, list) => {
+            cy.wrap(item).invoke('attr', 'aria-valuenow')
+            .then((value) => +value)
+            .should('be.gte', 3)
+            })
+        })
+
     })
-})
