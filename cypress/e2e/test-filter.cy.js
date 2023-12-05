@@ -24,7 +24,29 @@ describe('Test the filter functions', () => {
     it('Clicking the filter challange button', () =>  {
         cy.visit('http://127.0.0.1:5501/filter.htm');
         cy.contains('Filter challenges').click();
-        cy.contains('By Type')
+        cy.contains('By Type');
+    })
+    
+    it('Testing on-site check buttons', () => {
+        cy.visit('http://127.0.0.1:5501/filter.htm');
+        cy.get('#online').uncheck({force: true});
+        cy.get('#testbox').contains('Book this room')
+        cy.get('#testbox').not('Take challenge online');
+    })
 
+    it('Testing online/ check buttons', () => {
+        cy.visit('http://127.0.0.1:5501/filter.htm');
+        cy.get('#on-site').uncheck({force: true});
+        cy.get('#testbox').not('Book this room')
+        cy.get('#testbox').contains('Take challenge online');
+    })
+})
+
+describe('Test the rating-filter', ()=>{
+    it('Testing high ratings', () => {
+        cy.visit('http://127.0.0.1:5501/filter.htm');
+        cy.get('#cbMin-3').click({force:true})
+        cy.get('#cbMax-5').click({force:true})
+        cy.get('').should('be.greaterThan', 2)
     })
 })
