@@ -25,6 +25,7 @@ function createChallengeBox(challengeData) {
 
     const info = document.createElement('div');
     info.classList.add('main__sliderBox--info');
+    info.setAttribute("aria-valuenow",`${challengeData.rating}`);
     challengeBox.appendChild(info);
 
     for (let i = 0; i < 5; i++) {
