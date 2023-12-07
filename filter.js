@@ -226,20 +226,23 @@ function noMatchingSearch(printToCSS) {
 
 function filterFunctionSearchBar() {
     const findThis = filterSearchBar.value.toLowerCase().split(" ");
-    testbox.innerHTML = ""
     const hit = true;
     fullApiJson.forEach(challenge => {
-        if (findThis[0] == '') {
+        if (findThis[0] == '' || filterSearchBar.value.length <= 2) {
+            testbox.innerHTML = ""
             printAllChallenges()
         }
-        if (findThis.some(test => (test != "") && (challenge.title.toLowerCase().includes(test) || challenge.description.toLowerCase().includes(test)))) {
-            const challengeBox = createChallengeBox(challenge)
-            testbox.appendChild(challengeBox);
-        };
+        if (2 < filterSearchBar.value.length) {
+            testbox.innerHTML = ""
+            if (findThis.some(test => (test != "") && (challenge.title.toLowerCase().includes(test) || challenge.description.toLowerCase().includes(test)))) {
+                const challengeBox = createChallengeBox(challenge)
+                testbox.appendChild(challengeBox);
+            };
+            if (document.querySelectorAll(".main__sliderBox").length == 0) {
+                noMatchingSearch("#testbox")
+            }
+        }
     })
-    if (document.querySelectorAll(".main__sliderBox").length == 0) {
-        noMatchingSearch("#testbox")
-    }
 };
 
 //Adds all uniqe tags to an array.
@@ -282,6 +285,6 @@ hamburgerMenuLinks.forEach(link => {
     link.addEventListener("click", runCloseMenu);
 });
 
-function loadingBar(){
+function loadingBar() {
     document.querySelector('.loading').classList.add('hidden')
 }
