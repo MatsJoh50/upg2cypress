@@ -7,6 +7,8 @@
     <title>[ESC] Escape Rooms</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+
     <script type="module" src='filter.js' defer></script>
 
   </head>
@@ -23,16 +25,18 @@
     </header>
     <nav class="nav__large">
         <ul>
-            <a href="./index.html#on-site">
-                <li>Play online</li>
+            <a href="index.html">
+                <li class="Online">Home</li>  <!--I noticed there was no link to home page (If you go to filter no way to go back to home page )-->
+            <a href="./filter.htm?online">
+                <li class="Online">Play online</li>
             </a>
-            <a href="./index.html#on-site">
-                <li>Play on-site</li>
+            <a href="./filter.htm?onsite">
+                <li class="OnSite">Play on-site</li>
             </a>
-            <a href="./index.html#theStory">
+            <a href="about-us.html">
                 <li>The story</li>
             </a>
-            <a href="./index.html#footer">
+            <a href="contact-us.html">
                 <li>Contact us</li>
             </a>
         </ul>
@@ -132,27 +136,33 @@
             <p>Quodsi haberent magnalia inter potentiam et divitias, et non illam quidem haec eo spectant haec quoque
                 vos omnino desit illud quo solo felicitatis libertatisque perficiuntur.</p>
         </div>
-
         <div class="footer__site-map">
             <h4>Site map</h4>
-            <p>The Story <br>
-                Contact Us <br>
-                Legal</p>
-            <span class="footer__site-map--play">
-                <p>Play online <br>
-                    Play on-site</p>
-            </span>
+            <nav class="footer__follow">
+                <ul>
+                    <a href="About-us.html" class="fa fa-book"> The Story</a>
+                    <a href="contact-us.html" class ="fa fa-mobile"> Contact US</a>
+                    <a href="https://en.wikipedia.org/wiki/Copyright" class="fa fa-copyright"> Legal </a><br><br>
+                    <a href="./filter.htm?online" class="fa fa-pla-y">Play Online</a><br>
+                    <a href="./filter.htm?onsite" class="fa fa-pla-y" > Play On-site</a>
+                </ul>
+            </nav>
+          
+                
+           
         </div>
-        <div class="footer__follow">
+       
+
+        <nav class="footer__follow">
             <h4>Follow us on</h4>
-            <p>Facebook <br>
-                Instagram <br>
-                Twitter</p>
-
-        </div>
-
-
+            <ul>
+                <a href="Facebook.com" class="fa fa-facebook"> Facebook</a>
+                <a href="instagram.com" class ="fa fa-instagram"> Instagram</a>
+                <a href="x.com" class="fa fa-twitter"> X </a>
+            </ul>
+        </nav>
     </footer>
+
 </body>
 
 </html>
