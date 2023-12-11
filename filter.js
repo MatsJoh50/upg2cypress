@@ -12,6 +12,7 @@ getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(chal
     .then(printAllChallenges)
     .then(grabAllTags)
     .catch(err => console.log('errors: ' + err.message))
+    .then(loadingBar)
 
 
 
@@ -261,7 +262,6 @@ function changeStatusFilterOnsite() {
 
     } else onsite = true;
     printAllChallenges()
-
 }
 
 //Toggle the bool for online filter.
@@ -272,7 +272,6 @@ function changeStatusFilterOnline() {
 
     } else online = true;
     printAllChallenges()
-
 }
 
 
@@ -282,3 +281,7 @@ closeMobileMenu.addEventListener("click", runCloseMenu);
 hamburgerMenuLinks.forEach(link => {
     link.addEventListener("click", runCloseMenu);
 });
+
+function loadingBar(){
+    document.querySelector('.loading').classList.add('hidden')
+}
