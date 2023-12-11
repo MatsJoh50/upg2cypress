@@ -48,6 +48,11 @@
         @include modal-lable;
     }
 
+    &__inputLabel3 {
+        padding-top: 1.2rem;
+        @include modal-lable;
+    }
+
     &__slotLabel {
         padding-top: 1.2rem;
         @include modal-lable;
@@ -64,6 +69,11 @@
     }
 
     &__inputEmail {
+        @include input-position;
+        @include input-size;
+    }
+
+    &__inputPhoneNr {
         @include input-position;
         @include input-size;
     }

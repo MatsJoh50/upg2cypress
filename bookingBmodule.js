@@ -69,10 +69,10 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
     inputPhoneNr.setAttribute("class", "modal2__inputPhoneNr");
     inputPhoneNr.setAttribute("type", "tel");
     inputPhoneNr.setAttribute("name", "phoneNr");
-    inputPhoneNr.setAttribute("pattern", "[0-9]{3}-[0-9]{3}-[0-9]{4}");
+    //inputPhoneNr.setAttribute("pattern", "[0-9]{3}-[0-9]{3}-[0-9]{4}");
     inputPhoneNr.setAttribute("placeholder", "070-123-4567");
     inputPhoneNr.setAttribute("data-cy", "phone-nr");
-    inputPhoneNr.setAttribute("required", "");
+    //inputPhoneNr.setAttribute("required", "");
 
     const slotLabel = document.createElement("label");
     slotLabel.setAttribute("class", "modal2__slotLabel");

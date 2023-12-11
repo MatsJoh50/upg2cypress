@@ -609,6 +609,14 @@ footer__site-map p, footer__follow p {
   font-size: smaller;
   font-weight: bold;
 }
+.modal2__inputLabel3 {
+  padding-top: 1.2rem;
+  display: block;
+  margin-left: 4%;
+  padding-bottom: 0.2rem;
+  font-size: smaller;
+  font-weight: bold;
+}
 .modal2__slotLabel {
   padding-top: 1.2rem;
   display: block;
@@ -632,6 +640,12 @@ footer__site-map p, footer__follow p {
   width: 240px;
 }
 .modal2__inputEmail {
+  display: block;
+  margin-left: 4%;
+  height: 40px;
+  width: 240px;
+}
+.modal2__inputPhoneNr {
   display: block;
   margin-left: 4%;
   height: 40px;
