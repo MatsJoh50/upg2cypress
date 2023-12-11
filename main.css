@@ -524,6 +524,7 @@ footer__site-map p, footer__follow p {
   bottom: 0;
   left: 0;
   background-color: white;
+  overflow-y: auto;
 }
 .modal1__headline {
   margin-top: 1em;
@@ -585,6 +586,7 @@ footer__site-map p, footer__follow p {
   bottom: 0;
   left: 0;
   background-color: white;
+  overflow-y: auto;
 }
 .modal2__headline {
   margin-top: 1em;
@@ -602,6 +604,14 @@ footer__site-map p, footer__follow p {
   font-weight: bold;
 }
 .modal2__inputLabel2 {
+  padding-top: 1.2rem;
+  display: block;
+  margin-left: 4%;
+  padding-bottom: 0.2rem;
+  font-size: smaller;
+  font-weight: bold;
+}
+.modal2__inputLabel3 {
   padding-top: 1.2rem;
   display: block;
   margin-left: 4%;
@@ -632,6 +642,12 @@ footer__site-map p, footer__follow p {
   width: 240px;
 }
 .modal2__inputEmail {
+  display: block;
+  margin-left: 4%;
+  height: 40px;
+  width: 240px;
+}
+.modal2__inputPhoneNr {
   display: block;
   margin-left: 4%;
   height: 40px;

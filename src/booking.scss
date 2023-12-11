@@ -1,6 +1,7 @@
 .modal1 {
     animation: openUp 0.2s;
     @include modal-booking;
+    overflow-y: auto;
 
     &__headline {
         @include modal-headline;
@@ -34,6 +35,7 @@
 .modal2 {
     animation: openUp 0.2s;
     @include modal-booking;
+    overflow-y: auto;
 
     &__headline {
         @include modal-headline;
@@ -44,6 +46,11 @@
     }
 
     &__inputLabel2 {
+        padding-top: 1.2rem;
+        @include modal-lable;
+    }
+
+    &__inputLabel3 {
         padding-top: 1.2rem;
         @include modal-lable;
     }
@@ -64,6 +71,11 @@
     }
 
     &__inputEmail {
+        @include input-position;
+        @include input-size;
+    }
+
+    &__inputPhoneNr {
         @include input-position;
         @include input-size;
     }
