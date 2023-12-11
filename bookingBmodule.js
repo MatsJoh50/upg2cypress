@@ -59,6 +59,19 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
     inputEmail.setAttribute("data-cy", "e-mail");
     inputEmail.setAttribute("required", "");
 
+    //Phone number
+    const inputLabel3 = document.createElement("label");
+    inputLabel3.setAttribute("class", "modal2__inputLabel3");
+    inputLabel3.setAttribute("for", "phoneNr");
+    inputLabel3.textContent = "Phone Number";
+
+    const inputPhoneNr = document.createElement("input");
+    inputPhoneNr.setAttribute("class", "modal2__inputPhoneNr");
+    inputPhoneNr.setAttribute("type", "tel");
+    inputPhoneNr.setAttribute("name", "phoneNr");
+    inputPhoneNr.setAttribute("data-cy", "phone-nr");
+    inputPhoneNr.setAttribute("required", "");
+
     const slotLabel = document.createElement("label");
     slotLabel.setAttribute("class", "modal2__slotLabel");
     slotLabel.setAttribute("for", "slots");
