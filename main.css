@@ -524,6 +524,7 @@ footer__site-map p, footer__follow p {
   bottom: 0;
   left: 0;
   background-color: white;
+  overflow-y: auto;
 }
 .modal1__headline {
   margin-top: 1em;
@@ -585,6 +586,7 @@ footer__site-map p, footer__follow p {
   bottom: 0;
   left: 0;
   background-color: white;
+  overflow-y: auto;
 }
 .modal2__headline {
   margin-top: 1em;
