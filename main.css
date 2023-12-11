@@ -720,7 +720,7 @@ footer__site-map p, footer__follow p {
 
 :root {
   --blue: #36769D;
-  --darkBlue: #011827;
+  --darkBlue: #021928;
   --gray: #B6BDB5;
   --lightBlue: #8ACFE5;
   --red: #E3170A;
@@ -775,7 +775,7 @@ body {
 }
 
 a {
-  color: #36769D;
+  color: var(--blue);
   font-size: small;
   font-weight: bold;
   text-align: center;
