@@ -59,6 +59,21 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
     inputEmail.setAttribute("data-cy", "e-mail");
     inputEmail.setAttribute("required", "");
 
+    //Phone number
+    const inputLabel3 = document.createElement("label");
+    inputLabel3.setAttribute("class", "modal2__inputLabel3");
+    inputLabel3.setAttribute("for", "phoneNr");
+    inputLabel3.textContent = "Phone Number";
+
+    const inputPhoneNr = document.createElement("input");
+    inputPhoneNr.setAttribute("class", "modal2__inputPhoneNr");
+    inputPhoneNr.setAttribute("type", "tel");
+    inputPhoneNr.setAttribute("name", "phoneNr");
+    inputPhoneNr.setAttribute("pattern", "[0-9]{3}-[0-9]{3}-[0-9]{4}");
+    inputPhoneNr.setAttribute("placeholder", "070-123-4567");
+    inputPhoneNr.setAttribute("data-cy", "phone-nr");
+    inputPhoneNr.setAttribute("required", "");
+
     const slotLabel = document.createElement("label");
     slotLabel.setAttribute("class", "modal2__slotLabel");
     slotLabel.setAttribute("for", "slots");
@@ -117,7 +132,7 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
     //to Post request for submit booking & later show third modal
     submitBtn.addEventListener("click", requestPOST.bind(this, challengeDataId, inputDate, inputName, inputEmail, selectSlot, selectPlayers));
 
-    secondModal.append(headline, inputLabel1, inputName, inputLabel2, inputEmail, slotLabel, selectSlot, playersLabel, selectPlayers, submitBtn);
+    secondModal.append(headline, inputLabel1, inputName, inputLabel2, inputEmail, inputLabel3, inputPhoneNr, slotLabel, selectSlot, playersLabel, selectPlayers, submitBtn);
 
     return secondModal;
 }
