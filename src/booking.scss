@@ -1,6 +1,7 @@
 .modal1 {
     animation: openUp 0.2s;
     @include modal-booking;
+    overflow-y: auto;
 
     &__headline {
         @include modal-headline;
@@ -34,6 +35,7 @@
 .modal2 {
     animation: openUp 0.2s;
     @include modal-booking;
+    overflow-y: auto;
 
     &__headline {
         @include modal-headline;
