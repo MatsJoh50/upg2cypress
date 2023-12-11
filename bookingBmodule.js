@@ -69,6 +69,8 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
     inputPhoneNr.setAttribute("class", "modal2__inputPhoneNr");
     inputPhoneNr.setAttribute("type", "tel");
     inputPhoneNr.setAttribute("name", "phoneNr");
+    inputPhoneNr.setAttribute("pattern", "[0-9]{3}-[0-9]{3}-[0-9]{4}");
+    inputPhoneNr.setAttribute("placeholder", "070-123-4567");
     inputPhoneNr.setAttribute("data-cy", "phone-nr");
     inputPhoneNr.setAttribute("required", "");
 
@@ -130,7 +132,7 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
     //to Post request for submit booking & later show third modal
     submitBtn.addEventListener("click", requestPOST.bind(this, challengeDataId, inputDate, inputName, inputEmail, selectSlot, selectPlayers));
 
-    secondModal.append(headline, inputLabel1, inputName, inputLabel2, inputEmail, slotLabel, selectSlot, playersLabel, selectPlayers, submitBtn);
+    secondModal.append(headline, inputLabel1, inputName, inputLabel2, inputEmail, inputLabel3, inputPhoneNr, slotLabel, selectSlot, playersLabel, selectPlayers, submitBtn);
 
     return secondModal;
 }
