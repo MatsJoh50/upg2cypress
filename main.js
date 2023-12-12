@@ -1,5 +1,5 @@
 import { default as modalSection1 } from './bookingAmodule.js';
-import { createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose } from './modules.js';
+import { createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose, apiErrorMsg } from './modules.js';
 //Selectors
 const menuBg = document.querySelector(".nav__mobile--bg");
 const mobileMenu = document.querySelector(".nav__mobile--menu");
@@ -61,5 +61,8 @@ async function topThree() {
   };
 }
 
-topThree();
+topThree()
+.catch(err => {
+  apiErrorMsg('.main__slider')}
+  );
 

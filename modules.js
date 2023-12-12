@@ -82,4 +82,15 @@ function runOpenAndClose(property) {
 
 }
 
-export { createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose }
+
+function apiErrorMsg(printToCSS) {
+    const printSection = document.querySelector(printToCSS);
+    const noHit = document.createElement("p");
+    const textNode = document.createTextNode("Seems to be a problem, please try again later");
+    noHit.classList.add("nochallange")
+    noHit.appendChild(textNode);
+    printSection.appendChild(noHit)
+}
+
+
+export { apiErrorMsg, createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose }
