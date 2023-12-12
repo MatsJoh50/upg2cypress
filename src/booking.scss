@@ -134,3 +134,25 @@
         align-items: center;
     }
 }
+
+.modal4 {
+    text-align: center;
+    animation: openUp 0.2s;
+    @include modal-booking;
+
+    &__headline {
+        display: block;
+        font-size: 30px;
+        font-weight: normal;
+        text-align: center;
+        margin-top: 40%;
+    }
+
+    &__aLink {
+        display: block;
+        color: #8ACFE5;
+        font-size: 20px;
+        font-weight: bold;
+        align-items: center;
+    }
+}
