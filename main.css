@@ -1042,6 +1042,12 @@ a {
   overscroll-behavior-x: contain;
   scroll-snap-type: mandatory;
 }
+@media screen and (min-width: 900px) {
+  .main__slider {
+    justify-content: center;
+    margin: 0 auto;
+  }
+}
 .main__sliderBox {
   border-radius: 8px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.69);
@@ -1215,6 +1221,10 @@ a {
   .main__marketing #solo_img {
     grid-row: 2/2;
   }
+}
+.main .nochallange {
+  justify-content: center;
+  margin: 0 auto;
 }
 
 @keyframes fadeIn {
