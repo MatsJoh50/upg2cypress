@@ -1,20 +1,22 @@
 // import {createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose} from "./modules.js";
 import { default as modalSection1 } from './bookingAmodule.js';
-import { createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose } from './modules.js';
+import { apiErrorMsg, createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose } from './modules.js';
 let online = true;
 let onsite = true;
 filterFromLink()
 //Load API
 const fullApiJson = []
-getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
+getApi()
+    .then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
     .then(fetchAllTags)
     .then(printAllTags)
     .then(printAllChallenges)
     .then(grabAllTags)
-    .catch(err => console.log('errors: ' + err.message))
+    .catch(err => {
+        console.log('errors: ' + err.message)
+        apiErrorMsg('#testbox')
+    })
     .then(loadingBar)
-
-
 
 //Fetch Challange API
 async function getApi() {

@@ -316,6 +316,10 @@ a {
         overflow: auto;
         overscroll-behavior-x: contain;
         scroll-snap-type: mandatory;
+        @include breakpoint($medium-screen-breakpoint) {
+            justify-content: center;
+            margin: 0 auto;
+        }
 
         &Box {
             border-radius: 8px;
@@ -526,6 +530,11 @@ a {
 
         }
 
+    }
+
+    .nochallange{
+        justify-content: center;
+        margin: 0 auto;
     }
 }
 
