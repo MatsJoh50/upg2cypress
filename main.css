@@ -782,7 +782,6 @@ footer__site-map p, footer__follow p {
   font-weight: bold;
   align-items: center;
 }
-
 .modal4 {
   text-align: center;
   animation: openUp 0.2s;
@@ -812,6 +811,30 @@ footer__site-map p, footer__follow p {
   font-weight: bold;
   align-items: center;
 }
+
+/* Nice Gradient for buttons i found :) */
+button {
+  background-size: 100% 3px, 0 3px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+button:hover {
+  background-size: 0 3px, 100% 3px;
+}
+
+a:hover, button:hover { /*scaling effect*/
+  transform: scale(1.1);
+}
+
+/* the actual effect we agreed on:
+
+a:hover,button:hover {
+  outline: 1px solid #062647; 
+  border-radius: 2%;
+
+}*/
 
 :root {
   --blue: #36769D;
@@ -1191,10 +1214,8 @@ a {
   font-size: 1.2em;
   font-weight: bold;
   text-align: center;
-  width: 60%;
-}
-.main__storyBox--button {
-  margin: 0 auto;
+  width: 75vh; /*Changed it here*/
+  margin: 0 auto; /*moved this here, because it had its own code block*/
 }
 .main__marketing {
   display: flex;
