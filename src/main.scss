@@ -424,12 +424,11 @@ a {
             font-size: 1.2em;
             font-weight: bold;
             text-align: center;
-            width: 60%;
+            width: 75vh; /*Changed it here*/
+            margin: 0 auto;  /*moved this here, because it had its own code block*/
+
         }
 
-        &--button {
-            margin: 0 auto;
-        }
     }
 
 
@@ -479,6 +478,7 @@ a {
             .main__marketingBox {
                 margin: 0 1em;
             }
+          
         }
 
         @include breakpoint($medium-screen-breakpoint) {
