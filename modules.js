@@ -4,6 +4,8 @@ function createChallengeBox(challengeData) {
     const challengeBox = document.createElement('div');
     challengeBox.classList.add('main__sliderBox');
 
+    challengeBox.style.animation = 'openUp 0.5s'
+
     const cardHero = document.createElement('img');
     cardHero.src = challengeData.image;
     cardHero.classList.add('main__sliderBox--img');
@@ -25,7 +27,7 @@ function createChallengeBox(challengeData) {
 
     const info = document.createElement('div');
     info.classList.add('main__sliderBox--info');
-    info.setAttribute("aria-valuenow",`${challengeData.rating}`);
+    info.setAttribute("aria-valuenow", `${challengeData.rating}`);
     challengeBox.appendChild(info);
 
     for (let i = 0; i < 5; i++) {
@@ -56,7 +58,7 @@ function createChallengeBox(challengeData) {
 
     //to show first modal
     btn.addEventListener("click", modalSection1.bind(this, challengeData.title, challengeData.id, challengeData.minParticipants, challengeData.maxParticipants));
-    
+
     challengeBox.appendChild(btn);
 
     return challengeBox;
