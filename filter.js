@@ -1,4 +1,3 @@
-// import {createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose} from "./modules.js";
 import { default as modalSection1 } from './bookingAmodule.js';
 import { apiErrorMsg, createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose } from './modules.js';
 let online = true;
@@ -58,6 +57,7 @@ let cbMinValue = filterMin.ariaValueNow;
 let cbMaxValue = filterMax.ariaValueNow;
 let allTagsArray = [];
 let activeFilterTags = [];
+let someOrAll = false;
 
 //Eventlistener
 filterSearchBar.addEventListener('keyup', () => {
@@ -169,7 +169,7 @@ function grabAllTags() {
     });
 }
 
-function filterStringBuilder(challenge) {
+function filterPlace(challenge) {
     let filterString = [];
     if (online && onsite) {
         filterString.push(((challenge.type.includes('online')) || (challenge.type.includes('onsite'))));
@@ -178,11 +178,10 @@ function filterStringBuilder(challenge) {
     } else if (online) {
         filterString.push(challenge.type.includes("online"));
     }
-    filterString.push(filterBuildLabels)
     return filterString
 }
 
-function filterBuildLabels(){
+function filterBuildLabels(challenge) {
     let filterArray = [];
     if (activeFilterTags.length > 0) {
         activeFilterTags.forEach(label => {
@@ -206,15 +205,28 @@ function printAllChallenges() {
                 }
             });
         } else
-            fullApiJson.forEach(challenge => {
-                if (filterStringBuilder(challenge).every(condition => condition == true) && (filterStringBuilder(challenge).length != 0)) {
-                    if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
-                        const challengeBox = createChallengeBox(challenge)
-                        document.querySelector('#testbox').appendChild(challengeBox);
-                        didNotPrint = false
+            if (someOrAll || activeFilterTags.length == 0) {
+                fullApiJson.forEach(challenge => {
+                    if (filterPlace(challenge).every(condition => condition == true) && filterBuildLabels(challenge).every(condition => condition == true) && (filterPlace(challenge).length != 0)) {
+                        if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
+                            const challengeBox = createChallengeBox(challenge)
+                            document.querySelector('#testbox').appendChild(challengeBox);
+                            didNotPrint = false
+                        }
                     }
-                }
-            });
+                });
+            } else if (someOrAll == false && activeFilterTags.length != 0) {
+                fullApiJson.forEach(challenge => {
+                    if (filterPlace(challenge).every(condition => condition == true) && filterBuildLabels(challenge).some(condition => condition == true) && (filterPlace(challenge).length != 0)) {
+                        if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
+                            const challengeBox = createChallengeBox(challenge)
+                            document.querySelector('#testbox').appendChild(challengeBox);
+                            didNotPrint = false
+                        }
+                    }
+                });
+
+            }
     } catch (e) {
         console.log(e)
     }
