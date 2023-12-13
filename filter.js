@@ -1,19 +1,22 @@
 // import {createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose} from "./modules.js";
 import { default as modalSection1 } from './bookingAmodule.js';
-import { createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose } from './modules.js';
+import { apiErrorMsg, createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose } from './modules.js';
 let online = true;
 let onsite = true;
 filterFromLink()
 //Load API
 const fullApiJson = []
-getApi().then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
+getApi()
+    .then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
     .then(fetchAllTags)
     .then(printAllTags)
     .then(printAllChallenges)
     .then(grabAllTags)
-    .catch(err => console.log('errors: ' + err.message))
-
-
+    .catch(err => {
+        console.log('errors: ' + err.message)
+        apiErrorMsg('#testbox')
+    })
+    .then(loadingBar)
 
 //Fetch Challange API
 async function getApi() {
@@ -225,20 +228,23 @@ function noMatchingSearch(printToCSS) {
 
 function filterFunctionSearchBar() {
     const findThis = filterSearchBar.value.toLowerCase().split(" ");
-    testbox.innerHTML = ""
     const hit = true;
     fullApiJson.forEach(challenge => {
-        if (findThis[0] == '') {
+        if (findThis[0] == '' || filterSearchBar.value.length <= 2) {
+            testbox.innerHTML = ""
             printAllChallenges()
         }
-        if (findThis.some(test => (test != "") && (challenge.title.toLowerCase().includes(test) || challenge.description.toLowerCase().includes(test)))) {
-            const challengeBox = createChallengeBox(challenge)
-            testbox.appendChild(challengeBox);
-        };
+        if (2 < filterSearchBar.value.length) {
+            testbox.innerHTML = ""
+            if (findThis.some(test => (test != "") && (challenge.title.toLowerCase().includes(test) || challenge.description.toLowerCase().includes(test)))) {
+                const challengeBox = createChallengeBox(challenge)
+                testbox.appendChild(challengeBox);
+            };
+            if (document.querySelectorAll(".main__sliderBox").length == 0) {
+                noMatchingSearch("#testbox")
+            }
+        }
     })
-    if (document.querySelectorAll(".main__sliderBox").length == 0) {
-        noMatchingSearch("#testbox")
-    }
 };
 
 //Adds all uniqe tags to an array.
@@ -261,7 +267,6 @@ function changeStatusFilterOnsite() {
 
     } else onsite = true;
     printAllChallenges()
-
 }
 
 //Toggle the bool for online filter.
@@ -272,7 +277,6 @@ function changeStatusFilterOnline() {
 
     } else online = true;
     printAllChallenges()
-
 }
 
 
@@ -282,3 +286,7 @@ closeMobileMenu.addEventListener("click", runCloseMenu);
 hamburgerMenuLinks.forEach(link => {
     link.addEventListener("click", runCloseMenu);
 });
+
+function loadingBar() {
+    document.querySelector('.loading').classList.add('hidden')
+}

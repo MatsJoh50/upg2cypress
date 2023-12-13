@@ -12,7 +12,7 @@
 
     <script type="module" src='filter.js' defer></script>
 
-  </head>
+</head>
 
 <body>
     <header id="header">
@@ -64,16 +64,30 @@
             <img class="nav__mobile--closeMenu" src="images/close.png" alt="menu close button">
         </div>
     </div>
-    
+
+    <div class="loading">
+        <div class="loadingBlock">
+            <div style='left:38px;top:38px;animation-delay:0s'></div>
+            <div style='left:80px;top:38px;animation-delay:0.125s'></div>
+            <div style='left:122px;top:38px;animation-delay:0.25s'></div>
+            <div style='left:38px;top:80px;animation-delay:0.875s'></div>
+            <div style='left:122px;top:80px;animation-delay:0.375s'></div>
+            <div style='left:38px;top:122px;animation-delay:0.75s'></div>
+            <div style='left:80px;top:122px;animation-delay:0.625s'></div>
+            <div style='left:122px;top:122px;animation-delay:0.5s'></div>
+        </div>
+    </div>
     <h2 class="filter__title">Our Challanges</h2>
-    
+
     <button class="toFilter__bigButton">Filter challenges</button>
     <section class="filter hidden">
         <div class="exitBtn">
             <span class="exitBar" id="exit-vert"></span>
             <span class="exitBar" id="exit-horz"></span>
         </div>
-        <!-- <img class="filter--close" src="images/close.png"> -->
+
+
+
         <h2 class="filter__Headline">Filter Challanges</h2>
 
         <div class="filter__options">
@@ -95,7 +109,8 @@
                 <h4 class="filter__option--rating--title">By Rating</h4>
 
                 <div class="filter__options--rating--wrapper">
-                    <div class="filter__options--rating--min" aria-label="minRating" role="meter" aria-valuemin="0" aria-valuemax="5" aria-valuenow="1">
+                    <div class="filter__options--rating--min" aria-label="minRating" role="meter" aria-valuemin="0"
+                        aria-valuemax="5" aria-valuenow="1">
                         <span aria-hidden="true" class="cbMin" id="cbMin-1"></span>
                         <span aria-hidden="true" class="cbMin" id="cbMin-2"></span>
                         <span aria-hidden="true" class="cbMin" id="cbMin-3"></span>
@@ -104,7 +119,8 @@
 
                     </div>
                     <div>to</div>
-                    <div class="filter__options--rating--max" aria-label="maxRating" role="meter" aria-valuemin="0" aria-valuemax="5" aria-valuenow="5">
+                    <div class="filter__options--rating--max" aria-label="maxRating" role="meter" aria-valuemin="0"
+                        aria-valuemax="5" aria-valuenow="5">
                         <span aria-hidden="true" class="cbMax" id="cbMax-1"></span>
                         <span aria-hidden="true" class="cbMax" id="cbMax-2"></span>
                         <span aria-hidden="true" class="cbMax" id="cbMax-3"></span>
@@ -130,7 +146,7 @@
     <section id="testbox">
 
     </section>
-    
+
     <footer class="footer" id="footer">
         <div class="footer__compay">
             <h4>[Esc] Hacker Escape Rooms</h4>

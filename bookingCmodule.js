@@ -12,9 +12,9 @@ export default async function requestPOST(challengeDataId, inputDate, inputName,
     const url = 'https://lernia-sjj-assignments.vercel.app/api/booking/reservations';
     const bodyObj = {
         challenge: challengeDataId,
-        name: `${inputName.value}`,
-        email: `${inputEmail.value}`,
-        date: `${inputDate.value}`,
+        name: `${inputName}`,
+        email: `${inputEmail}`,
+        date: `${inputDate}`,
         time: `${slot}`,
         participants: +numbPlayers[0],
     }
@@ -28,9 +28,9 @@ export default async function requestPOST(challengeDataId, inputDate, inputName,
         //to show third modal if POST request ok
         if (Object.values(data)[0] === "ok") {
             modalSection3();
-            return;
+        } else {
+            modalSection4();
         }
-        return;
     }
 }
 
@@ -39,6 +39,13 @@ function modalSection3() {
     const thirdModal = createThirdModal();
     thirdModal.style.display = "block";
     const body = document.querySelector("body").appendChild(thirdModal);
+}
+
+//add fourthModal to body
+function modalSection4() {
+    const fourthModal = createFourthModal();
+    fourthModal.style.display = "block";
+    const body = document.querySelector("body").appendChild(fourthModal);
 }
 
 //create thirdModal
@@ -59,4 +66,24 @@ function createThirdModal() {
     thirdModal.append(headline, aLink);
 
     return thirdModal;
+}
+
+//create fourthModal
+function createFourthModal() {
+    const fourthModal = document.createElement("section");
+    fourthModal.setAttribute("class", "modal4");
+
+    const headline = document.createElement("h2");
+    headline.setAttribute("class", "modal4__headline");
+    headline.textContent = "We are sorry. The challenge could not be booked. Please try again.";
+
+    const aLink = document.createElement("a");
+    aLink.setAttribute("class", "modal4__aLink");
+    aLink.setAttribute("href", "./filter.htm");
+    //to show challenges site
+    aLink.textContent = "Back to challenges";
+
+    fourthModal.append(headline, aLink);
+
+    return fourthModal;
 }
