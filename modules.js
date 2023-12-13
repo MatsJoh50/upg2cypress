@@ -1,5 +1,15 @@
 import { default as modalSection1 } from './bookingAmodule.js';
 
+function shortenText(text) {
+    const maxCharacters = 50;
+    if (text.length < maxCharacters) {
+        return text;
+    }
+    // Find the last instance of a white space within the character limit
+    const lastWhiteSpace = text.lastIndexOf(' ', maxCharacters);
+    return text.slice(0, lastWhiteSpace) + "...";
+}
+
 function createChallengeBox(challengeData) {
     const challengeBox = document.createElement('div');
     challengeBox.classList.add('main__sliderBox');
@@ -25,7 +35,7 @@ function createChallengeBox(challengeData) {
 
     const info = document.createElement('div');
     info.classList.add('main__sliderBox--info');
-    info.setAttribute("aria-valuenow",`${challengeData.rating}`);
+    info.setAttribute("aria-valuenow", `${challengeData.rating}`);
     challengeBox.appendChild(info);
 
     for (let i = 0; i < 5; i++) {
@@ -41,7 +51,7 @@ function createChallengeBox(challengeData) {
     info.appendChild(participants);
 
     const contentDescription = document.createElement('p');
-    contentDescription.textContent = challengeData.description;
+    contentDescription.textContent = shortenText(challengeData.description);
     challengeBox.appendChild(contentDescription);
 
     const btn = document.createElement('button');
@@ -56,7 +66,7 @@ function createChallengeBox(challengeData) {
 
     //to show first modal
     btn.addEventListener("click", modalSection1.bind(this, challengeData.title, challengeData.id, challengeData.minParticipants, challengeData.maxParticipants));
-    
+
     challengeBox.appendChild(btn);
 
     return challengeBox;
