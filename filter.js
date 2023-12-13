@@ -178,12 +178,18 @@ function filterStringBuilder(challenge) {
     } else if (online) {
         filterString.push(challenge.type.includes("online"));
     }
+    filterString.push(filterBuildLabels)
+    return filterString
+}
+
+function filterBuildLabels(){
+    let filterArray = [];
     if (activeFilterTags.length > 0) {
         activeFilterTags.forEach(label => {
-            filterString.push(challenge.labels.includes(`${label}`))
+            filterArray.push(challenge.labels.includes(`${label}`))
         })
     }
-    return filterString
+    return filterArray
 }
 
 function printAllChallenges() {
