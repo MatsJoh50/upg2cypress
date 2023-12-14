@@ -51,6 +51,8 @@ const hamburgerButton = document.querySelector(".nav__mobile--openMenu");
 const closeMobileMenu = document.querySelector(".nav__mobile--closeMenu");
 const queryHtmlEle = document.querySelector("html");
 const hamburgerMenuLinks = document.querySelectorAll(".hamburgerLink");
+const filterAllLabels = document.querySelector('#AllLabels')
+const filterSomeLabels = document.querySelector('#someLabels')
 
 //Variables
 let cbMinValue = filterMin.ariaValueNow;
@@ -60,6 +62,22 @@ let activeFilterTags = [];
 let someOrAll = false;
 
 //Eventlistener
+filterSomeLabels.addEventListener('change', () => {
+    document.querySelector('#AllLabels').checked = false;
+    if (someOrAll == true) {
+        someOrAll = false;
+    }
+    printAllChallenges()
+});
+
+filterAllLabels.addEventListener('change', () => {
+    document.querySelector('#someLabels').checked = false;
+    if (someOrAll == false) {
+        someOrAll = true;
+    }
+    printAllChallenges()
+});
+
 filterSearchBar.addEventListener('keyup', () => {
     filterFunctionSearchBar()
 });
@@ -75,6 +93,8 @@ filterIncOnsite.addEventListener('change', () => {
 filterButton.addEventListener('click', () => {
     document.querySelector(".filter").classList.toggle("hidden");
     document.querySelector(".toFilter__bigButton").classList.toggle("hidden");
+    document.querySelector(".filter__title").scrollIntoView();
+    
 })
 exitBtn.addEventListener('click', () => {
     document.querySelector(".filter").classList.toggle("hidden");
