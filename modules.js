@@ -14,6 +14,8 @@ function createChallengeBox(challengeData) {
     const challengeBox = document.createElement('div');
     challengeBox.classList.add('main__sliderBox');
 
+    challengeBox.style.animation = 'openUp 0.5s'
+
     const cardHero = document.createElement('img');
     cardHero.src = challengeData.image;
     cardHero.classList.add('main__sliderBox--img');
