@@ -1,4 +1,3 @@
-// import {createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose} from "./modules.js";
 import { default as modalSection1 } from './bookingAmodule.js';
 import { apiErrorMsg, createChallengeBox, runOpenMenu, runCloseMenu, runOpenAndClose } from './modules.js';
 let online = true;
@@ -52,14 +51,33 @@ const hamburgerButton = document.querySelector(".nav__mobile--openMenu");
 const closeMobileMenu = document.querySelector(".nav__mobile--closeMenu");
 const queryHtmlEle = document.querySelector("html");
 const hamburgerMenuLinks = document.querySelectorAll(".hamburgerLink");
+const filterAllLabels = document.querySelector('#AllLabels')
+const filterSomeLabels = document.querySelector('#someLabels')
 
 //Variables
 let cbMinValue = filterMin.ariaValueNow;
 let cbMaxValue = filterMax.ariaValueNow;
 let allTagsArray = [];
 let activeFilterTags = [];
+let someOrAll = false;
 
 //Eventlistener
+filterSomeLabels.addEventListener('change', () => {
+    document.querySelector('#AllLabels').checked = false;
+    if (someOrAll == true) {
+        someOrAll = false;
+    }
+    printAllChallenges()
+});
+
+filterAllLabels.addEventListener('change', () => {
+    document.querySelector('#someLabels').checked = false;
+    if (someOrAll == false) {
+        someOrAll = true;
+    }
+    printAllChallenges()
+});
+
 filterSearchBar.addEventListener('keyup', () => {
     filterFunctionSearchBar()
 });
@@ -75,6 +93,8 @@ filterIncOnsite.addEventListener('change', () => {
 filterButton.addEventListener('click', () => {
     document.querySelector(".filter").classList.toggle("hidden");
     document.querySelector(".toFilter__bigButton").classList.toggle("hidden");
+    document.querySelector(".filter__title").scrollIntoView();
+    
 })
 exitBtn.addEventListener('click', () => {
     document.querySelector(".filter").classList.toggle("hidden");
@@ -169,7 +189,7 @@ function grabAllTags() {
     });
 }
 
-function filterStringBuilder(challenge) {
+function filterPlace(challenge) {
     let filterString = [];
     if (online && onsite) {
         filterString.push(((challenge.type.includes('online')) || (challenge.type.includes('onsite'))));
@@ -178,12 +198,17 @@ function filterStringBuilder(challenge) {
     } else if (online) {
         filterString.push(challenge.type.includes("online"));
     }
+    return filterString
+}
+
+function filterBuildLabels(challenge) {
+    let filterArray = [];
     if (activeFilterTags.length > 0) {
         activeFilterTags.forEach(label => {
-            filterString.push(challenge.labels.includes(`${label}`))
+            filterArray.push(challenge.labels.includes(`${label}`))
         })
     }
-    return filterString
+    return filterArray
 }
 
 function printAllChallenges() {
@@ -200,15 +225,28 @@ function printAllChallenges() {
                 }
             });
         } else
-            fullApiJson.forEach(challenge => {
-                if (filterStringBuilder(challenge).every(condition => condition == true) && (filterStringBuilder(challenge).length != 0)) {
-                    if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
-                        const challengeBox = createChallengeBox(challenge)
-                        document.querySelector('#testbox').appendChild(challengeBox);
-                        didNotPrint = false
+            if (someOrAll || activeFilterTags.length == 0) {
+                fullApiJson.forEach(challenge => {
+                    if (filterPlace(challenge).every(condition => condition == true) && filterBuildLabels(challenge).every(condition => condition == true) && (filterPlace(challenge).length != 0)) {
+                        if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
+                            const challengeBox = createChallengeBox(challenge)
+                            document.querySelector('#testbox').appendChild(challengeBox);
+                            didNotPrint = false
+                        }
                     }
-                }
-            });
+                });
+            } else if (someOrAll == false && activeFilterTags.length != 0) {
+                fullApiJson.forEach(challenge => {
+                    if (filterPlace(challenge).every(condition => condition == true) && filterBuildLabels(challenge).some(condition => condition == true) && (filterPlace(challenge).length != 0)) {
+                        if ((challenge.rating >= cbMinValue) && (challenge.rating <= cbMaxValue)) {
+                            const challengeBox = createChallengeBox(challenge)
+                            document.querySelector('#testbox').appendChild(challengeBox);
+                            didNotPrint = false
+                        }
+                    }
+                });
+
+            }
     } catch (e) {
         console.log(e)
     }
