@@ -4,6 +4,7 @@ let online = true;
 let onsite = true;
 filterFromLink()
 //Load API
+// test för pre-commit
 const fullApiJson = []
 getApi()
     .then(data => data.challenges.forEach(challenge => fullApiJson.push(challenge)))
