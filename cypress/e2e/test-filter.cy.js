@@ -11,7 +11,7 @@ describe('Test indexs links to challange page', () => {
         cy.contains('On-site challenges').click({ multiple: true, force: true })
         cy.url().should('include', '/filter.htm?onsite')
     });
-    it('Clicking the "See all challanges" button', () => {
+    it('Clicking the "See all challenges" button', () => {
         cy.visit('http://127.0.0.1:5501/index.html');
         cy.contains('See all challenges').click();
         cy.url().should('include', '/filter.htm')

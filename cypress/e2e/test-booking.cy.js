@@ -1,3 +1,17 @@
+
+// Create a new Date object representing today's date
+var today = new Date();
+
+// Get the year, month, and day components of today's date
+var year = today.getFullYear();
+// Month is zero-based, so we add 1 to get the actual month
+var month = (today.getMonth() + 1).toString().padStart(2, '0'); // Pad single-digit months with a leading zero
+var day = today.getDate().toString().padStart(2, '0'); // Pad single-digit days with a leading zero
+
+// Concatenate the components with the desired format
+var formattedDate = year + '-' + month + '-' + day;
+
+
 describe('Test booking', () => {
 
   it('clicking first "button" and later submit form', () => {
@@ -6,8 +20,8 @@ describe('Test booking', () => {
 
     //step 1
     cy.get('[data-cy="booking-date"]')
-      .type('2023-12-10')
-      .and('have.value', '2023-12-10')
+      .type(`${formattedDate}`)
+      .and('have.value', `${formattedDate}`)
       .should('have.attr', 'required')
 
     cy.contains('Search').click()
