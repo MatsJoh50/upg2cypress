@@ -19,20 +19,17 @@ hamburgerMenuLinks.forEach(link => {
 
 function onlineLink(){
   const onlines = document.querySelectorAll(".Online");
-  console.log(onlines.length)
   onlines.forEach(button =>{
     button.addEventListener('click', () => {
       window.location.replace('/filter.htm?online')
 
     })
   });
-  console.log('online links done')
 }
 onlineLink()
 
 function onsiteLink(){
   const onsites = document.querySelectorAll(".OnSite");
-  console.log(onsites.length)
   onsites.forEach(button => {
     button.addEventListener('click', () => {
       window.location.replace('/filter.htm?onsite')
@@ -40,7 +37,6 @@ function onsiteLink(){
     })
     
   });
-  console.log('onsite links done')
 }
 onsiteLink();
 

@@ -14,4 +14,5 @@ app.get('/', async (request, response) => {
 // app.use('/images', express.static('./images'));
 app.use('/', express.static('./'));
 
-app.listen(3080);
+app.listen(5501);
+console.log('listening to port 5501')

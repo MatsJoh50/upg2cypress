@@ -91,13 +91,14 @@ function createSecondModal(challengeDataTitle, challengeDataId, challengeDataMin
     slotStart.innerText = "-Choose a time-";
     selectSlot.appendChild(slotStart);
 
-    for (let i = 0; i < obj.slots.length; i++) {
-        const slot = document.createElement("option");
-        slot.setAttribute("class", "modal2__selectSlot--slotTime");
-        slot.setAttribute("value", [i]);
-        slot.innerText = `${obj.slots[i]}`;
-        selectSlot.appendChild(slot);
-    }
+        for (let i = 0; i < obj.slots.length; i++) {
+            const slot = document.createElement("option");
+            slot.setAttribute("class", "modal2__selectSlot--slotTime");
+            slot.setAttribute("value", [i]);
+            slot.innerText = `${obj.slots[i]}`;
+            selectSlot.appendChild(slot);
+        }
+
 
     const playersLabel = document.createElement("label");
     playersLabel.setAttribute("class", "modal2__playersLabel");

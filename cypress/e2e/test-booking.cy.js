@@ -1,16 +1,28 @@
+const formattedDate = new Date().toJSON().slice(0, 10);
 
-// Create a new Date object representing today's date
-var today = new Date();
+describe('Check for errors', () => {
 
-// Get the year, month, and day components of today's date
-var year = today.getFullYear();
-// Month is zero-based, so we add 1 to get the actual month
-var month = (today.getMonth() + 1).toString().padStart(2, '0'); // Pad single-digit months with a leading zero
-var day = today.getDate().toString().padStart(2, '0'); // Pad single-digit days with a leading zero
+  it('displays validation messages for required inputs', () => {
 
-// Concatenate the components with the desired format
-var formattedDate = year + '-' + month + '-' + day;
+    cy.visit('http://127.0.0.1:5501/index.html')
+    cy.contains('Take challenge').click({ multiple: true })
+    cy.contains('Search').click()    
+    cy.contains('Submit booking')
+    .should('not.exist');
+  });
 
+  it('Test request without body for 400 status', () => {
+    cy.request({
+      method: 'POST',
+      url: 'https://lernia-sjj-assignments.vercel.app/api/booking/reservations',
+      headers: {'Content-Type': 'application/json' },
+      body: '',
+      failOnStatusCode: false
+    }).as('failRequest');
+    cy.get('@failRequest').its('status')
+    .should('equal', 400);
+  });
+});
 
 describe('Test booking', () => {
 
@@ -18,7 +30,9 @@ describe('Test booking', () => {
     cy.visit('http://127.0.0.1:5501/index.html')
     cy.contains('Take challenge').click({ multiple: true })
 
-    //step 1
+  
+    
+    //step 1 Ok
     cy.get('[data-cy="booking-date"]')
       .type(`${formattedDate}`)
       .and('have.value', `${formattedDate}`)

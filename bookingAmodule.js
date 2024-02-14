@@ -44,8 +44,13 @@ function createFirstModal(challengeDataTitle, challengeDataId, challengeDataMinP
     searchBtn.setAttribute("class", "modal1__searchBtn--booking");
     searchBtn.setAttribute("type", "submit");
     searchBtn.textContent = "Search available times";
-    //to GET request for available slots & later show second modal
-    searchBtn.addEventListener("click", bookingSlots.bind(this, challengeDataTitle, challengeDataId, challengeDataMinParticipants, challengeDataMaxParticipants, inputDate));
+
+    searchBtn.addEventListener("click", (event) => {
+        if(inputDate){
+            bookingSlots.call(event.target, challengeDataTitle, challengeDataId, challengeDataMinParticipants, challengeDataMaxParticipants, inputDate);
+        }
+    });
+    
 
     firstModal.append(headline, question, inputLabel, inputDate, searchBtn);
 
