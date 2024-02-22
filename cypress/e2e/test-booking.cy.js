@@ -4,7 +4,7 @@ describe('Check for errors', () => {
 
   it('displays validation messages for required inputs', () => {
 
-    cy.visit('http://127.0.0.1:5501/index.html')
+    cy.visit('https://matsjoh50.github.io/upg2cypress//index.html')
     cy.contains('Take challenge').click({ multiple: true })
     cy.contains('Search').click()    
     cy.contains('Submit booking')
@@ -27,7 +27,7 @@ describe('Check for errors', () => {
 describe('Test booking', () => {
 
   it('clicking first "button" and later submit form', () => {
-    cy.visit('http://127.0.0.1:5501/index.html')
+    cy.visit('https://matsjoh50.github.io/upg2cypress//index.html')
     cy.contains('Take challenge').click({ multiple: true })
 
   
